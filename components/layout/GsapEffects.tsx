@@ -14,6 +14,12 @@ export default function GsapEffects() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return
     }
+    const isTouchDevice =
+      window.matchMedia('(pointer: coarse)').matches ||
+      window.matchMedia('(hover: none)').matches
+    if (isTouchDevice) {
+      return
+    }
 
     let raf1 = 0
     let raf2 = 0
@@ -75,7 +81,7 @@ export default function GsapEffects() {
         })
 
         const heroMedia = document.querySelector<HTMLElement>('[data-hero-media]')
-        if (heroMedia) {
+        if (heroMedia && !isTouchDevice) {
           gsap.to(heroMedia, {
             yPercent: 12,
             scale: 1.06,
@@ -90,7 +96,7 @@ export default function GsapEffects() {
         }
 
         const heroContent = document.querySelector<HTMLElement>('[data-hero-content]')
-        if (heroContent) {
+        if (heroContent && !isTouchDevice) {
           gsap.to(heroContent, {
             yPercent: -8,
             ease: 'none',
@@ -103,55 +109,57 @@ export default function GsapEffects() {
           })
         }
 
-        const parallaxAccents = gsap.utils.toArray<HTMLElement>('[data-gsap-parallax]')
-        parallaxAccents.forEach((el) => {
-          const depth = Number(el.dataset.parallaxDepth ?? '14')
-          const triggerEl =
-            el.closest<HTMLElement>('[data-gsap-parallax-root]') ?? el.parentElement ?? el
+        if (!isTouchDevice) {
+          const parallaxAccents = gsap.utils.toArray<HTMLElement>('[data-gsap-parallax]')
+          parallaxAccents.forEach((el) => {
+            const depth = Number(el.dataset.parallaxDepth ?? '14')
+            const triggerEl =
+              el.closest<HTMLElement>('[data-gsap-parallax-root]') ?? el.parentElement ?? el
 
-          gsap.fromTo(
-            el,
-            { yPercent: -depth * 0.35 },
-            {
-              yPercent: depth,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: triggerEl,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: isMobile ? 0.4 : 0.65,
-              },
-            }
-          )
-        })
-
-        const hoverPanels = gsap.utils.toArray<HTMLElement>('[data-gsap-hover]')
-        hoverPanels.forEach((panel) => {
-          const onEnter = () => {
-            gsap.to(panel, {
-              y: -4,
-              boxShadow: '0 22px 55px -35px rgba(10,22,40,0.52)',
-              duration: isMobile ? 0.24 : 0.32,
-              ease: 'power2.out',
-            })
-          }
-
-          const onLeave = () => {
-            gsap.to(panel, {
-              y: 0,
-              boxShadow: '0 0 0 0 rgba(10,22,40,0)',
-              duration: isMobile ? 0.28 : 0.38,
-              ease: 'power2.out',
-            })
-          }
-
-          panel.addEventListener('mouseenter', onEnter)
-          panel.addEventListener('mouseleave', onLeave)
-          cleanupFns.push(() => {
-            panel.removeEventListener('mouseenter', onEnter)
-            panel.removeEventListener('mouseleave', onLeave)
+            gsap.fromTo(
+              el,
+              { yPercent: -depth * 0.35 },
+              {
+                yPercent: depth,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: triggerEl,
+                  start: 'top bottom',
+                  end: 'bottom top',
+                  scrub: isMobile ? 0.4 : 0.65,
+                },
+              }
+            )
           })
-        })
+
+          const hoverPanels = gsap.utils.toArray<HTMLElement>('[data-gsap-hover]')
+          hoverPanels.forEach((panel) => {
+            const onEnter = () => {
+              gsap.to(panel, {
+                y: -4,
+                boxShadow: '0 22px 55px -35px rgba(10,22,40,0.52)',
+                duration: isMobile ? 0.24 : 0.32,
+                ease: 'power2.out',
+              })
+            }
+
+            const onLeave = () => {
+              gsap.to(panel, {
+                y: 0,
+                boxShadow: '0 0 0 0 rgba(10,22,40,0)',
+                duration: isMobile ? 0.28 : 0.38,
+                ease: 'power2.out',
+              })
+            }
+
+            panel.addEventListener('mouseenter', onEnter)
+            panel.addEventListener('mouseleave', onLeave)
+            cleanupFns.push(() => {
+              panel.removeEventListener('mouseenter', onEnter)
+              panel.removeEventListener('mouseleave', onLeave)
+            })
+          })
+        }
       })
 
       refreshTimer = window.setTimeout(() => ScrollTrigger.refresh(), 220)

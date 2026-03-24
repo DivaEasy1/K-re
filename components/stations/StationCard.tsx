@@ -27,7 +27,6 @@ function equipmentLabel(equipment: string) {
 
 export default function StationCard({ station }: { station: Station }) {
   const open = station.status === 'open'
-  const isRemoteImage = station.image.startsWith('http')
 
   return (
     <motion.div
@@ -42,14 +41,14 @@ export default function StationCard({ station }: { station: Station }) {
             src={station.image}
             alt={`Station ${station.name}`}
             fill
-            unoptimized={isRemoteImage}
             sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
             loading="lazy"
+            quality={68}
             placeholder="blur"
             blurDataURL={BLUR_DATA_URL}
             className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/25 to-transparent opacity-90" />
+          <div className="absolute inset-0 bg-linear-to-t from-brand-dark/80 via-brand-dark/25 to-transparent opacity-90" />
           <Badge
             variant={open ? 'success' : 'muted'}
             className="absolute left-4 top-4 shadow-sm"

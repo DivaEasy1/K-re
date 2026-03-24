@@ -10,7 +10,7 @@ interface TimelineEntry {
 
 export default function Timeline({ items }: { items: TimelineEntry[] }) {
   return (
-    <section className="gsap-reveal rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <section className="gsap-reveal rounded-4xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <p className="mx-auto w-fit rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
         Déploiement
       </p>
@@ -19,7 +19,7 @@ export default function Timeline({ items }: { items: TimelineEntry[] }) {
       </h2>
 
       <div className="relative mt-12">
-        <div className="absolute left-4 top-0 h-full w-0.5 bg-gradient-to-b from-brand-blue via-brand-gold to-slate-200 md:left-1/2 md:-translate-x-1/2" />
+        <div className="absolute left-4 top-0 h-full w-0.5 bg-linear-to-b from-brand-blue via-brand-gold to-slate-200 md:left-1/2 md:-translate-x-1/2" />
         <div className="space-y-10">
           {items.map((entry, index) => {
             const right = index % 2 === 1

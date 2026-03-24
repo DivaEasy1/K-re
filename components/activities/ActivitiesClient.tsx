@@ -159,7 +159,7 @@ export default function ActivitiesClient({
 
   return (
     <div className="space-y-8">
-      <section className="gsap-reveal rounded-[2rem] border border-white/70 bg-white/90 p-4 shadow-[0_20px_55px_-38px_rgba(10,22,40,0.7)] backdrop-blur sm:p-6">
+      <section className="gsap-reveal rounded-4xl border border-white/70 bg-white/90 p-4 shadow-[0_20px_55px_-38px_rgba(10,22,40,0.7)] backdrop-blur sm:p-6">
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div className="max-w-2xl">
             <p className="inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-amber-700">
@@ -206,7 +206,10 @@ export default function ActivitiesClient({
         </div>
       </section>
 
-      <section className="gsap-reveal rounded-[2rem] border border-white/70 bg-white/92 p-4 shadow-[0_20px_55px_-38px_rgba(10,22,40,0.7)] backdrop-blur sm:p-6">
+      <section className="gsap-reveal rounded-4xl border border-white/70 bg-white/92 p-4 shadow-[0_20px_55px_-38px_rgba(10,22,40,0.7)] backdrop-blur sm:p-6">
+        <p className="mb-4 text-sm font-medium text-slate-600">
+          Galerie d&apos;activites avec photos authentiques selectionnees pour chaque theme.
+        </p>
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div className="max-w-full overflow-x-auto pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <div
@@ -249,7 +252,7 @@ export default function ActivitiesClient({
 
         <div ref={gridRef} className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {filteredActivities.map((activity) => (
-            <div key={activity.id} data-gsap-item>
+            <div key={activity.id} data-gsap-item className="h-full">
               <ActivityCard activity={activity} />
             </div>
           ))}

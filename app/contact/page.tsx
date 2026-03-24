@@ -35,7 +35,7 @@ export default function ContactPage() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="space-y-6">
-              <header className="gsap-reveal rounded-[2rem] border border-white/60 bg-white/75 p-6 shadow-[0_20px_45px_-30px_rgba(10,22,40,0.45)] backdrop-blur sm:p-8">
+              <header className="gsap-reveal rounded-4xl border border-white/60 bg-white/75 p-6 shadow-[0_20px_45px_-30px_rgba(10,22,40,0.45)] backdrop-blur sm:p-8">
                 <p className="mb-3 inline-flex rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
                   Assistance K-Ré
                 </p>
@@ -48,7 +48,7 @@ export default function ContactPage() {
                 </p>
               </header>
 
-              <div className="gsap-reveal space-y-3 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="gsap-reveal space-y-3 rounded-4xl border border-slate-200 bg-white p-6 shadow-sm">
                 <p className="flex items-start gap-3 text-sm text-slate-700">
                   <MapPin className="mt-0.5 h-5 w-5 text-brand-blue" />
                   <span>

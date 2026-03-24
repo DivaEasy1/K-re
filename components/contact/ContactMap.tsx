@@ -15,7 +15,7 @@ export default function ContactMap({ station }: { station: Station }) {
     <Suspense
       fallback={
         <LoadingState
-          className="h-[280px] w-full rounded-3xl"
+          className="h-70 w-full rounded-3xl"
           title="Chargement de la carte locale"
           description="Localisation de la station en cours..."
         />

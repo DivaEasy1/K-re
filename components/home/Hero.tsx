@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -38,17 +38,17 @@ export default function Hero() {
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       <Image
         src="https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800"
-        alt="Kayaks sur la côte de l'île de Ré"
+        alt="Kayaks sur la cote de l'ile de Re"
         data-hero-media
         fill
-        unoptimized
         sizes="100vw"
-        priority
+        quality={72}
+        preload
         placeholder="blur"
         blurDataURL={BLUR_DATA_URL}
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/88 via-brand-dark/52 to-brand-dark/82" />
+      <div className="absolute inset-0 bg-linear-to-b from-brand-dark/88 via-brand-dark/52 to-brand-dark/82" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(30,144,255,0.35),transparent_35%),radial-gradient(circle_at_85%_15%,rgba(255,165,0,0.28),transparent_38%)]" />
 
       <motion.div
@@ -62,7 +62,7 @@ export default function Hero() {
           variants={item}
           className="glass-panel rounded-full px-4 py-1.5 text-sm font-semibold"
         >
-          🏝️ Île de Ré, France
+          Ile de Re, France
         </motion.span>
 
         <motion.h1
@@ -70,8 +70,8 @@ export default function Hero() {
           className="section-heading mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-7xl"
         >
           L&apos;aventure kayak
-          <span className="block bg-gradient-to-r from-blue-500 to-yellow-400 bg-clip-text text-transparent">
-            en toute liberté
+          <span className="block bg-linear-to-r from-blue-500 to-yellow-400 bg-clip-text text-transparent">
+            en toute liberte
           </span>
         </motion.h1>
 
@@ -90,7 +90,7 @@ export default function Hero() {
             {openStations} stations ouvertes
           </span>
           <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1">
-            Réservation en 2 minutes
+            Reservation en 2 minutes
           </span>
           <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1">
             Sans file d&apos;attente
@@ -107,9 +107,9 @@ export default function Hero() {
               href={settings.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Réserver maintenant sur Kayakomat"
+              aria-label="Reserver maintenant sur Kayakomat"
             >
-              Réserver maintenant
+              Reserver maintenant
             </a>
           </Button>
           <Button
@@ -118,15 +118,15 @@ export default function Hero() {
             size="lg"
             className="border-white/50 bg-white/10 text-white hover:bg-white/20"
           >
-            <Link href="/stations" aria-label="Découvrir les stations">
-              Découvrir nos stations
+            <Link href="/stations" aria-label="Decouvrir les stations">
+              Decouvrir nos stations
             </Link>
           </Button>
         </motion.div>
       </motion.div>
 
       <div className="pointer-events-none absolute left-[7%] top-[26%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
-        Réservation par SMS
+        Reservation par SMS
       </div>
       <div className="pointer-events-none absolute right-[8%] top-[34%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
         Stations 24/7
@@ -142,7 +142,7 @@ export default function Hero() {
 
       <svg
         viewBox="0 0 1440 180"
-        className="absolute bottom-0 left-0 h-[100px] w-full text-brand-light md:h-[140px]"
+        className="absolute bottom-0 left-0 h-25 w-full text-brand-light md:h-35"
         preserveAspectRatio="none"
         aria-hidden
       >

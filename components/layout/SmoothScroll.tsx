@@ -12,6 +12,13 @@ export default function SmoothScroll() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return
     }
+    const isTouchDevice =
+      window.matchMedia('(pointer: coarse)').matches ||
+      window.matchMedia('(hover: none)').matches
+    const isSmallViewport = window.matchMedia('(max-width: 1023px)').matches
+    if (isTouchDevice || isSmallViewport) {
+      return
+    }
 
     let raf = 0
     let timeoutId = 0
@@ -19,17 +26,15 @@ export default function SmoothScroll() {
     let started = false
     let lenis: Lenis | undefined
 
-    const prefersMobile = window.matchMedia('(max-width: 767px)').matches
-
     const startLenis = () => {
       if (started) return
       started = true
 
       lenis = new Lenis({
-        duration: prefersMobile ? 0.9 : 1.05,
+        duration: 0.92,
         smoothWheel: true,
         syncTouch: false,
-        wheelMultiplier: prefersMobile ? 0.82 : 0.9,
+        wheelMultiplier: 0.86,
         touchMultiplier: 1,
         easing: (t: number) => 1 - Math.pow(1 - t, 3),
       })

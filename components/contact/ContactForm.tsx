@@ -98,7 +98,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="gsap-reveal rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+      className="gsap-reveal rounded-4xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
       aria-label="Formulaire de contact"
     >
       <p className="mb-3 inline-flex rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">

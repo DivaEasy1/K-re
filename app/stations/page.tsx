@@ -53,7 +53,7 @@ export default function StationsPage() {
           data-parallax-depth="24"
         />
         <div className="relative mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
-          <header className="gsap-reveal relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/85 p-6 shadow-[0_26px_65px_-42px_rgba(10,22,40,0.7)] backdrop-blur sm:p-8">
+          <header className="gsap-reveal relative overflow-hidden rounded-4xl border border-white/70 bg-white/85 p-6 shadow-[0_26px_65px_-42px_rgba(10,22,40,0.7)] backdrop-blur sm:p-8">
             <div className="pointer-events-none absolute -right-28 -top-28 h-56 w-56 rounded-full bg-brand-blue/10 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-28 -left-16 h-52 w-52 rounded-full bg-brand-gold/15 blur-3xl" />
             <p className="mb-3 inline-flex rounded-full border border-brand-blue/15 bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
@@ -82,7 +82,7 @@ export default function StationsPage() {
                   </p>
                   <p className="mt-1 text-2xl font-bold text-slate-800">{comingSoonCount}</p>
                 </div>
-                <div className="col-span-2 rounded-2xl border border-brand-blue/15 bg-gradient-to-r from-brand-blue/10 to-sky-100/70 p-3">
+                <div className="col-span-2 rounded-2xl border border-brand-blue/15 bg-linear-to-r from-brand-blue/10 to-sky-100/70 p-3">
                   <p className="text-xs font-semibold uppercase tracking-wide text-brand-blue">
                     Prochaine ouverture
                   </p>

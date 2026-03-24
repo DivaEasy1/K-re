@@ -6,6 +6,8 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import SmoothScroll from '@/components/layout/SmoothScroll'
 import GsapEffects from '@/components/layout/GsapEffects'
+import BackToTop from '@/components/layout/BackToTop'
+import MotionProvider from '@/components/layout/MotionProvider'
 
 const bodyFont = Manrope({
   subsets: ['latin'],
@@ -67,13 +69,16 @@ export default function RootLayout({
         className="min-h-screen bg-white font-body text-brand-dark antialiased"
         suppressHydrationWarning
       >
-        <SmoothScroll />
-        <GsapEffects />
-        <Navbar />
-        <div className="relative flex min-h-screen flex-col pt-[4.5rem]">
-          {children}
-          <Footer />
-        </div>
+        <MotionProvider>
+          <SmoothScroll />
+          <GsapEffects />
+          <Navbar />
+          <div className="relative flex min-h-screen flex-col pt-18">
+            {children}
+            <Footer />
+          </div>
+          <BackToTop />
+        </MotionProvider>
       </body>
     </html>
   )

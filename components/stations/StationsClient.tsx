@@ -145,7 +145,7 @@ export default function StationsClient({ stations, bookingUrl }: StationsClientP
 
   return (
     <div className="space-y-8">
-      <section className="gsap-reveal rounded-[2rem] border border-white/70 bg-white/90 p-4 shadow-[0_20px_55px_-38px_rgba(10,22,40,0.7)] backdrop-blur sm:p-6">
+      <section className="gsap-reveal rounded-4xl border border-white/70 bg-white/90 p-4 shadow-[0_20px_55px_-38px_rgba(10,22,40,0.7)] backdrop-blur sm:p-6">
         <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
           <div>
             <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -164,7 +164,7 @@ export default function StationsClient({ stations, bookingUrl }: StationsClientP
             <Suspense
               fallback={
                 <LoadingState
-                  className="h-[500px] w-full rounded-3xl"
+                  className="h-125 w-full rounded-3xl"
                   title="Chargement de la carte"
                   description="Affichage des stations en cours..."
                 />
@@ -176,7 +176,7 @@ export default function StationsClient({ stations, bookingUrl }: StationsClientP
 
           <aside className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
             <article
-              className="rounded-3xl border border-brand-blue/15 bg-gradient-to-br from-brand-blue/10 to-white p-4"
+              className="rounded-3xl border border-brand-blue/15 bg-linear-to-br from-brand-blue/10 to-white p-4"
               data-gsap-hover
             >
               <p className="text-xs font-semibold uppercase tracking-wide text-brand-blue">Stations ouvertes</p>
@@ -215,7 +215,7 @@ export default function StationsClient({ stations, bookingUrl }: StationsClientP
         </div>
       </section>
 
-      <section className="gsap-reveal rounded-[2rem] border border-white/70 bg-white/92 p-4 shadow-[0_20px_55px_-38px_rgba(10,22,40,0.7)] backdrop-blur sm:p-6">
+      <section className="gsap-reveal rounded-4xl border border-white/70 bg-white/92 p-4 shadow-[0_20px_55px_-38px_rgba(10,22,40,0.7)] backdrop-blur sm:p-6">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div className="max-w-full overflow-x-auto pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <div
