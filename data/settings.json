@@ -1,0 +1,21 @@
+{
+  "siteName": "Kayak en Ré",
+  "tagline": "L'aventure aquatique en toute liberté",
+  "contact": {
+    "address": "255 rue Antoine de Saint-Exupéry",
+    "city": "17580 Le Bois-Plage-en-Ré",
+    "phone": "(33) 6 15 84 43 03",
+    "email": "contact@kayak-en-re.fr"
+  },
+  "social": {
+    "facebook": "https://facebook.com/kayakenre",
+    "instagram": "https://instagram.com/kayakenre"
+  },
+  "bookingUrl": "https://www.kayakomat.com",
+  "kayakomatStats": {
+    "countries": 13,
+    "stations": 300,
+    "stationsFrance": 45,
+    "paddlers": 200000
+  }
+}

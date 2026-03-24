@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1",
+    "title": "Apéro Soleil Couchant",
+    "description": "Pagayez au coucher du soleil et profitez d'un apéritif en pleine mer avec vue imprenable sur l'horizon.",
+    "duration": "2h",
+    "difficulty": "easy",
+    "price": "À partir de 25€",
+    "image": "/images/activities/sunset.jpg",
+    "icon": "🌅",
+    "category": "leisure"
+  },
+  {
+    "id": "2",
+    "title": "Découverte des Marais",
+    "description": "Explorez les marais salants uniques de l'île de Ré en kayak, guidé par un expert local.",
+    "duration": "3h",
+    "difficulty": "easy",
+    "price": "À partir de 30€",
+    "image": "/images/activities/marais.jpg",
+    "icon": "🌿",
+    "category": "nature"
+  },
+  {
+    "id": "3",
+    "title": "Circuit Gastronomique",
+    "description": "Combinez kayak et dégustation de produits locaux: huîtres, pineau des Charentes et spécialités de l'île.",
+    "duration": "4h",
+    "difficulty": "easy",
+    "price": "À partir de 45€",
+    "image": "/images/activities/gastro.jpg",
+    "icon": "🦪",
+    "category": "gastronomy"
+  },
+  {
+    "id": "4",
+    "title": "Mini Régate K-Ré",
+    "description": "Participez à nos régates conviviales entre stations. Parfait pour les familles et groupes d'amis.",
+    "duration": "3h",
+    "difficulty": "medium",
+    "price": "À partir de 20€",
+    "image": "/images/activities/regate.jpg",
+    "icon": "🏁",
+    "category": "sport"
+  },
+  {
+    "id": "5",
+    "title": "Les 24h de Ré",
+    "description": "Notre événement phare: 24 heures de kayak non-stop autour de l'île de Ré.",
+    "duration": "24h",
+    "difficulty": "hard",
+    "price": "À partir de 80€",
+    "image": "/images/activities/24h.jpg",
+    "icon": "🏆",
+    "category": "sport"
+  },
+  {
+    "id": "6",
+    "title": "Panier Petit-Déjeuner",
+    "description": "Commencez la journée avec un kayak matinal suivi d'un délicieux petit-déjeuner sur la plage.",
+    "duration": "2h",
+    "difficulty": "easy",
+    "price": "À partir de 35€",
+    "image": "/images/activities/breakfast.jpg",
+    "icon": "🥐",
+    "category": "leisure"
+  }
+]

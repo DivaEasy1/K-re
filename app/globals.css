@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --color-brand-blue: #1e90ff;
+  --color-brand-gold: #ffa500;
+  --color-brand-dark: #0a1628;
+  --color-brand-light: #f0f8ff;
+  --color-brand-success: #22c55e;
+  --color-brand-muted: #94a3b8;
+  --font-heading: var(--font-heading-base);
+  --font-body: var(--font-body-base);
+}
+
+* {
+  border-color: rgb(226 232 240);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at top right, rgb(30 144 255 / 0.08), transparent 40%),
+    radial-gradient(circle at bottom left, rgb(255 165 0 / 0.06), transparent 40%),
+    #fff;
+}
+
+a,
+button,
+input,
+textarea {
+  transition-property: color, background-color, border-color, box-shadow, opacity,
+    transform;
+  transition-duration: 180ms;
+}
+
+::selection {
+  background: rgb(30 144 255 / 0.2);
+  color: #0a1628;
+}
+
+.leaflet-container {
+  z-index: 0;
+  font-family: var(--font-body), sans-serif;
+}

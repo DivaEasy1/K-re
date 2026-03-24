@@ -1,0 +1,86 @@
+[
+  {
+    "id": "1",
+    "name": "La Rochelle - L'Houmeau",
+    "location": "Plage de l'Anse de Pampin",
+    "lat": 46.1825,
+    "lng": -1.1975,
+    "status": "open",
+    "openYear": 2023,
+    "description": "Notre première station, idéalement située sur la magnifique plage de l'Anse de Pampin.",
+    "image": "/images/stations/la-rochelle.jpg",
+    "equipment": ["kayak_solo", "kayak_tandem", "paddle"]
+  },
+  {
+    "id": "2",
+    "name": "Rivedoux-Plage",
+    "location": "Les Sablanceaux",
+    "lat": 46.1601,
+    "lng": -1.2734,
+    "status": "open",
+    "openYear": 2025,
+    "description": "Station ouverte en 2025 à l'entrée de l'île, parfaite pour commencer l'aventure.",
+    "image": "/images/stations/rivedoux.jpg",
+    "equipment": ["kayak_solo", "kayak_tandem", "paddle"]
+  },
+  {
+    "id": "3",
+    "name": "Le Bois-Plage-en-Ré",
+    "location": "255 rue Antoine de Saint-Exupéry",
+    "lat": 46.1789,
+    "lng": -1.3856,
+    "status": "open",
+    "openYear": 2026,
+    "description": "Nouvelle station 2026 au coeur de l'île, entourée de plages magnifiques.",
+    "image": "/images/stations/bois-plage.jpg",
+    "equipment": ["kayak_solo", "kayak_tandem", "paddle"]
+  },
+  {
+    "id": "4",
+    "name": "Saint-Clément-des-Baleines",
+    "location": "La Conche des Baleines",
+    "lat": 46.2284,
+    "lng": -1.5647,
+    "status": "coming_soon",
+    "openYear": 2027,
+    "description": "Bientôt disponible au bout de l'île, près du célèbre phare des Baleines.",
+    "image": "/images/stations/saint-clement.jpg",
+    "equipment": ["kayak_solo", "paddle"]
+  },
+  {
+    "id": "5",
+    "name": "Les Portes-en-Ré",
+    "location": "Trousse-Chemise",
+    "lat": 46.2421,
+    "lng": -1.5234,
+    "status": "coming_soon",
+    "openYear": 2027,
+    "description": "Ouverture prévue en 2027 dans le village le plus sauvage de l'île.",
+    "image": "/images/stations/les-portes.jpg",
+    "equipment": ["kayak_solo", "paddle"]
+  },
+  {
+    "id": "6",
+    "name": "Loix",
+    "location": "Dans les marais",
+    "lat": 46.2134,
+    "lng": -1.4123,
+    "status": "coming_soon",
+    "openYear": 2028,
+    "description": "Une expérience unique de kayak dans les marais salants de Loix.",
+    "image": "/images/stations/loix.jpg",
+    "equipment": ["kayak_solo", "paddle"]
+  },
+  {
+    "id": "7",
+    "name": "Saint-Martin-de-Ré",
+    "location": "Port de Saint-Martin",
+    "lat": 46.2012,
+    "lng": -1.3634,
+    "status": "coming_soon",
+    "openYear": 2028,
+    "description": "La station la plus attendue, au coeur de la capitale de l'île.",
+    "image": "/images/stations/saint-martin.jpg",
+    "equipment": ["kayak_solo", "kayak_tandem", "paddle"]
+  }
+]

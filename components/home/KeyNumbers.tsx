@@ -1,0 +1,49 @@
+'use client'
+
+import CountUp from 'react-countup'
+import { useInView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
+
+import settings from '@/data/settings.json'
+
+const numbers = [
+  { value: settings.kayakomatStats.countries, label: 'Pays' },
+  { value: settings.kayakomatStats.stations, label: 'Stations Kayakomat' },
+  { value: settings.kayakomatStats.stationsFrance, label: 'Stations en France' },
+  { value: settings.kayakomatStats.paddlers, label: 'Pagayeurs' },
+]
+
+export default function KeyNumbers() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 })
+
+  return (
+    <section className="bg-brand-dark py-20 text-white" ref={ref}>
+      <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+          Les chiffres qui parlent
+        </h2>
+        <p className="mt-3 text-sm text-slate-200 sm:text-base">
+          Leader mondial de location de sports de pagaie
+        </p>
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {numbers.map((stat, idx) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              className="rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur"
+            >
+              <p className="text-4xl font-bold tracking-tight text-brand-gold">
+                {inView ? <CountUp end={stat.value} duration={2.2} separator=" " /> : '0'}
+                {stat.label === 'Pagayeurs' ? '+' : ''}
+              </p>
+              <p className="mt-2 text-sm text-slate-100">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
