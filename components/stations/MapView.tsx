@@ -44,7 +44,7 @@ export default function MapView({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.55, ease: 'easeOut' }}
-      className="overflow-hidden rounded-3xl border border-slate-200 shadow-ocean"
+      className="overflow-hidden rounded-[1.6rem] border border-slate-200 shadow-ocean"
       style={{ height }}
     >
       <MapContainer

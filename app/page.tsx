@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { CircleCheckBig, MessageSquareText, TimerReset } from 'lucide-react'
 
 import activitiesData from '@/data/activities.json'
 import settings from '@/data/settings.json'
@@ -25,7 +27,9 @@ export const metadata: Metadata = {
     description:
       "Découvrez le concept K-Ré: stations en libre-service et activités nautiques sur l'Île de Ré.",
     url: 'https://www.kayak-en-re.fr',
-    images: ['/images/hero-bg.jpg'],
+    images: [
+      'https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    ],
   },
 }
 
@@ -39,24 +43,71 @@ export default function HomePage() {
       <StationsPreview stations={stations} />
       <ActivitiesPreview activities={activities} />
 
-      <section className="bg-brand-dark py-16 text-white">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-center sm:px-6 lg:flex-row lg:px-8 lg:text-left">
-          <div>
-            <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-              Prêt à pagayer ?
-            </h2>
-            <p className="mt-2 text-slate-200">{settings.tagline}</p>
+      <section className="relative overflow-hidden py-20">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_18%,rgba(30,144,255,0.3),transparent_33%),radial-gradient(circle_at_85%_80%,rgba(255,165,0,0.23),transparent_35%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="gsap-reveal grid gap-7 overflow-hidden rounded-4xl border border-brand-dark/10 bg-brand-dark p-6 text-white shadow-ocean sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <div>
+              <p className="mb-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white/90">
+                Dernière étape
+              </p>
+              <h2 className="section-heading font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+                Prêt à pagayer ?
+              </h2>
+              <p className="mt-3 max-w-2xl text-slate-200">{settings.tagline}</p>
+
+              <div className="mt-6 grid gap-2 sm:grid-cols-3">
+                <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur">
+                  <MessageSquareText className="h-5 w-5 text-brand-gold" aria-hidden />
+                  <p className="mt-2 text-sm font-medium">Code reçu par SMS</p>
+                </div>
+                <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur">
+                  <TimerReset className="h-5 w-5 text-brand-gold" aria-hidden />
+                  <p className="mt-2 text-sm font-medium">Départ rapide</p>
+                </div>
+                <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur">
+                  <CircleCheckBig className="h-5 w-5 text-brand-gold" aria-hidden />
+                  <p className="mt-2 text-sm font-medium">Retour simple</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-white/20 bg-white/10 p-5 backdrop-blur sm:p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-white/80">
+                Réservation express
+              </p>
+              <p className="mt-2 text-sm text-slate-200">
+                Choisissez votre station, recevez votre code, et partez pagayer en
+                toute autonomie.
+              </p>
+              <div className="mt-5 flex flex-col gap-3">
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full bg-brand-gold text-brand-dark shadow-[0_16px_40px_-20px_rgba(255,165,0,0.95)] hover:bg-amber-300"
+                >
+                  <a
+                    href={settings.bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Réserver sur Kayakomat"
+                  >
+                    Réserver maintenant
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="w-full border-white/40 bg-white/5 text-white hover:bg-white/15"
+                >
+                  <Link href="/stations" aria-label="Voir toutes les stations">
+                    Voir les stations
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
-          <Button asChild size="lg" className="bg-brand-gold text-brand-dark hover:bg-amber-400">
-            <a
-              href={settings.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Réserver sur Kayakomat"
-            >
-              Réserver
-            </a>
-          </Button>
         </div>
       </section>
     </PageTransition>

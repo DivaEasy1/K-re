@@ -5,7 +5,8 @@ import settings from '@/data/settings.json'
 
 export default function Footer() {
   return (
-    <footer className="mt-20 bg-brand-dark text-white">
+    <footer className="relative mt-20 overflow-hidden bg-brand-dark text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_25%,rgba(30,144,255,0.25),transparent_35%),radial-gradient(circle_at_80%_80%,rgba(255,165,0,0.2),transparent_35%)]" />
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div>
           <p className="text-2xl font-bold tracking-tight">

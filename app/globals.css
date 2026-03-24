@@ -22,10 +22,44 @@ body {
 }
 
 body {
+  position: relative;
+  overflow-x: clip;
   background:
-    radial-gradient(circle at top right, rgb(30 144 255 / 0.08), transparent 40%),
-    radial-gradient(circle at bottom left, rgb(255 165 0 / 0.06), transparent 40%),
+    radial-gradient(circle at 12% 8%, rgb(30 144 255 / 0.18), transparent 32%),
+    radial-gradient(circle at 85% 20%, rgb(255 165 0 / 0.14), transparent 34%),
+    radial-gradient(circle at 50% 120%, rgb(10 22 40 / 0.08), transparent 46%),
     #fff;
+  color: #0a1628;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.4;
+  background-image: linear-gradient(
+      to right,
+      rgb(148 163 184 / 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgb(148 163 184 / 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(240 248 255 / 0.9);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  border: 2px solid rgb(240 248 255);
+  background: linear-gradient(180deg, #1e90ff, #ffa500);
 }
 
 a,
@@ -45,4 +79,71 @@ textarea {
 .leaflet-container {
   z-index: 0;
   font-family: var(--font-body), sans-serif;
+}
+
+.glass-panel {
+  border: 1px solid rgb(255 255 255 / 0.22);
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.2), rgb(255 255 255 / 0.06));
+  backdrop-filter: blur(14px);
+}
+
+.section-heading {
+  text-wrap: balance;
+}
+
+@keyframes gentle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.floating {
+  animation: gentle-float 5s ease-in-out infinite;
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-fade-in {
+  animation: page-fade-in 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Lenis integration */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .floating {
+    animation: none;
+  }
+
+  .page-fade-in {
+    animation: none;
+  }
 }

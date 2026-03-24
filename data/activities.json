@@ -6,7 +6,7 @@
     "duration": "2h",
     "difficulty": "easy",
     "price": "À partir de 25€",
-    "image": "/images/activities/sunset.jpg",
+    "image": "https://images.pexels.com/photos/12955798/pexels-photo-12955798.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "icon": "🌅",
     "category": "leisure"
   },
@@ -17,7 +17,7 @@
     "duration": "3h",
     "difficulty": "easy",
     "price": "À partir de 30€",
-    "image": "/images/activities/marais.jpg",
+    "image": "https://images.pexels.com/photos/4705199/pexels-photo-4705199.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "icon": "🌿",
     "category": "nature"
   },
@@ -28,7 +28,7 @@
     "duration": "4h",
     "difficulty": "easy",
     "price": "À partir de 45€",
-    "image": "/images/activities/gastro.jpg",
+    "image": "https://images.pexels.com/photos/11479637/pexels-photo-11479637.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "icon": "🦪",
     "category": "gastronomy"
   },
@@ -39,7 +39,7 @@
     "duration": "3h",
     "difficulty": "medium",
     "price": "À partir de 20€",
-    "image": "/images/activities/regate.jpg",
+    "image": "https://images.pexels.com/photos/13422169/pexels-photo-13422169.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "icon": "🏁",
     "category": "sport"
   },
@@ -50,7 +50,7 @@
     "duration": "24h",
     "difficulty": "hard",
     "price": "À partir de 80€",
-    "image": "/images/activities/24h.jpg",
+    "image": "https://images.pexels.com/photos/8837756/pexels-photo-8837756.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "icon": "🏆",
     "category": "sport"
   },
@@ -61,7 +61,7 @@
     "duration": "2h",
     "difficulty": "easy",
     "price": "À partir de 35€",
-    "image": "/images/activities/breakfast.jpg",
+    "image": "https://images.pexels.com/photos/8151557/pexels-photo-8151557.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "icon": "🥐",
     "category": "leisure"
   }

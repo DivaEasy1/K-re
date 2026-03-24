@@ -17,9 +17,7 @@ const contactSchema = z.object({
   email: z.string().email('Veuillez entrer un email valide.'),
   phone: z.string().optional(),
   subject: z.string().min(3, 'Le sujet est requis.'),
-  message: z
-    .string()
-    .min(20, 'Le message doit contenir au moins 20 caractères.'),
+  message: z.string().min(20, 'Le message doit contenir au moins 20 caractères.'),
   company: z.string().optional(),
 })
 
@@ -65,7 +63,7 @@ export default function ContactForm() {
       setSubmitState({
         status: 'error',
         message:
-          'Configuration EmailJS incomplète. Vérifiez les variables d’environnement.',
+          "Configuration EmailJS incomplète. Vérifiez les variables d'environnement.",
       })
       return
     }
@@ -92,8 +90,7 @@ export default function ContactForm() {
     } catch {
       setSubmitState({
         status: 'error',
-        message:
-          "Échec de l'envoi. Merci de réessayer dans quelques instants.",
+        message: "Échec de l'envoi. Merci de réessayer dans quelques instants.",
       })
     }
   }
@@ -101,95 +98,102 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+      className="gsap-reveal rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
       aria-label="Formulaire de contact"
     >
-      <div className="hidden">
-        <Label htmlFor="company">Entreprise</Label>
-        <Input
-          id="company"
-          tabIndex={-1}
-          autoComplete="off"
-          {...register('company')}
-        />
-      </div>
+      <p className="mb-3 inline-flex rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
+        Formulaire
+      </p>
+      <h2 className="font-heading text-2xl font-bold tracking-tight text-brand-dark sm:text-3xl">
+        Écrivez-nous
+      </h2>
+      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+        Réponse rapide de notre équipe locale K-Ré.
+      </p>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="space-y-1.5">
-          <Label htmlFor="name">Nom *</Label>
-          <Input id="name" aria-label="Nom" {...register('name')} />
-          {errors.name ? (
-            <p className="text-xs text-red-600">{errors.name.message}</p>
-          ) : null}
-        </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="email">Email *</Label>
+      <div className="mt-6 space-y-4">
+        <div className="hidden">
+          <Label htmlFor="company">Entreprise</Label>
           <Input
-            id="email"
-            type="email"
-            aria-label="Email"
-            {...register('email')}
+            id="company"
+            tabIndex={-1}
+            autoComplete="off"
+            {...register('company')}
           />
-          {errors.email ? (
-            <p className="text-xs text-red-600">{errors.email.message}</p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-1.5">
+            <Label htmlFor="name">Nom *</Label>
+            <Input id="name" aria-label="Nom" {...register('name')} />
+            {errors.name ? (
+              <p className="text-xs text-red-600">{errors.name.message}</p>
+            ) : null}
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="email">Email *</Label>
+            <Input id="email" type="email" aria-label="Email" {...register('email')} />
+            {errors.email ? (
+              <p className="text-xs text-red-600">{errors.email.message}</p>
+            ) : null}
+          </div>
+        </div>
+
+        <div className="space-y-1.5">
+          <Label htmlFor="phone">Téléphone</Label>
+          <Input id="phone" aria-label="Téléphone" {...register('phone')} />
+        </div>
+
+        <div className="space-y-1.5">
+          <Label htmlFor="subject">Sujet *</Label>
+          <Input id="subject" aria-label="Sujet" {...register('subject')} />
+          {errors.subject ? (
+            <p className="text-xs text-red-600">{errors.subject.message}</p>
           ) : null}
         </div>
-      </div>
 
-      <div className="space-y-1.5">
-        <Label htmlFor="phone">Téléphone</Label>
-        <Input id="phone" aria-label="Téléphone" {...register('phone')} />
-      </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="message">Message *</Label>
+          <Textarea
+            id="message"
+            aria-label="Message"
+            {...register('message')}
+            placeholder="Votre message (20 caractères minimum)"
+          />
+          {errors.message ? (
+            <p className="text-xs text-red-600">{errors.message.message}</p>
+          ) : null}
+        </div>
 
-      <div className="space-y-1.5">
-        <Label htmlFor="subject">Sujet *</Label>
-        <Input id="subject" aria-label="Sujet" {...register('subject')} />
-        {errors.subject ? (
-          <p className="text-xs text-red-600">{errors.subject.message}</p>
-        ) : null}
-      </div>
-
-      <div className="space-y-1.5">
-        <Label htmlFor="message">Message *</Label>
-        <Textarea
-          id="message"
-          aria-label="Message"
-          {...register('message')}
-          placeholder="Votre message (20 caractères minimum)"
-        />
-        {errors.message ? (
-          <p className="text-xs text-red-600">{errors.message.message}</p>
-        ) : null}
-      </div>
-
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full bg-brand-blue hover:bg-sky-600"
-        aria-label="Envoyer le message"
-      >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />
-            Envoi en cours...
-          </>
-        ) : (
-          'Envoyer'
-        )}
-      </Button>
-
-      {submitState.status !== 'idle' ? (
-        <p
-          className={
-            submitState.status === 'success'
-              ? 'text-sm font-medium text-green-600'
-              : 'text-sm font-medium text-red-600'
-          }
-          role="status"
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full bg-brand-blue hover:bg-sky-600"
+          aria-label="Envoyer le message"
         >
-          {submitState.message}
-        </p>
-      ) : null}
+          {isSubmitting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />
+              Envoi en cours...
+            </>
+          ) : (
+            'Envoyer'
+          )}
+        </Button>
+
+        {submitState.status !== 'idle' ? (
+          <p
+            className={
+              submitState.status === 'success'
+                ? 'text-sm font-medium text-green-600'
+                : 'text-sm font-medium text-red-600'
+            }
+            role="status"
+          >
+            {submitState.message}
+          </p>
+        ) : null}
+      </div>
     </form>
   )
 }

@@ -17,9 +17,13 @@ export default function KeyNumbers() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 })
 
   return (
-    <section className="bg-brand-dark py-20 text-white" ref={ref}>
+    <section className="relative overflow-hidden bg-brand-dark py-24 text-white" ref={ref}>
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(30,144,255,0.28),transparent_28%),radial-gradient(circle_at_80%_80%,rgba(255,165,0,0.24),transparent_30%)]" />
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-        <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+        <p className="mx-auto w-fit rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white/85">
+          Réseau Kayakomat
+        </p>
+        <h2 className="section-heading mt-4 font-heading text-3xl font-bold tracking-tight sm:text-4xl">
           Les chiffres qui parlent
         </h2>
         <p className="mt-3 text-sm text-slate-200 sm:text-base">
@@ -33,7 +37,7 @@ export default function KeyNumbers() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur"
+              className="rounded-[1.75rem] border border-white/20 bg-white/10 p-6 backdrop-blur"
             >
               <p className="text-4xl font-bold tracking-tight text-brand-gold">
                 {inView ? <CountUp end={stat.value} duration={2.2} separator=" " /> : '0'}

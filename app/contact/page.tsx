@@ -19,30 +19,36 @@ export const metadata: Metadata = {
     'Contactez K-Ré pour vos questions, informations pratiques et partenariats.',
   openGraph: {
     title: 'Contact K-Ré',
-    description: 'Besoin d’aide ? Écrivez à l’équipe Kayak en Ré.',
+    description: "Besoin d'aide ? Écrivez à l'équipe Kayak en Ré.",
     url: 'https://www.kayak-en-re.fr/contact',
-    images: ['/images/hero-bg.jpg'],
+    images: [
+      'https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    ],
   },
 }
 
 export default function ContactPage() {
   return (
     <PageTransition>
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_12%,rgba(30,144,255,0.14),transparent_30%),radial-gradient(circle_at_84%_20%,rgba(255,165,0,0.12),transparent_33%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="space-y-6">
-              <header className="space-y-3">
-                <h1 className="font-heading text-4xl font-bold tracking-tight text-brand-dark sm:text-5xl">
+              <header className="gsap-reveal rounded-[2rem] border border-white/60 bg-white/75 p-6 shadow-[0_20px_45px_-30px_rgba(10,22,40,0.45)] backdrop-blur sm:p-8">
+                <p className="mb-3 inline-flex rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
+                  Assistance K-Ré
+                </p>
+                <h1 className="section-heading font-heading text-4xl font-bold tracking-tight text-brand-dark sm:text-5xl">
                   Contactez-nous
                 </h1>
-                <p className="text-base leading-relaxed text-slate-600">
+                <p className="mt-3 text-base leading-relaxed text-slate-600">
                   Une question sur une station, une activité ou la réservation ?
                   Notre équipe vous répond rapidement.
                 </p>
               </header>
 
-              <div className="space-y-3 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="gsap-reveal space-y-3 rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
                 <p className="flex items-start gap-3 text-sm text-slate-700">
                   <MapPin className="mt-0.5 h-5 w-5 text-brand-blue" />
                   <span>
