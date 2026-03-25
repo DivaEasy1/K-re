@@ -2,7 +2,6 @@
 
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
-import { motion } from 'framer-motion'
 
 import settings from '@/data/settings.json'
 
@@ -31,20 +30,18 @@ export default function KeyNumbers() {
         </p>
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {numbers.map((stat, idx) => (
-            <motion.div
+            <div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="rounded-[1.75rem] border border-white/20 bg-white/10 p-6 backdrop-blur"
+              data-gsap-hover
+              className="gsap-card rounded-[1.75rem] border border-white/20 bg-white/10 p-6 backdrop-blur"
+              style={{ transitionDelay: `${idx * 30}ms` }}
             >
               <p className="text-4xl font-bold tracking-tight text-brand-gold">
                 {inView ? <CountUp end={stat.value} duration={2.2} separator=" " /> : '0'}
                 {stat.label === 'Pagayeurs' ? '+' : ''}
               </p>
               <p className="mt-2 text-sm text-slate-100">{stat.label}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

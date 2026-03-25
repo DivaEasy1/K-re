@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 
 import type { Station } from '@/types'
 import StationCard from '@/components/stations/StationCard'
@@ -15,10 +12,10 @@ export default function StationsPreview({ stations }: { stations: Station[] }) {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="mb-3 inline-flex rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
-              Réseau local
+              Reseau local
             </p>
             <h2 className="section-heading font-heading text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
-              Nos stations sur l&apos;île
+              Nos stations sur l&apos;ile
             </h2>
           </div>
           <Link
@@ -28,28 +25,13 @@ export default function StationsPreview({ stations }: { stations: Station[] }) {
             Voir toutes les stations →
           </Link>
         </div>
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.12 } },
-          }}
-          className="gsap-stagger mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
-        >
+        <div className="gsap-stagger mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {topStations.map((station) => (
-            <motion.div
-              key={station.id}
-              variants={{
-                hidden: { opacity: 0, y: 18 },
-                show: { opacity: 1, y: 0 },
-              }}
-            >
+            <div key={station.id}>
               <StationCard station={station} />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

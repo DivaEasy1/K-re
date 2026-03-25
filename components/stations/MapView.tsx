@@ -3,7 +3,6 @@
 import 'leaflet/dist/leaflet.css'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import L from 'leaflet'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 
@@ -40,10 +39,7 @@ export default function MapView({
   showLearnMore = true,
 }: MapViewProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.55, ease: 'easeOut' }}
+    <div
       className="overflow-hidden rounded-[1.6rem] border border-slate-200 shadow-ocean"
       style={{ height }}
     >
@@ -90,6 +86,6 @@ export default function MapView({
           </Marker>
         ))}
       </MapContainer>
-    </motion.div>
+    </div>
   )
 }

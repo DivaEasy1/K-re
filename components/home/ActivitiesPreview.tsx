@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 
 import type { Activity } from '@/types'
 import ActivityCard from '@/components/activities/ActivityCard'
@@ -15,41 +12,26 @@ export default function ActivitiesPreview({ activities }: { activities: Activity
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="mb-3 inline-flex rounded-full bg-brand-gold/18 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-amber-700">
-              Expériences
+              Experiences
             </p>
             <h2 className="section-heading font-heading text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
-              Nos activités
+              Nos activites
             </h2>
           </div>
           <Link
             href="/activities"
             className="rounded-full border border-brand-blue/20 bg-white px-4 py-2 text-sm font-semibold text-brand-blue hover:border-brand-blue/50 hover:text-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
           >
-            Voir toutes les activités →
+            Voir toutes les activites →
           </Link>
         </div>
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.12 } },
-          }}
-          className="gsap-stagger mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
-        >
+        <div className="gsap-stagger mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {topActivities.map((activity) => (
-            <motion.div
-              key={activity.id}
-              variants={{
-                hidden: { opacity: 0, y: 18 },
-                show: { opacity: 1, y: 0 },
-              }}
-            >
+            <div key={activity.id}>
               <ActivityCard activity={activity} />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

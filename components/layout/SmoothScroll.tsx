@@ -31,12 +31,12 @@ export default function SmoothScroll() {
       started = true
 
       lenis = new Lenis({
-        duration: 0.92,
+        duration: 0.52,
         smoothWheel: true,
         syncTouch: false,
-        wheelMultiplier: 0.86,
+        wheelMultiplier: 1.16,
         touchMultiplier: 1,
-        easing: (t: number) => 1 - Math.pow(1 - t, 3),
+        easing: (t: number) => 1 - Math.pow(1 - t, 2.15),
       })
 
       const onLenisScroll = () => ScrollTrigger.update()

@@ -11,6 +11,12 @@
   --font-body: var(--font-body-base);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  scrollbar-gutter: stable;
+}
+
 * {
   border-color: rgb(226 232 240);
 }
@@ -38,14 +44,14 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.4;
+  opacity: 0.28;
   background-image: linear-gradient(
       to right,
       rgb(148 163 184 / 0.08) 1px,
       transparent 1px
     ),
     linear-gradient(to bottom, rgb(148 163 184 / 0.08) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background-size: 64px 64px;
 }
 
 ::-webkit-scrollbar {
@@ -68,7 +74,7 @@ input,
 textarea {
   transition-property: color, background-color, border-color, box-shadow, opacity,
     transform;
-  transition-duration: 180ms;
+  transition-duration: 150ms;
 }
 
 ::selection {
@@ -84,7 +90,7 @@ textarea {
 .glass-panel {
   border: 1px solid rgb(255 255 255 / 0.22);
   background: linear-gradient(135deg, rgb(255 255 255 / 0.2), rgb(255 255 255 / 0.06));
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(12px);
 }
 
 .section-heading {
@@ -128,6 +134,10 @@ html.lenis body {
 
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
 .lenis.lenis-stopped {

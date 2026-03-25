@@ -1,7 +1,6 @@
 ﻿'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import { Ship, Users, Waves } from 'lucide-react'
 
 import type { Station } from '@/types'
@@ -29,11 +28,7 @@ export default function StationCard({ station }: { station: Station }) {
   const open = station.status === 'open'
 
   return (
-    <motion.div
-      whileHover={{ y: -5, scale: 1.008 }}
-      transition={{ type: 'spring', stiffness: 280, damping: 24 }}
-      className="gsap-card h-full transform-gpu"
-    >
+    <div className="gsap-card h-full transform-gpu transition-transform duration-200 hover:-translate-y-1">
       <Card className="group relative h-full overflow-hidden border-white/80 bg-white/95 shadow-[0_18px_40px_-28px_rgba(10,22,40,0.6)] transition-shadow hover:shadow-[0_22px_50px_-24px_rgba(10,22,40,0.75)]">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(30,144,255,0.1)_46%,transparent_72%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         <div className="relative h-52 overflow-hidden">
@@ -91,6 +86,6 @@ export default function StationCard({ station }: { station: Station }) {
           </div>
         </CardContent>
       </Card>
-    </motion.div>
+    </div>
   )
 }

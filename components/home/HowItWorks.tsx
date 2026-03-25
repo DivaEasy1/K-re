@@ -1,26 +1,23 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 const steps = [
   {
     id: '01',
     icon: '📱',
-    title: 'RÉSERVEZ',
-    description: 'Réservation en ligne, puis réception de votre code par SMS.',
+    title: 'RESERVEZ',
+    description: 'Reservation en ligne, puis reception de votre code par SMS.',
   },
   {
     id: '02',
     icon: '🔓',
-    title: 'DÉVERROUILLEZ',
-    description: 'Utilisez votre code pour déverrouiller kayak ou paddle.',
+    title: 'DEVERROUILLEZ',
+    description: 'Utilisez votre code pour deverrouiller kayak ou paddle.',
   },
   {
     id: '03',
     icon: '🚣',
     title: 'PAGAYEZ',
-    description: 'Profitez, puis retournez et verrouillez votre équipement.',
+    description: 'Profitez, puis retournez et verrouillez votre equipement.',
   },
 ]
 
@@ -32,21 +29,18 @@ export default function HowItWorks() {
           Parcours client
         </p>
         <h2 className="section-heading mt-4 text-center font-heading text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
-          Comment ça marche ?
+          Comment ca marche ?
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-slate-600 sm:text-base">
-          Une expérience fluide de la réservation au retour du matériel.
+          Une experience fluide de la reservation au retour du materiel.
         </p>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="gsap-stagger mt-12 grid gap-6 lg:grid-cols-3">
           {steps.map((step, index) => (
-            <motion.div
+            <article
               key={step.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.45, delay: index * 0.12 }}
-              className="relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_-28px_rgba(10,22,40,0.55)]"
+              data-gsap-hover
+              className="gsap-card relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_-28px_rgba(10,22,40,0.55)]"
             >
               <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-brand-blue/8" />
               <span className="absolute right-5 top-5 rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-bold text-brand-blue">
@@ -67,7 +61,7 @@ export default function HowItWorks() {
                   aria-hidden
                 />
               ) : null}
-            </motion.div>
+            </article>
           ))}
         </div>
       </div>

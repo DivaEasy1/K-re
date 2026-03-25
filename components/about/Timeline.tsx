@@ -1,7 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
-
 interface TimelineEntry {
   year: number
   title: string
@@ -24,13 +20,10 @@ export default function Timeline({ items }: { items: TimelineEntry[] }) {
           {items.map((entry, index) => {
             const right = index % 2 === 1
             return (
-              <motion.article
+              <article
                 key={`${entry.year}-${entry.title}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.4 }}
-                className="relative md:grid md:grid-cols-2"
+                data-gsap-hover
+                className="gsap-card relative md:grid md:grid-cols-2"
               >
                 <div
                   className={`md:px-8 ${right ? 'md:col-start-2' : 'md:col-start-1 md:text-right'}`}
@@ -48,7 +41,7 @@ export default function Timeline({ items }: { items: TimelineEntry[] }) {
                   </div>
                 </div>
                 <span className="absolute left-4 top-6 inline-block h-3 w-3 -translate-x-1/2 rounded-full bg-brand-gold md:left-1/2" />
-              </motion.article>
+              </article>
             )
           })}
         </div>
