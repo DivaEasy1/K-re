@@ -8,6 +8,7 @@ import stationsData from '@/data/stations.json'
 import type { Activity, Station } from '@/types'
 import PageTransition from '@/components/layout/PageTransition'
 import Hero from '@/components/home/Hero'
+import HomeMapSection from '@/components/home/HomeMapSection'
 import Concept from '@/components/home/Concept'
 import HowItWorks from '@/components/home/HowItWorks'
 import KeyNumbers from '@/components/home/KeyNumbers'
@@ -37,6 +38,7 @@ export default function HomePage() {
   return (
     <PageTransition>
       <Hero />
+      <HomeMapSection stations={stations} />
       <Concept />
       <HowItWorks />
       <KeyNumbers />
@@ -101,7 +103,7 @@ export default function HomePage() {
                   size="lg"
                   className="w-full border-white/40 bg-white/5 text-white hover:bg-white/15"
                 >
-                  <Link href="/stations" aria-label="Voir toutes les stations">
+                  <Link href="/station" aria-label="Voir toutes les stations">
                     Voir les stations
                   </Link>
                 </Button>

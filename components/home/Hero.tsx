@@ -27,7 +27,7 @@ export default function Hero() {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-linear-to-b from-brand-dark/88 via-brand-dark/52 to-brand-dark/82" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(30,144,255,0.35),transparent_35%),radial-gradient(circle_at_85%_15%,rgba(255,165,0,0.28),transparent_38%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(27,160,226,0.35),transparent_35%),radial-gradient(circle_at_85%_15%,rgba(248,180,0,0.3),transparent_38%)]" />
 
       <div
         data-hero-content
@@ -39,7 +39,7 @@ export default function Hero() {
 
         <h1 className="section-heading mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-7xl">
           L&apos;aventure kayak
-          <span className="block bg-linear-to-r from-blue-500 to-yellow-400 bg-clip-text text-transparent">
+          <span className="block bg-linear-to-r from-brand-blue via-brand-gold to-brand-orange bg-clip-text text-transparent">
             en toute liberte
           </span>
         </h1>
@@ -81,7 +81,7 @@ export default function Hero() {
             size="lg"
             className="border-white/50 bg-white/10 text-white hover:bg-white/20"
           >
-            <Link href="/stations" aria-label="Decouvrir les stations">
+            <Link href="/station" aria-label="Decouvrir les stations">
               Decouvrir nos stations
             </Link>
           </Button>

@@ -1,12 +1,14 @@
 @import 'tailwindcss';
 
 @theme inline {
-  --color-brand-blue: #1e90ff;
-  --color-brand-gold: #ffa500;
+  --color-brand-blue: #1ba0e2;
+  --color-brand-gold: #f8b400;
+  --color-brand-orange: #e97a2f;
+  --color-brand-green: #3a9c72;
   --color-brand-dark: #0a1628;
-  --color-brand-light: #f0f8ff;
-  --color-brand-success: #22c55e;
-  --color-brand-muted: #94a3b8;
+  --color-brand-light: #edf6ff;
+  --color-brand-success: #3a9c72;
+  --color-brand-muted: #5b7085;
   --font-heading: var(--font-heading-base);
   --font-body: var(--font-body-base);
 }
@@ -31,8 +33,8 @@ body {
   position: relative;
   overflow-x: clip;
   background:
-    radial-gradient(circle at 12% 8%, rgb(30 144 255 / 0.18), transparent 32%),
-    radial-gradient(circle at 85% 20%, rgb(255 165 0 / 0.14), transparent 34%),
+    radial-gradient(circle at 12% 8%, rgb(27 160 226 / 0.18), transparent 32%),
+    radial-gradient(circle at 85% 20%, rgb(248 180 0 / 0.16), transparent 34%),
     radial-gradient(circle at 50% 120%, rgb(10 22 40 / 0.08), transparent 46%),
     #fff;
   color: #0a1628;
@@ -65,7 +67,7 @@ body::before {
 ::-webkit-scrollbar-thumb {
   border-radius: 9999px;
   border: 2px solid rgb(240 248 255);
-  background: linear-gradient(180deg, #1e90ff, #ffa500);
+  background: linear-gradient(180deg, #1ba0e2, #f8b400);
 }
 
 a,
@@ -78,7 +80,7 @@ textarea {
 }
 
 ::selection {
-  background: rgb(30 144 255 / 0.2);
+  background: rgb(27 160 226 / 0.2);
   color: #0a1628;
 }
 
