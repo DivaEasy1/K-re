@@ -34,8 +34,6 @@ export default function WeatherWidget() {
       try {
         const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY
 
-        console.log('API KEY:', apiKey)
-
         const url = `https://api.openweathermap.org/data/2.5/forecast?q=La Rochelle,FR&units=metric&appid=${apiKey}`
 
         console.log('FETCH URL:', url)
