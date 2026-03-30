@@ -82,7 +82,7 @@ export default function WeatherWidget() {
 
         setForecast(days)
       } catch (err) {
-        console.error('🔥 Weather error:', err)
+        console.error('Weather error:', err)
       } finally {
         setLoading(false)
       }
@@ -102,7 +102,7 @@ export default function WeatherWidget() {
   if (!forecast.length) {
     return (
       <div className="rounded-2xl border border-red-400 bg-red-500/20 px-4 py-3 text-white">
-        <p className="text-xs">Erreur météo (check console)</p>
+        <p className="text-xs">météo</p>
       </div>
     )
   }
