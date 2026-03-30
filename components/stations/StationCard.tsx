@@ -3,10 +3,14 @@
 import Image from 'next/image'
 import { Ship, Users, Waves } from 'lucide-react'
 
+import settings from '@/data/settings.json'
+
+
 import type { Station } from '@/types'
 import { BLUR_DATA_URL, cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '../ui/button'
 
 function equipmentLabel(equipment: string) {
   if (equipment === 'kayak_tandem') {
@@ -84,6 +88,22 @@ export default function StationCard({ station }: { station: Station }) {
               )
             })}
           </div>
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="border-black bg-white/10 text-black hover:bg-white/20 w-full mt-2"
+          >
+            <a
+              href={settings.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer" 
+              aria-label="Réserver une station">
+
+              Réserver maintenant
+
+            </a>
+          </Button>
         </CardContent>
       </Card>
     </div>

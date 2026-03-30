@@ -8,6 +8,9 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 
 import type { Station } from '@/types'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '../ui/button'
+import settings from '@/data/settings.json'
+
 
 const openIcon = L.divIcon({
   className: '',
@@ -46,7 +49,7 @@ export default function MapView({
       <MapContainer
         center={center}
         zoom={zoom}
-        scrollWheelZoom
+        scrollWheelZoom={false}
         style={{ height: '100%', width: '100%' }}
       >
         <TileLayer
@@ -71,6 +74,28 @@ export default function MapView({
                 >
                   {station.status === 'open' ? 'Ouvert' : 'Bientôt'}
                 </Badge>
+
+                {station.status === 'open' ? 
+                
+                <Button
+            asChild
+            variant="outline"
+            size="sm"
+            className="border-black bg-white/10 text-black hover:bg-white/20 w-fit h-7 ml-2"
+          >
+            <a
+              href={settings.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer" 
+              aria-label="Réserver une station">
+
+              Réserver maintenant
+
+            </a>
+          </Button>
+                
+                : null}
+
                 {showLearnMore ? (
                   <div>
                     <Link

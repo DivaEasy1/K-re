@@ -7,6 +7,7 @@ import stationsData from '@/data/stations.json'
 import type { Station } from '@/types'
 import { BLUR_DATA_URL } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import WeatherWidget from '@/components/layout/WeatherWidget'
 
 export default function Hero() {
   const stations = stationsData as Station[]
@@ -28,6 +29,27 @@ export default function Hero() {
       />
       <div className="absolute inset-0 bg-linear-to-b from-brand-dark/88 via-brand-dark/52 to-brand-dark/82" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(27,160,226,0.35),transparent_35%),radial-gradient(circle_at_85%_15%,rgba(248,180,0,0.3),transparent_38%)]" />
+
+      <div className="absolute left-[5%] top-[10%] z-20 hidden lg:block">
+        <WeatherWidget />
+      </div>
+
+      <div className="absolute right-[5%] top-[14%] z-20 hidden lg:block">
+        <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="border-white/50 bg-white/10 text-white hover:bg-white/20"
+          >
+            <a 
+              href="https://maree.info/126"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Voir les marees">
+              horaires et coefficients des marées !
+            </a>
+          </Button>
+      </div>
 
       <div
         data-hero-content
@@ -88,10 +110,10 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute left-[7%] top-[26%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
+      {/* <div className="pointer-events-none absolute left-[7%] top-[26%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
         Reservation par SMS
-      </div>
-      <div className="pointer-events-none absolute right-[8%] top-[34%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
+      </div> */}
+      <div className="pointer-events-none absolute right-[8%] top-[40%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
         Stations 24/7
       </div>
 
