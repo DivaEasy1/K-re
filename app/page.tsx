@@ -22,18 +22,28 @@ const activities = activitiesData as Activity[]
 export const metadata: Metadata = {
   title: 'Accueil',
   description:
-    "K-Ré, location autonome de kayak et paddle sur l'Île de Ré. Réservez, déverrouillez, pagayez.",
+    "K-Re, location autonome de kayak et paddle sur l'ile de Re. Reservez, deverrouillez, pagayez.",
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Kayak en Ré | Accueil',
+    title: 'Kayak en Re | Accueil',
     description:
-      "Découvrez le concept K-Ré: stations en libre-service et activités nautiques sur l'Île de Ré.",
+      "Decouvrez le concept K-Re: stations en libre-service et activites nautiques sur l'ile de Re.",
     url: 'https://www.kayak-en-re.fr',
     images: [
       'https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800',
     ],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kayak en Re | Accueil',
+    description: "Location autonome de kayak et paddle sur l'ile de Re.",
+    images: [
+      'https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    ],
+  },
 }
-
 export default function HomePage() {
   return (
     <PageTransition>
@@ -51,21 +61,21 @@ export default function HomePage() {
           <div className="gsap-reveal grid gap-7 overflow-hidden rounded-4xl border border-brand-dark/10 bg-brand-dark p-6 text-white shadow-ocean sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             <div>
               <p className="mb-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white/90">
-                Dernière étape
+                Derniere etape
               </p>
               <h2 className="section-heading font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-                Prêt à pagayer ?
+                Pret a pagayer ?
               </h2>
               <p className="mt-3 max-w-2xl text-slate-200">{settings.tagline}</p>
 
               <div className="mt-6 grid gap-2 sm:grid-cols-3">
                 <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur">
                   <MessageSquareText className="h-5 w-5 text-brand-gold" aria-hidden />
-                  <p className="mt-2 text-sm font-medium">Code reçu par SMS</p>
+                  <p className="mt-2 text-sm font-medium">Code recu par SMS</p>
                 </div>
                 <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur">
                   <TimerReset className="h-5 w-5 text-brand-gold" aria-hidden />
-                  <p className="mt-2 text-sm font-medium">Départ rapide</p>
+                  <p className="mt-2 text-sm font-medium">Depart rapide</p>
                 </div>
                 <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur">
                   <CircleCheckBig className="h-5 w-5 text-brand-gold" aria-hidden />
@@ -76,7 +86,7 @@ export default function HomePage() {
 
             <div className="rounded-3xl border border-white/20 bg-white/10 p-5 backdrop-blur sm:p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.12em] text-white/80">
-                Réservation express
+                Reservation express
               </p>
               <p className="mt-2 text-sm text-slate-200">
                 Choisissez votre station, recevez votre code, et partez pagayer en
@@ -92,9 +102,9 @@ export default function HomePage() {
                     href={settings.bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Réserver sur Kayakomat"
+                    aria-label="Reserver sur Kayakomat"
                   >
-                    Réserver maintenant
+                    Reserver maintenant
                   </a>
                 </Button>
                 <Button

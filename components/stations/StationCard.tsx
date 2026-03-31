@@ -42,7 +42,7 @@ export default function StationCard({ station }: { station: Station }) {
             fill
             sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
             loading="lazy"
-            quality={68}
+            quality={70}
             placeholder="blur"
             blurDataURL={BLUR_DATA_URL}
             className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"

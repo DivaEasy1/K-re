@@ -79,17 +79,14 @@ export default function Navbar() {
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300',
         scrolled
-          ? 'bg-brand-dark/88 shadow-[0_14px_30px_-22px_rgba(10,22,40,0.82)] md:backdrop-blur-xl backdrop-blur-sm'
-          : 'bg-brand-dark/68 md:backdrop-blur-md backdrop-blur-0'
+          ? 'bg-brand-dark/86 shadow-[0_14px_30px_-22px_rgba(10,22,40,0.82)] backdrop-blur-xl'
+          : 'bg-brand-dark/72 backdrop-blur-md'
       )}
     >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(30,144,255,0.1),transparent_30%,transparent_70%,rgba(255,165,0,0.08))]" />
 
       <nav
-        className={cn(
-          'relative mx-auto flex max-w-7xl items-center justify-between px-4 transition-[height] duration-300 sm:px-6 lg:px-8',
-          scrolled ? 'h-[4.35rem]' : 'h-[4.85rem]'
-        )}
+        className="relative mx-auto flex h-16 lg:h-[4.85rem] pt-5 lg:p-0 max-w-7xl items-center justify-between px-4 transition-[height] duration-300 sm:px-6 lg:px-8"
         aria-label="Navigation principale"
       >
         <Link

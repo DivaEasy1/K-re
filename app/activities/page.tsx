@@ -101,7 +101,7 @@ export default function ActivitiesPage() {
                     alt={activity.title}
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
-                    quality={68}
+                    quality={70}
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-brand-dark/85 via-brand-dark/35 to-transparent" />

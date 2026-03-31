@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function GsapEffects() {
   const pathname = usePathname()
+  const hasInitializedOnce = useRef(false)
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -25,9 +26,9 @@ export default function GsapEffects() {
     let raf2 = 0
     let refreshTimer = 0
     let startTimer = 0
-    let idleId: number | undefined
     let ctx: gsap.Context | undefined
     const cleanupFns: Array<() => void> = []
+    const shouldDeferForHydration = !hasInitializedOnce.current
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const hasAnimatedTargets = Boolean(
       document.querySelector('.gsap-reveal, .gsap-stagger, [data-hero-media], [data-gsap-parallax], [data-gsap-hover]')
@@ -175,18 +176,16 @@ export default function GsapEffects() {
       })
     }
 
-    const requestIdle =
-      (window as Window & {
-        requestIdleCallback?: (
-          callback: IdleRequestCallback,
-          opts?: IdleRequestOptions
-        ) => number
-      }).requestIdleCallback
+    const startWithDelay = () => {
+      const delay = shouldDeferForHydration ? 900 : 180
+      startTimer = window.setTimeout(startWhenReady, delay)
+      hasInitializedOnce.current = true
+    }
 
-    if (typeof requestIdle === 'function') {
-      idleId = requestIdle(startWhenReady, { timeout: 900 })
+    if (shouldDeferForHydration && document.readyState !== 'complete') {
+      window.addEventListener('load', startWithDelay, { once: true })
     } else {
-      startTimer = window.setTimeout(startWhenReady, 260)
+      startWithDelay()
     }
 
     return () => {
@@ -194,11 +193,7 @@ export default function GsapEffects() {
       window.cancelAnimationFrame(raf2)
       window.clearTimeout(refreshTimer)
       window.clearTimeout(startTimer)
-      const cancelIdle = (window as Window & { cancelIdleCallback?: (id: number) => void })
-        .cancelIdleCallback
-      if (idleId !== undefined && typeof cancelIdle === 'function') {
-        cancelIdle(idleId)
-      }
+      window.removeEventListener('load', startWithDelay)
       cleanupFns.forEach((cleanup) => cleanup())
       ctx?.revert()
     }

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronDown } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, Waves } from 'lucide-react'
 
 import settings from '@/data/settings.json'
 import stationsData from '@/data/stations.json'
@@ -14,116 +14,121 @@ export default function Hero() {
   const openStations = stations.filter((station) => station.status === 'open').length
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section className="relative isolate flex min-h-[calc(100svh-4.85rem)] items-start overflow-hidden lg:items-center">
       <Image
         src="https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800"
         alt="Kayaks sur la cote de l'ile de Re"
         data-hero-media
         fill
         sizes="100vw"
-        quality={72}
-        preload
+        quality={70}
         placeholder="blur"
         blurDataURL={BLUR_DATA_URL}
-        className="object-cover"
+        className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-linear-to-b from-brand-dark/88 via-brand-dark/52 to-brand-dark/82" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(27,160,226,0.35),transparent_35%),radial-gradient(circle_at_85%_15%,rgba(248,180,0,0.3),transparent_38%)]" />
+      <div className="absolute inset-0 bg-linear-to-b from-brand-dark/90 via-brand-dark/58 to-brand-dark/84" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(27,160,226,0.4),transparent_38%),radial-gradient(circle_at_86%_12%,rgba(248,180,0,0.35),transparent_38%)]" />
 
-      <div className="absolute left-[5%] top-[10%] z-20 hidden lg:block">
-        <WeatherWidget />
-      </div>
-
-      <div className="absolute right-[5%] top-[14%] z-20 hidden lg:block">
-        <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-white/50 bg-white/10 text-white hover:bg-white/20"
-          >
-            <a 
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-5 sm:px-6 sm:pb-28 sm:pt-7 lg:px-8 lg:pb-30 lg:pt-14">
+        <div className="flex flex-col gap-6 sm:gap-7">
+          <div className="flex w-full flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+            <div className="w-full max-w-md">
+              <WeatherWidget />
+            </div>
+            <a
+              className="group w-full rounded-3xl border border-white/32 bg-linear-to-r from-white/15 via-white/10 to-white/12 p-4 text-white backdrop-blur-lg transition-all hover:border-white/55 hover:bg-white/18 hover:shadow-[0_24px_40px_-30px_rgba(255,255,255,0.55)] lg:mt-5 lg:w-auto lg:min-w-86"
               href="https://maree.info/126"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Voir les marees">
-              horaires et coefficients des marées !
-            </a>
-          </Button>
-      </div>
-
-      <div
-        data-hero-content
-        className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-4 pt-20 text-center text-white sm:px-6 lg:px-8"
-      >
-        <span className="glass-panel rounded-full px-4 py-1.5 text-sm font-semibold">
-          Ile de Re, France
-        </span>
-
-        <h1 className="section-heading mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-7xl">
-          L&apos;aventure kayak
-          <span className="block bg-linear-to-r from-brand-blue via-brand-gold to-brand-orange bg-clip-text text-transparent">
-            en toute liberte
-          </span>
-        </h1>
-
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-100 sm:text-lg">
-          {settings.tagline}
-        </p>
-
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs text-white/90 sm:text-sm">
-          <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1">
-            {openStations} stations ouvertes
-          </span>
-          <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1">
-            Reservation en 2 minutes
-          </span>
-          <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1">
-            Sans file d&apos;attente
-          </span>
-        </div>
-
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button
-            asChild
-            size="lg"
-            className="bg-brand-gold text-brand-dark shadow-[0_16px_40px_-20px_rgba(255,165,0,0.95)] hover:bg-amber-300"
-          >
-            <a
-              href={settings.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Reserver maintenant sur Kayakomat"
+              aria-label="Voir les marees"
             >
-              Reserver maintenant
+              <span className="mb-2 inline-flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/75">
+                <Waves className="h-3.5 w-3.5" aria-hidden />
+                Marees - Ile de Re
+              </span>
+              <span className="flex items-center justify-between gap-4">
+                <span className="text-lg font-semibold leading-tight">
+                  Horaires et coefficients des marees
+                </span>
+                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/14 transition-colors group-hover:bg-white/22">
+                  <ArrowUpRight className="h-4.5 w-4.5" aria-hidden />
+                </span>
+              </span>
             </a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-white/50 bg-white/10 text-white hover:bg-white/20"
+          </div>
+
+          <div
+            data-hero-content
+            className="mx-auto flex max-w-4xl flex-col items-center text-center text-white"
           >
-            <Link href="/station" aria-label="Decouvrir les stations">
-              Decouvrir nos stations
-            </Link>
-          </Button>
+            <span className="glass-panel rounded-full px-4 py-1.5 text-xs font-semibold tracking-[0.08em] uppercase sm:text-sm">
+              Ile de Re, France
+            </span>
+
+            <h1 className="section-heading mt-5 text-4xl font-bold leading-[1.04] tracking-tight sm:text-5xl lg:text-7xl">
+              L&apos;aventure kayak
+              <span className="mt-1 block bg-linear-to-r from-brand-blue via-brand-gold to-brand-orange bg-clip-text text-transparent">
+                en toute liberte
+              </span>
+            </h1>
+
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-100 sm:text-lg">
+              {settings.tagline}
+            </p>
+
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs text-white/90 sm:text-sm">
+              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1">
+                {openStations} stations ouvertes
+              </span>
+              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1">
+                Reservation en 2 minutes
+              </span>
+              <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1">
+                Sans file d&apos;attente
+              </span>
+            </div>
+
+            <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-brand-gold text-brand-dark shadow-[0_16px_40px_-20px_rgba(255,165,0,0.95)] hover:bg-amber-300 sm:w-auto"
+              >
+                <a
+                  href={settings.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Reserver maintenant sur Kayakomat"
+                >
+                  Reserver maintenant
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full border-white/50 bg-white/10 text-white hover:bg-white/20 sm:w-auto"
+              >
+                <Link href="/station" aria-label="Decouvrir les stations">
+                  Decouvrir nos stations
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* <div className="pointer-events-none absolute left-[7%] top-[26%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
-        Reservation par SMS
-      </div> */}
-      <div className="pointer-events-none absolute right-[8%] top-[40%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
+      <div className="pointer-events-none absolute right-[6%] top-[40%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
         Stations 24/7
       </div>
 
-      <div className="pointer-events-none absolute bottom-20 left-1/2 z-10 -translate-x-1/2 text-white floating">
-        <ChevronDown className="h-8 w-8" aria-hidden />
+      <div className="pointer-events-none absolute bottom-18 left-1/2 z-10 hidden -translate-x-1/2 text-white/80 md:block">
+        <ChevronDown className="h-7 w-7 floating" aria-hidden />
       </div>
 
       <svg
         viewBox="0 0 1440 180"
-        className="absolute bottom-0 left-0 h-25 w-full text-brand-light md:h-35"
+        className="absolute bottom-0 left-0 h-22 w-full text-brand-light sm:h-26 md:h-35"
         preserveAspectRatio="none"
         aria-hidden
       >
