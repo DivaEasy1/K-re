@@ -8,6 +8,7 @@ import stationsData from '@/data/stations.json'
 import type { Activity, Station } from '@/types'
 import PageTransition from '@/components/layout/PageTransition'
 import Hero from '@/components/home/Hero'
+import TideWidget from '@/components/home/TideWidget'
 import HomeMapSection from '@/components/home/HomeMapSection'
 import Concept from '@/components/home/Concept'
 import HowItWorks from '@/components/home/HowItWorks'
@@ -49,6 +50,7 @@ export default function HomePage() {
     <PageTransition>
       <Hero />
       <HomeMapSection stations={stations} />
+      <TideWidget />
       <Concept />
       <HowItWorks />
       <KeyNumbers />

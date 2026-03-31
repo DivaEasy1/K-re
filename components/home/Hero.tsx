@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowUpRight, ChevronDown, Waves } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 import settings from '@/data/settings.json'
 import stationsData from '@/data/stations.json'
@@ -29,32 +29,10 @@ export default function Hero() {
       <div className="absolute inset-0 bg-linear-to-b from-brand-dark/90 via-brand-dark/58 to-brand-dark/84" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(27,160,226,0.4),transparent_38%),radial-gradient(circle_at_86%_12%,rgba(248,180,0,0.35),transparent_38%)]" />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-5 sm:px-6 sm:pb-28 sm:pt-7 lg:px-8 lg:pb-30 lg:pt-14">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-5 sm:px-6 sm:pb-28 sm:pt-7 lg:px-1 lg:pb-30 lg:pt-14">
         <div className="flex flex-col gap-6 sm:gap-7">
-          <div className="flex w-full flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
-            <div className="w-full max-w-md">
-              <WeatherWidget />
-            </div>
-            <a
-              className="group w-full rounded-3xl border border-white/32 bg-linear-to-r from-white/15 via-white/10 to-white/12 p-4 text-white backdrop-blur-lg transition-all hover:border-white/55 hover:bg-white/18 hover:shadow-[0_24px_40px_-30px_rgba(255,255,255,0.55)] lg:mt-5 lg:w-auto lg:min-w-86"
-              href="https://maree.info/126"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Voir les marees"
-            >
-              <span className="mb-2 inline-flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/75">
-                <Waves className="h-3.5 w-3.5" aria-hidden />
-                Marees - Ile de Re
-              </span>
-              <span className="flex items-center justify-between gap-4">
-                <span className="text-lg font-semibold leading-tight">
-                  Horaires et coefficients des marees
-                </span>
-                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/14 transition-colors group-hover:bg-white/22">
-                  <ArrowUpRight className="h-4.5 w-4.5" aria-hidden />
-                </span>
-              </span>
-            </a>
+          <div className="w-full max-w-md">
+            <WeatherWidget />
           </div>
 
           <div
