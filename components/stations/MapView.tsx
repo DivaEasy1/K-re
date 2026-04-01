@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css'
 
 import Link from 'next/link'
 import L from 'leaflet'
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet'
 
 import type { Station } from '@/types'
 import { Badge } from '@/components/ui/badge'
@@ -49,9 +49,11 @@ export default function MapView({
       <MapContainer
         center={center}
         zoom={zoom}
+        zoomControl={false}
         scrollWheelZoom={false}
         style={{ height: '100%', width: '100%' }}
       >
+        <ZoomControl position="bottomright" />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
