@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button'
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
-  { href: '/station', label: 'Stations' },
+  { href: '/stations', label: 'Stations' },
   { href: '/activities', label: 'Activites' },
   { href: '/about', label: 'A propos' },
   { href: '/contact', label: 'Contact' },
@@ -153,7 +153,7 @@ export default function Navbar() {
             )}
             aria-hidden={!isHome}
           >
-            24/7 autonome
+            Stations ouvertes 7/7
           </span>
         </div>
 

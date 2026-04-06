@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="Station La Rochelle">
-  <rect width="1400" height="900" fill="#0A1628"/>
-  <rect y="420" width="1400" height="480" fill="#1E90FF"/>
-  <path d="M0 520 C220 470 430 580 700 540 C940 510 1160 600 1400 550 L1400 900 L0 900 Z" fill="#F0F8FF" opacity="0.35"/>
-  <circle cx="1160" cy="160" r="74" fill="#FFA500"/>
-  <text x="80" y="120" fill="#FFFFFF" font-size="58" font-family="Arial" font-weight="700">LA ROCHELLE - L'HOUMEAU</text>
-  <text x="80" y="182" fill="#CFEAFF" font-size="30" font-family="Arial">Plage de l'Anse de Pampin</text>
-  <text x="80" y="250" fill="#FFFFFF" font-size="26" font-family="Arial">Station ouverte - kayak solo, tandem, paddle</text>
-</svg>

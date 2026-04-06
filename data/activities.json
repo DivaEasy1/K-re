@@ -2,11 +2,11 @@
   {
     "id": "1",
     "title": "Apero Soleil Couchant",
-    "description": "Pagayez au coucher du soleil et profitez d'un aperitif en mer avec une lumiere doree sur l'horizon.",
+    "description": "Nous vous apportons des produits a deguster elabores par des artisans locaux sur une plage selectionnee lors de votre reservation, accessible par route, chemin ou piste cyclable. Charcuteries \"Au bon saucisson\" et produits traiteur \"Maison Reglin\".",
     "duration": "2h",
     "difficulty": "easy",
     "price": "A partir de 25EUR",
-    "image": "https://images.pexels.com/photos/7753828/pexels-photo-7753828.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    "image": "/images/activities/sunset.jpg",
     "icon": "🌅",
     "category": "leisure"
   },
@@ -17,7 +17,7 @@
     "duration": "3h",
     "difficulty": "easy",
     "price": "A partir de 30EUR",
-    "image": "https://images.pexels.com/photos/12190891/pexels-photo-12190891.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    "image": "/images/activities/marais.jpg",
     "icon": "🌿",
     "category": "nature"
   },
@@ -28,7 +28,7 @@
     "duration": "4h",
     "difficulty": "easy",
     "price": "A partir de 45EUR",
-    "image": "https://images.pexels.com/photos/5865314/pexels-photo-5865314.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    "image": "/images/activities/gastro.jpg",
     "icon": "🦪",
     "category": "gastronomy"
   },
@@ -39,7 +39,7 @@
     "duration": "3h",
     "difficulty": "medium",
     "price": "A partir de 20EUR",
-    "image": "https://images.pexels.com/photos/15739982/pexels-photo-15739982.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    "image": "/images/activities/regate.jpg",
     "icon": "🏁",
     "category": "sport"
   },
@@ -50,7 +50,7 @@
     "duration": "24h",
     "difficulty": "hard",
     "price": "A partir de 80EUR",
-    "image": "https://images.pexels.com/photos/8837756/pexels-photo-8837756.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    "image": "/images/activities/24h.jpg",
     "icon": "🏆",
     "category": "sport"
   },
@@ -61,7 +61,7 @@
     "duration": "2h",
     "difficulty": "easy",
     "price": "A partir de 35EUR",
-    "image": "https://images.pexels.com/photos/9716819/pexels-photo-9716819.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    "image": "/images/activities/breakfast.jpg",
     "icon": "🥐",
     "category": "leisure"
   }

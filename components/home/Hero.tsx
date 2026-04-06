@@ -34,6 +34,7 @@ export default function Hero() {
           <div className="w-full max-w-md">
             <WeatherWidget />
           </div>
+          
 
           <div
             data-hero-content
@@ -42,6 +43,7 @@ export default function Hero() {
             <span className="glass-panel rounded-full px-4 py-1.5 text-xs font-semibold tracking-[0.08em] uppercase sm:text-sm">
               Ile de Re, France
             </span>
+            
 
             <h1 className="section-heading mt-5 text-4xl font-bold leading-[1.04] tracking-tight sm:text-5xl lg:text-7xl">
               L&apos;aventure kayak
@@ -87,22 +89,41 @@ export default function Hero() {
                 size="lg"
                 className="w-full border-white/50 bg-white/10 text-white hover:bg-white/20 sm:w-auto"
               >
-                <Link href="/station" aria-label="Decouvrir les stations">
+                <Link href="/stations" aria-label="Decouvrir les stations">
                   Decouvrir nos stations
                 </Link>
               </Button>
+              <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="w-full border-white/50 bg-white/10 text-white hover:bg-white/20 sm:w-auto"
+            >
+              <Link href="#marees-live" aria-label="Decouvrir les stations">
+                marées
+              </Link>
+            </Button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="pointer-events-none absolute right-[6%] top-[40%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
-        Stations 24/7
+      {/* <a href="#marees-live" aria-label="Voir les horaires des marees" className="pointer-events-auto cursor-pointer absolute left-[6%] top-[40%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
+          marées
+      </a> */}
+
+
+      <div className="pointer-events-none absolute right-[10%] top-[40%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
+        Stations ouvertes 7/7
       </div>
 
-      <div className="pointer-events-none absolute bottom-18 left-1/2 z-10 hidden -translate-x-1/2 text-white/80 md:block">
+      <a
+        href="#home-map-section"
+        aria-label="Faire defiler jusqu'aux horaires des marees"
+        className="absolute bottom-18 left-1/2 z-10 -translate-x-1/2 text-white/80 transition-colors hover:text-white"
+      >
         <ChevronDown className="h-7 w-7 floating" aria-hidden />
-      </div>
+      </a>
 
       <svg
         viewBox="0 0 1440 180"

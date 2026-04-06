@@ -8,6 +8,7 @@ export interface Station {
   openYear: number
   description: string
   image: string
+  bookingUrl?: string
   equipment: string[]
 }
 

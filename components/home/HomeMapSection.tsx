@@ -4,7 +4,6 @@ import { Suspense, useMemo, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { MapPin, Search } from 'lucide-react'
 
-import settings from '@/data/settings.json'
 import type { Station } from '@/types'
 import LoadingState from '@/components/ui/loading-state'
 
@@ -64,7 +63,7 @@ export default function HomeMapSection({ stations }: HomeMapSectionProps) {
     : filterStations
 
   return (
-    <section className="relative -mt-12 pb-16 sm:-mt-14 sm:pb-20">
+    <section id='home-map-section' className="relative -mt-12 pb-16 sm:-mt-14 sm:pb-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="gsap-reveal relative rounded-4xl border border-white/70 bg-white/92 p-3 shadow-[0_26px_65px_-40px_rgba(10,22,40,0.75)] backdrop-blur sm:p-4 lg:p-5">
           <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-2">
@@ -138,15 +137,21 @@ export default function HomeMapSection({ stations }: HomeMapSectionProps) {
                                   </p>
                                 </div>
 
-                                <a
-                                  href={settings.bookingUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  aria-label={`Reserver maintenant pour ${station.name}`}
-                                  className="inline-flex h-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue px-4 text-sm font-semibold text-white shadow-[0_14px_30px_-20px_rgba(30,144,255,0.9)] transition-colors hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
-                                >
-                                  Reserver maintenant
-                                </a>
+                                {station.bookingUrl ? (
+                                  <a
+                                    href={station.bookingUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={`Reserver maintenant pour ${station.name}`}
+                                    className="inline-flex h-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue px-4 text-sm font-semibold text-white shadow-[0_14px_30px_-20px_rgba(30,144,255,0.9)] transition-colors hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
+                                  >
+                                    Reserver maintenant
+                                  </a>
+                                ) : (
+                                  <span className="inline-flex h-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 px-4 text-sm font-semibold text-slate-500">
+                                    Lien a venir
+                                  </span>
+                                )}
                               </li>
                             ))}
                           </ul>

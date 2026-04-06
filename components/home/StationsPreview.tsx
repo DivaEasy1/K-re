@@ -19,7 +19,7 @@ export default function StationsPreview({ stations }: { stations: Station[] }) {
             </h2>
           </div>
           <Link
-            href="/station"
+            href="/stations"
             className="rounded-full border border-brand-blue/20 bg-white px-4 py-2 text-sm font-semibold text-brand-blue hover:border-brand-blue/50 hover:text-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
           >
             Voir toutes les stations →

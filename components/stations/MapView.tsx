@@ -4,13 +4,11 @@ import 'leaflet/dist/leaflet.css'
 
 import Link from 'next/link'
 import L from 'leaflet'
-import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, Tooltip, ZoomControl } from 'react-leaflet'
 
 import type { Station } from '@/types'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '../ui/button'
-import settings from '@/data/settings.json'
-
 
 const openIcon = L.divIcon({
   className: '',
@@ -65,6 +63,9 @@ export default function MapView({
             position={[station.lat, station.lng]}
             icon={station.status === 'open' ? openIcon : comingSoonIcon}
           >
+            <Tooltip direction="top" offset={[0, -10]}>
+              {station.name}
+            </Tooltip>
             <Popup minWidth={220}>
               <div className="space-y-2">
                 <p className="font-semibold text-brand-dark">{station.name}</p>
@@ -77,26 +78,23 @@ export default function MapView({
                   {station.status === 'open' ? 'Ouvert' : 'Bientôt'}
                 </Badge>
 
-                {station.status === 'open' ? 
-                
-                <Button
-            asChild
-            variant="outline"
-            size="sm"
-            className="border-black bg-white/10 text-black hover:bg-white/20 w-fit h-7 ml-2"
-          >
-            <a
-              href={settings.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer" 
-              aria-label="Réserver une station">
-
-              Réserver maintenant
-
-            </a>
-          </Button>
-                
-                : null}
+                {station.bookingUrl ? (
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="sm"
+                    className="ml-2 h-7 w-fit border-black bg-white/10 text-black hover:bg-white/20"
+                  >
+                    <a
+                      href={station.bookingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Réserver ${station.name} sur Kayakomat`}
+                    >
+                      Réserver maintenant
+                    </a>
+                  </Button>
+                ) : null}
 
                 {showLearnMore ? (
                   <div>

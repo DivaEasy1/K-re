@@ -32,11 +32,11 @@ export default function TideWidget() {
             Marees
           </p>
           <h2 className="section-heading font-heading text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
-            Horaires des marees
+            Horaires des marees sur l&apos;Ile de Re
           </h2>
           <p className="mt-2 text-sm text-slate-600 sm:text-base">
             Consultez rapidement les heures, hauteurs et coefficients du jour pour
-            Saint-Martin-de-Re.
+            l&apos;Ile de Re.
           </p>
         </div>
 
@@ -48,7 +48,7 @@ export default function TideWidget() {
               </h3>
 
               <p className="mt-2 text-sm text-slate-600">
-                Saint-Martin-de-Re (Ile de Re) - horaires, hauteurs et coefficients du jour.
+                Donnees du jour pour l&apos;Ile de Re, avec Saint-Martin-de-Re comme station de reference.
               </p>
 
               <div className="mt-4 space-y-2">

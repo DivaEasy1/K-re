@@ -115,7 +115,7 @@ export default function HomePage() {
                   size="lg"
                   className="w-full border-white/40 bg-white/5 text-white hover:bg-white/15"
                 >
-                  <Link href="/station" aria-label="Voir toutes les stations">
+                  <Link href="/stations" aria-label="Voir toutes les stations">
                     Voir les stations
                   </Link>
                 </Button>

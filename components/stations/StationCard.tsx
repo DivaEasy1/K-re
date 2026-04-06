@@ -3,9 +3,6 @@
 import Image from 'next/image'
 import { Ship, Users, Waves } from 'lucide-react'
 
-import settings from '@/data/settings.json'
-
-
 import type { Station } from '@/types'
 import { BLUR_DATA_URL, cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
@@ -88,22 +85,27 @@ export default function StationCard({ station }: { station: Station }) {
               )
             })}
           </div>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-black bg-white/10 text-black hover:bg-white/20 w-full mt-2"
-          >
-            <a
-              href={settings.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer" 
-              aria-label="Réserver une station">
-
-              Réserver maintenant
-
-            </a>
-          </Button>
+          {station.bookingUrl ? (
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="mt-2 w-full border-black bg-white/10 text-black hover:bg-white/20"
+            >
+              <a
+                href={station.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Réserver ${station.name} sur Kayakomat`}
+              >
+                Réserver maintenant
+              </a>
+            </Button>
+          ) : (
+            <p className="mt-2 text-sm font-medium text-slate-500">
+              Lien Kayakomat à venir
+            </p>
+          )}
         </CardContent>
       </Card>
     </div>
