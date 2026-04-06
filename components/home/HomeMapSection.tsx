@@ -115,7 +115,7 @@ export default function HomeMapSection({ stations }: HomeMapSectionProps) {
                             data-lenis-prevent
                             onWheel={(event) => event.stopPropagation()}
                             onTouchMove={(event) => event.stopPropagation()}
-                            className="max-h-[21rem] divide-y divide-slate-200 overflow-y-auto"
+                            className="max-h-84 divide-y divide-slate-200 overflow-y-auto"
                           >
                             {matchedStations.map((station) => (
                               <li
