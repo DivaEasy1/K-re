@@ -2,13 +2,14 @@
 
 import 'leaflet/dist/leaflet.css'
 
-import Link from 'next/link'
 import L from 'leaflet'
+import Link from 'next/link'
 import { MapContainer, Marker, Popup, TileLayer, Tooltip, ZoomControl } from 'react-leaflet'
 
-import type { Station } from '@/types'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '../ui/button'
+import { Button } from '@/components/ui/button'
+import { getStationHref, resolveStationBookingUrl } from '@/lib/stations'
+import type { Station } from '@/types'
 
 const openIcon = L.divIcon({
   className: '',
@@ -57,59 +58,69 @@ export default function MapView({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {stations.map((station) => (
-          <Marker
-            key={station.id}
-            position={[station.lat, station.lng]}
-            icon={station.status === 'open' ? openIcon : comingSoonIcon}
-          >
-            <Tooltip direction="top" offset={[0, -10]}>
-              {station.name}
-            </Tooltip>
-            <Popup minWidth={220}>
-              <div className="space-y-2">
-                <p className="font-semibold text-brand-dark">{station.name}</p>
-                <p className="text-xs text-slate-600">{station.location}</p>
-                <p className="text-xs text-slate-700">Ouverture: {station.openYear}</p>
-                <Badge
-                  variant={station.status === 'open' ? 'success' : 'muted'}
-                  className="w-fit"
-                >
-                  {station.status === 'open' ? 'Ouvert' : 'Bientôt'}
-                </Badge>
+        {stations.map((station) => {
+          const detailHref = getStationHref(station)
+          const bookingUrl =
+            station.status === 'open' ? resolveStationBookingUrl(station) : null
 
-                {station.bookingUrl ? (
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="sm"
-                    className="ml-2 h-7 w-fit border-black bg-white/10 text-black hover:bg-white/20"
+          return (
+            <Marker
+              key={station.id}
+              position={[station.lat, station.lng]}
+              icon={station.status === 'open' ? openIcon : comingSoonIcon}
+            >
+              <Tooltip direction="top" offset={[0, -10]}>
+                {station.name}
+              </Tooltip>
+              <Popup minWidth={220}>
+                <div className="space-y-2">
+                  <p className="font-semibold text-brand-dark">{station.name}</p>
+                  <p className="text-xs text-slate-600">{station.location}</p>
+                  <p className="text-xs text-slate-700">Ouverture: {station.openYear}</p>
+                  <Badge
+                    variant={station.status === 'open' ? 'success' : 'muted'}
+                    className="w-fit"
                   >
-                    <a
-                      href={station.bookingUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Réserver ${station.name} sur Kayakomat`}
-                    >
-                      Réserver maintenant
-                    </a>
-                  </Button>
-                ) : null}
+                    {station.status === 'open' ? 'Ouvert' : 'Bientot'}
+                  </Badge>
 
-                {showLearnMore ? (
-                  <div>
-                    <Link
-                      href={`/stations#station-${station.id}`}
-                      className="inline-flex rounded-full bg-brand-blue px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+                  {bookingUrl ? (
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="sm"
+                      className="ml-2 h-7 w-fit border-black bg-white/10 text-black hover:bg-white/20"
                     >
-                      En savoir plus
-                    </Link>
-                  </div>
-                ) : null}
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+                      <a
+                        href={bookingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Reserver ${station.name} sur Kayakomat`}
+                      >
+                        Reserver
+                      </a>
+                    </Button>
+                  ) : station.status === 'open' ? (
+                    <p className="text-xs font-medium text-slate-500">
+                      Reservation bientot disponible
+                    </p>
+                  ) : null}
+
+                  {showLearnMore ? (
+                    <div>
+                      <Link
+                        href={detailHref ?? `/stations#station-${station.id}`}
+                        className="inline-flex rounded-full bg-brand-blue px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+                      >
+                        {detailHref ? 'Voir la fiche' : 'En savoir plus'}
+                      </Link>
+                    </div>
+                  ) : null}
+                </div>
+              </Popup>
+            </Marker>
+          )
+        })}
       </MapContainer>
     </div>
   )

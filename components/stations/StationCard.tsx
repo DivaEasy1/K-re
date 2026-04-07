@@ -1,13 +1,13 @@
-﻿'use client'
-
 import Image from 'next/image'
-import { Ship, Users, Waves } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Ship, Users, Waves } from 'lucide-react'
 
-import type { Station } from '@/types'
-import { BLUR_DATA_URL, cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '../ui/button'
+import { getStationHref, resolveStationBookingUrl } from '@/lib/stations'
+import { BLUR_DATA_URL, cn } from '@/lib/utils'
+import type { Station } from '@/types'
 
 function equipmentLabel(equipment: string) {
   if (equipment === 'kayak_tandem') {
@@ -27,6 +27,8 @@ function equipmentLabel(equipment: string) {
 
 export default function StationCard({ station }: { station: Station }) {
   const open = station.status === 'open'
+  const detailHref = getStationHref(station)
+  const bookingUrl = open ? resolveStationBookingUrl(station) : null
 
   return (
     <div className="gsap-card h-full transform-gpu transition-transform duration-200 hover:-translate-y-1">
@@ -60,7 +62,16 @@ export default function StationCard({ station }: { station: Station }) {
         <CardContent className="space-y-3 pt-5">
           <div className="space-y-1">
             <h3 className="font-heading text-xl font-bold tracking-tight text-brand-dark">
-              {station.name}
+              {detailHref ? (
+                <Link
+                  href={detailHref}
+                  className="transition-colors hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+                >
+                  {station.name}
+                </Link>
+              ) : (
+                station.name
+              )}
             </h3>
             <p className="text-sm text-slate-600">{station.location}</p>
           </div>
@@ -85,26 +96,53 @@ export default function StationCard({ station }: { station: Station }) {
               )
             })}
           </div>
-          {station.bookingUrl ? (
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="mt-2 w-full border-black bg-white/10 text-black hover:bg-white/20"
-            >
-              <a
-                href={station.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Réserver ${station.name} sur Kayakomat`}
+
+          {bookingUrl ? (
+            <div className={cn('grid gap-2 pt-1', detailHref ? 'sm:grid-cols-2' : 'grid-cols-1')}>
+              {detailHref ? (
+                <Button asChild variant="outline" size="lg" className="w-full">
+                  <Link href={detailHref} aria-label={`Voir la fiche de ${station.name}`}>
+                    Voir la fiche
+                    <ArrowRight className="ml-1 h-4 w-4" aria-hidden />
+                  </Link>
+                </Button>
+              ) : null}
+
+              <Button
+                asChild
+                size="lg"
+                className="w-full bg-brand-dark text-white shadow-[0_18px_38px_-24px_rgba(10,22,40,0.95)] hover:bg-slate-900"
               >
-                Réserver maintenant
-              </a>
-            </Button>
+                <a
+                  href={bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Reserver ${station.name} sur Kayakomat`}
+                >
+                  Reserver
+                </a>
+              </Button>
+            </div>
+          ) : open ? (
+            <div className={cn('grid gap-2 pt-1', detailHref ? 'sm:grid-cols-2' : 'grid-cols-1')}>
+              {detailHref ? (
+                <Button asChild variant="outline" size="lg" className="w-full">
+                  <Link href={detailHref} aria-label={`Voir la fiche de ${station.name}`}>
+                    Voir la fiche
+                    <ArrowRight className="ml-1 h-4 w-4" aria-hidden />
+                  </Link>
+                </Button>
+              ) : null}
+              <Button
+                size="lg"
+                disabled
+                className="w-full bg-slate-200 text-slate-500 opacity-100 shadow-none hover:translate-y-0"
+              >
+                Reservation bientot
+              </Button>
+            </div>
           ) : (
-            <p className="mt-2 text-sm font-medium text-slate-500">
-              Lien Kayakomat à venir
-            </p>
+            <p className="mt-2 text-sm font-medium text-slate-500">Lien Kayakomat a venir</p>
           )}
         </CardContent>
       </Card>

@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactCompiler: true,
   images: {
-    qualities: [70, 75],
+    qualities: [70, 75, 84, 88],
     minimumCacheTTL: 14400,
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [

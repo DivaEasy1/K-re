@@ -1,0 +1,64 @@
+[
+  {
+    "stationId": "1",
+    "gallery": [
+      "/images/stations/lhoumeau.webp",
+      "/images/stations/lhoumeau1.png",
+      "/images/stations/lhoumeau2.png"
+    ],
+    "highlight": "Depart face a l'anse de Pampin",
+    "intro": "L'Houmeau est un point de depart tres apprecie pour une sortie simple, lumineuse et sans detour. On y retrouve un plan d'eau agreable pour une mise a l'eau rapide et une premiere experience fluide.",
+    "ambience": "Ambiance grand large, acces direct a la plage et vues ouvertes des les premiers coups de pagaie.",
+    "practicalInfo": [
+      "Acces rapide depuis La Rochelle et le pont de l'ile de Re.",
+      "Spot ideal pour une sortie courte au lever du jour ou en fin d'apres-midi.",
+      "Reservation conseillee la veille pendant les week-ends ensoleilles."
+    ],
+    "nearbyHighlights": [
+      "Anse de Pampin",
+      "Depart facile",
+      "Ideal duo ou famille"
+    ]
+  },
+  {
+    "stationId": "2",
+    "gallery": [
+      "/images/stations/Rivedoux.png",
+      "/images/stations/Rivedoux1.png",
+      "/images/stations/Rivedoux2.png"
+    ],
+    "highlight": "L'entree de l'ile version grand angle",
+    "intro": "Rivedoux-Plage permet de lancer sa sortie des l'arrivee sur l'ile. Le cadre est ouvert, pratique et parfait pour reserver puis pagayer sans perdre de temps.",
+    "ambience": "Une station pensee pour demarrer vite, avec une sensation d'espace et une belle ouverture sur l'ocean.",
+    "practicalInfo": [
+      "Acces immediat apres le pont de l'ile de Re.",
+      "Tres bon choix pour une premiere sortie ou une escapade courte.",
+      "Station ideale si vous voulez pagayer des votre arrivee."
+    ],
+    "nearbyHighlights": [
+      "Les Sablanceaux",
+      "Acces immediat",
+      "Spot parfait a l'arrivee"
+    ]
+  },
+  {
+    "stationId": "3",
+    "gallery": [
+      "/images/stations/Bois-Plage1.png",
+      "/images/stations/Bois-Plage2.png"
+    ],
+    "highlight": "Un depart central pour rayonner sur l'ile",
+    "intro": "Le Bois-Plage-en-Re offre une position tres confortable au coeur de l'ile. La station convient bien a celles et ceux qui cherchent une experience equilibree, entre plages, paysages ouverts et acces rapide.",
+    "ambience": "Un spot lumineux et serein, pratique pour organiser une sortie en duo, en famille ou entre amis.",
+    "practicalInfo": [
+      "Position centrale pour rejoindre facilement plusieurs secteurs de l'ile.",
+      "Parfait pour construire une demi-journee detente autour de la plage.",
+      "Reservation recommande aux heures les plus demandees en saison."
+    ],
+    "nearbyHighlights": [
+      "Position centrale",
+      "Plages proches",
+      "Depart flexible"
+    ]
+  }
+]

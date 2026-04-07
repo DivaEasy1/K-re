@@ -4,6 +4,7 @@ import { Suspense, useMemo, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { MapPin, Search } from 'lucide-react'
 
+import { resolveStationBookingUrl } from '@/lib/stations'
 import type { Station } from '@/types'
 import LoadingState from '@/components/ui/loading-state'
 
@@ -117,43 +118,50 @@ export default function HomeMapSection({ stations }: HomeMapSectionProps) {
                             onTouchMove={(event) => event.stopPropagation()}
                             className="max-h-84 divide-y divide-slate-200 overflow-y-auto"
                           >
-                            {matchedStations.map((station) => (
-                              <li
-                                key={`result-${station.id}`}
-                                className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between"
-                              >
-                                <div className="min-w-0">
-                                  <p className="truncate text-lg font-semibold leading-tight text-brand-dark">
-                                    {station.name}
-                                  </p>
-                                  <p className="mt-1 text-sm text-slate-600">
-                                    {station.location}
-                                  </p>
-                                  <p className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-slate-500">
-                                    <MapPin className="h-3.5 w-3.5" aria-hidden />
-                                    {station.status === 'open'
-                                      ? 'Station ouverte'
-                                      : 'Bientot disponible'}
-                                  </p>
-                                </div>
+                            {matchedStations.map((station) => {
+                              const bookingUrl =
+                                station.status === 'open'
+                                  ? resolveStationBookingUrl(station)
+                                  : null
 
-                                {station.bookingUrl ? (
-                                  <a
-                                    href={station.bookingUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={`Reserver maintenant pour ${station.name}`}
-                                    className="inline-flex h-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue px-4 text-sm font-semibold text-white shadow-[0_14px_30px_-20px_rgba(30,144,255,0.9)] transition-colors hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
-                                  >
-                                    Reserver maintenant
-                                  </a>
-                                ) : (
-                                  <span className="inline-flex h-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 px-4 text-sm font-semibold text-slate-500">
-                                    Lien a venir
-                                  </span>
-                                )}
-                              </li>
-                            ))}
+                              return (
+                                <li
+                                  key={`result-${station.id}`}
+                                  className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between"
+                                >
+                                  <div className="min-w-0">
+                                    <p className="truncate text-lg font-semibold leading-tight text-brand-dark">
+                                      {station.name}
+                                    </p>
+                                    <p className="mt-1 text-sm text-slate-600">
+                                      {station.location}
+                                    </p>
+                                    <p className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-slate-500">
+                                      <MapPin className="h-3.5 w-3.5" aria-hidden />
+                                      {station.status === 'open'
+                                        ? 'Station ouverte'
+                                        : 'Bientot disponible'}
+                                    </p>
+                                  </div>
+
+                                  {bookingUrl ? (
+                                    <a
+                                      href={bookingUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      aria-label={`Reserver maintenant pour ${station.name}`}
+                                      className="inline-flex h-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue px-4 text-sm font-semibold text-white shadow-[0_14px_30px_-20px_rgba(30,144,255,0.9)] transition-colors hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
+                                    >
+                                      Reserver maintenant
+                                    </a>
+                                  ) : (
+                                    <span className="inline-flex h-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 px-4 text-sm font-semibold text-slate-500">
+                                      Lien a venir
+                                    </span>
+                                  )}
+                                </li>
+                              )
+                            })}
                           </ul>
                         ) : (
                           <div className="px-4 py-6 text-center">

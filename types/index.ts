@@ -12,6 +12,16 @@ export interface Station {
   equipment: string[]
 }
 
+export interface StationDetailContent {
+  stationId: string
+  gallery: string[]
+  highlight: string
+  intro: string
+  ambience: string
+  practicalInfo: string[]
+  nearbyHighlights: string[]
+}
+
 export interface Activity {
   id: string
   title: string

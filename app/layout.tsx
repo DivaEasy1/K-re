@@ -96,12 +96,12 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <MotionProvider>
-          <ClientEffects />
           <Navbar />
           <div className="relative flex min-h-screen flex-col pt-[4.85rem]">
             {children}
             <Footer />
           </div>
+          <ClientEffects />
           <BackToTop />
         </MotionProvider>
       </body>

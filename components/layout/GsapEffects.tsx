@@ -31,7 +31,7 @@ export default function GsapEffects() {
     const shouldDeferForHydration = !hasInitializedOnce.current
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const hasAnimatedTargets = Boolean(
-      document.querySelector('.gsap-reveal, .gsap-stagger, [data-hero-media], [data-gsap-parallax], [data-gsap-hover]')
+      document.querySelector('.gsap-reveal, .gsap-stagger, [data-gsap-parallax], [data-gsap-hover]')
     )
     if (!hasAnimatedTargets) {
       return
@@ -83,35 +83,6 @@ export default function GsapEffects() {
             },
           })
         })
-
-        const heroMedia = document.querySelector<HTMLElement>('[data-hero-media]')
-        if (heroMedia && !isTouchDevice) {
-          gsap.to(heroMedia, {
-            yPercent: 7,
-            scale: 1.03,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: heroMedia,
-              start: 'top top',
-              end: 'bottom top',
-              scrub: isMobile ? 0.3 : 0.45,
-            },
-          })
-        }
-
-        const heroContent = document.querySelector<HTMLElement>('[data-hero-content]')
-        if (heroContent && !isTouchDevice) {
-          gsap.to(heroContent, {
-            yPercent: -5,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: heroContent,
-              start: 'top top',
-              end: 'bottom top',
-              scrub: isMobile ? 0.22 : 0.34,
-            },
-          })
-        }
 
         if (!isTouchDevice) {
           const parallaxAccents = gsap.utils.toArray<HTMLElement>('[data-gsap-parallax]')
