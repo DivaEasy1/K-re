@@ -1,13 +1,14 @@
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Waves } from 'lucide-react'
 
+import WeatherWidget from '@/components/layout/WeatherWidget'
+import { Button } from '@/components/ui/button'
 import settings from '@/data/settings.json'
 import stationsData from '@/data/stations.json'
-import type { Station } from '@/types'
 import { BLUR_DATA_URL } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
-import WeatherWidget from '@/components/layout/WeatherWidget'
+import type { Station } from '@/types'
 
 export default function Hero() {
   const stations = stationsData as Station[]
@@ -34,16 +35,14 @@ export default function Hero() {
           <div className="w-full max-w-md">
             <WeatherWidget />
           </div>
-          
 
           <div
             data-hero-content
             className="mx-auto flex max-w-4xl flex-col items-center text-center text-white"
           >
-            <span className="glass-panel rounded-full px-4 py-1.5 text-xs font-semibold tracking-[0.08em] uppercase sm:text-sm">
+            <span className="glass-panel rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] sm:text-sm">
               Ile de Re, France
             </span>
-            
 
             <h1 className="section-heading mt-5 text-4xl font-bold leading-[1.04] tracking-tight sm:text-5xl lg:text-7xl">
               L&apos;aventure kayak
@@ -83,6 +82,7 @@ export default function Hero() {
                   Reserver maintenant
                 </a>
               </Button>
+
               <Button
                 asChild
                 variant="outline"
@@ -93,25 +93,38 @@ export default function Hero() {
                   Decouvrir nos stations
                 </Link>
               </Button>
+
               <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="w-full border-white/50 bg-white/10 text-white hover:bg-white/20 sm:w-auto"
-            >
-              <Link href="#marees-live" aria-label="Decouvrir les stations">
-                marées
-              </Link>
-            </Button>
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full gap-2 border-brand-blue/35 bg-brand-blue text-white shadow-[0_18px_38px_-24px_rgba(27,160,226,0.95)] hover:border-brand-blue/65 hover:bg-brand-blue/24 sm:w-auto lg:hidden"
+              >
+                <a href="#marees-live" aria-label="Voir les horaires des marees">
+                  <Waves className="h-4 w-4" aria-hidden />
+                  Mar&eacute;es
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* <a href="#marees-live" aria-label="Voir les horaires des marees" className="pointer-events-auto cursor-pointer absolute left-[6%] top-[40%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
-          marées
-      </a> */}
-
+      <a
+        href="#marees-live"
+        aria-label="Faire defiler jusqu'aux horaires des marees"
+        className="pointer-events-auto absolute right-4 top-5 z-20 hidden items-center gap-3 rounded-2xl border border-white/18 bg-linear-to-br from-brand-blue/92 to-sky-500/78 px-3.5 py-3 text-white shadow-[0_24px_55px_-24px_rgba(27,160,226,0.95)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:from-brand-blue hover:to-sky-500 hover:shadow-[0_28px_65px_-22px_rgba(27,160,226,0.98)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 lg:inline-flex lg:right-8 lg:top-24 xl:right-[11%]"
+      >
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/14 ring-1 ring-inset ring-white/14">
+          <Waves className="h-5 w-5" aria-hidden />
+        </span>
+        <span className="flex flex-col items-start leading-none">
+          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-white/72">
+            Horaires
+          </span>
+          <span className="mt-1 text-sm font-semibold">Mar&eacute;es</span>
+        </span>
+      </a>
 
       <div className="pointer-events-none absolute right-[10%] top-[40%] hidden rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur lg:block floating">
         Stations ouvertes 7/7
@@ -119,8 +132,8 @@ export default function Hero() {
 
       <a
         href="#home-map-section"
-        aria-label="Faire defiler jusqu'aux horaires des marees"
-        className="absolute bottom-18 left-1/2 z-10 -translate-x-1/2 text-white/80 transition-colors hover:text-white"
+        aria-label="Faire defiler jusqu'aux stations"
+        className="absolute bottom-18 left-1/2 z-10 -translate-x-1/2 text-white/80 transition-colors hover:text-white hidden lg:inline-flex"
       >
         <ChevronDown className="h-7 w-7 floating" aria-hidden />
       </a>
