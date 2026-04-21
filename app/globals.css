@@ -14,7 +14,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   scroll-padding-top: 5.5rem;
   scrollbar-gutter: stable;
 }
