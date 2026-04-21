@@ -20,6 +20,7 @@ import StationCard from '@/components/stations/StationCard'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import Breadcrumb from '@/components/ui/breadcrumb'
 import { getOpenStationPages, getStationPageBySlug } from '@/lib/stations'
 import { BLUR_DATA_URL } from '@/lib/utils'
 
@@ -128,6 +129,16 @@ export default async function StationDetailPage({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(27,160,226,0.34),transparent_32%),radial-gradient(circle_at_84%_14%,rgba(248,180,0,0.24),transparent_34%)]" />
 
         <div className="relative mx-auto max-w-7xl px-4 pb-22 pt-10 text-white sm:px-6 sm:pb-26 lg:px-8 lg:pb-28 lg:pt-14">
+          <div className="mb-6">
+            <Breadcrumb
+              items={[
+                { label: 'Accueil', href: '/' },
+                { label: 'Stations', href: '/stations' },
+                { label: station.name, href: `/stations/${station.slug}` },
+              ]}
+            />
+          </div>
+
           <Link
             href="/stations"
             className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/10 px-4 py-2 text-sm font-medium text-white/92 backdrop-blur transition-colors hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"

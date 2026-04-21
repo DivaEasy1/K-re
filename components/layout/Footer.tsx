@@ -7,13 +7,37 @@ export default function Footer() {
   return (
     <footer className="relative mt-20 overflow-hidden bg-brand-dark text-white">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_25%,rgba(30,144,255,0.25),transparent_35%),radial-gradient(circle_at_80%_80%,rgba(255,165,0,0.2),transparent_35%)]" />
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div>
           <p className="text-2xl font-bold tracking-tight">
             <span className="text-brand-blue">Kayak</span>{' '}
             <span className="text-brand-gold">en Ré</span>
           </p>
           <p className="mt-3 max-w-sm text-sm text-slate-200">{settings.tagline}</p>
+        </div>
+
+        <div className="space-y-3 text-sm text-slate-200">
+          <p className="font-semibold text-white">Navigation</p>
+          <div className="space-y-2">
+            <Link
+              href="/stations"
+              className="block hover:text-brand-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+            >
+              Stations
+            </Link>
+            <Link
+              href="/activities"
+              className="block hover:text-brand-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+            >
+              Activités
+            </Link>
+            <Link
+              href="/faq"
+              className="block hover:text-brand-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+            >
+              FAQ
+            </Link>
+          </div>
         </div>
 
         <div className="space-y-3 text-sm text-slate-200">
@@ -71,16 +95,23 @@ export default function Footer() {
           <p className="mt-4 text-xs text-slate-300">
             Franchise Kayakomat - Leader mondial de location de sports de pagaie
           </p>
-          <Link
-            href="/contact"
-            className="mt-4 inline-block text-sm font-medium text-brand-gold hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold"
-          >
-            Une question ? Contactez-nous
-          </Link>
         </div>
       </div>
-      <div className="border-t border-white/10 px-4 py-4 text-center text-xs text-slate-300 sm:px-6 lg:px-8">
-        © {new Date().getFullYear()} Kayak en Ré. Tous droits réservés.
+      <div className="border-t border-white/10 px-4 py-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-4 flex flex-wrap gap-4 justify-center text-xs text-slate-400">
+            <Link href="/privacy" className="hover:text-slate-200">
+              Politique de confidentialité
+            </Link>
+            <span>•</span>
+            <Link href="/terms" className="hover:text-slate-200">
+              Conditions générales
+            </Link>
+          </div>
+          <div className="text-center text-xs text-slate-300">
+            © {new Date().getFullYear()} Kayak en Ré. Tous droits réservés.
+          </div>
+        </div>
       </div>
     </footer>
   )

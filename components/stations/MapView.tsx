@@ -40,6 +40,10 @@ export default function MapView({
   zoom = 11,
   showLearnMore = true,
 }: MapViewProps) {
+  // Mobile zoom adjustment
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const mobileZoom = isMobile ? zoom - 1 : zoom
+
   return (
     <div
       className="overflow-hidden rounded-[1.6rem] border border-slate-200 shadow-ocean"
@@ -47,7 +51,7 @@ export default function MapView({
     >
       <MapContainer
         center={center}
-        zoom={zoom}
+        zoom={mobileZoom}
         zoomControl={false}
         scrollWheelZoom={false}
         style={{ height: '100%', width: '100%' }}

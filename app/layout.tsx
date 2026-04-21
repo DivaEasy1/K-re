@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { Manrope, Sora } from 'next/font/google'
+import Script from 'next/script'
 
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
@@ -91,13 +92,28 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
+      <head>
+        {/* Google Analytics - Replace with your GA4 ID */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+          `}
+        </Script>
+      </head>
       <body
         className="min-h-screen bg-white font-body text-brand-dark antialiased"
         suppressHydrationWarning
       >
         <MotionProvider>
           <Navbar />
-          <div className="relative flex min-h-screen flex-col pt-[4.85rem]">
+          <div id="main-content" className="relative flex min-h-screen flex-col pt-[4.85rem]">
             {children}
             <Footer />
           </div>

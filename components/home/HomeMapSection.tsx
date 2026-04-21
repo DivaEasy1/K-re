@@ -34,6 +34,7 @@ function normalizeForSearch(value: string) {
 export default function HomeMapSection({ stations }: HomeMapSectionProps) {
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState<StationFilter>('all')
+  const [showResults, setShowResults] = useState(false)
 
   const normalizedQuery = query.trim()
   const hasQuery = normalizedQuery.length > 0
@@ -62,6 +63,8 @@ export default function HomeMapSection({ stations }: HomeMapSectionProps) {
       ? matchedStations
       : filterStations
     : filterStations
+
+  const shouldShowResults = showResults || hasQuery
 
   return (
     <section id='home-map-section' className="relative -mt-12 pb-16 sm:-mt-14 sm:pb-20">
@@ -104,12 +107,14 @@ export default function HomeMapSection({ stations }: HomeMapSectionProps) {
                       id="home-map-search"
                       value={query}
                       onChange={(event) => setQuery(event.target.value)}
+                      onFocus={() => setShowResults(true)}
+                      onBlur={() => setTimeout(() => setShowResults(false), 200)}
                       type="search"
                       placeholder="Recherche de station ou lieu"
                       className="h-12 w-full rounded-xl border border-slate-300 bg-white pl-10 pr-4 text-sm text-brand-dark placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
                     />
 
-                    {hasQuery ? (
+                    {shouldShowResults ? (
                       <div className="absolute left-0 right-0 top-[calc(100%+0.35rem)] z-40 overflow-hidden rounded-xl border border-slate-300 bg-white shadow-[0_18px_40px_-28px_rgba(10,22,40,0.8)]">
                         {matchedStations.length > 0 ? (
                           <ul

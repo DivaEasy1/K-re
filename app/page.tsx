@@ -15,6 +15,8 @@ import HowItWorks from '@/components/home/HowItWorks'
 import KeyNumbers from '@/components/home/KeyNumbers'
 import StationsPreview from '@/components/home/StationsPreview'
 import ActivitiesPreview from '@/components/home/ActivitiesPreview'
+import TestimonialsSection from '@/components/home/TestimonialsSection'
+import NewsletterForm from '@/components/home/NewsletterForm'
 import { Button } from '@/components/ui/button'
 
 const stations = stationsData as Station[]
@@ -56,6 +58,7 @@ export default function HomePage() {
       <KeyNumbers />
       <StationsPreview stations={stations} />
       <ActivitiesPreview activities={activities} />
+      <TestimonialsSection />
 
       <section className="relative overflow-hidden py-20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_18%,rgba(30,144,255,0.3),transparent_33%),radial-gradient(circle_at_85%_80%,rgba(255,165,0,0.23),transparent_35%)]" />
