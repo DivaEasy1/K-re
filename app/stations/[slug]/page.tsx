@@ -565,9 +565,6 @@ export default async function StationDetailPage({
             <div className="rounded-4xl border border-white/70 bg-white/92 p-4 shadow-[0_20px_55px_-38px_rgba(10,22,40,0.7)] backdrop-blur sm:p-6">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <p className="mb-2 inline-flex rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
-                    Autres departs
-                  </p>
                   <h2 className="font-heading text-2xl font-bold tracking-tight text-brand-dark sm:text-3xl">
                     Explorer d&apos;autres stations ouvertes
                   </h2>

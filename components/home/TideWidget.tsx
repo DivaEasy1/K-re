@@ -1,4 +1,4 @@
-﻿import { Clock3, SquareArrowOutUpRight, Waves } from 'lucide-react'
+﻿import { SquareArrowOutUpRight, Waves } from 'lucide-react'
 
 const TIDE_WIDGET_URL =
   'https://services.data.shom.fr/hdm/vignette/grande/SAINT-MARTIN_DE_RE?locale=fr'
@@ -52,21 +52,21 @@ export default function TideWidget() {
               </p>
 
               <div className="mt-4 space-y-2">
-                <p className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
+                {/* <p className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
                   <Clock3 className="h-4 w-4 text-brand-blue" aria-hidden />
                   Vue quotidienne priorisee
                 </p>
                 <p className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
                   <Waves className="h-4 w-4 text-brand-blue" aria-hidden />
                   Interface epuree
-                </p>
-                <p className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 mt-5 text-sm text-slate-700">
+                </p> */}
+                <p className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
                   <a 
                   href="https://maree.info/126"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Profiter de l'interface complete sur maree.info">
-                  Plusieurs informations!
+                  Plus d&apos;informations!
                 </a>
                 <SquareArrowOutUpRight className="h-4 w-4 text-brand-blue" aria-hidden />
                 </p>
