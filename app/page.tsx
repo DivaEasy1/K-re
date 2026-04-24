@@ -60,6 +60,50 @@ export default function HomePage() {
       <ActivitiesPreview activities={activities} />
       <TestimonialsSection />
 
+      <section className="relative overflow-hidden py-12 sm:py-16">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(27,160,226,0.18),transparent_32%),radial-gradient(circle_at_86%_82%,rgba(248,180,0,0.16),transparent_30%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-6 overflow-hidden rounded-4xl border border-brand-dark/10 bg-white/88 p-6 shadow-[0_26px_60px_-38px_rgba(10,22,40,0.55)] backdrop-blur sm:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div>
+              <p className="mb-3 inline-flex rounded-full border border-brand-blue/15 bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
+                Newsletter K-Re
+              </p>
+              <h2 className="section-heading font-heading text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
+                Recevez les nouveautes et les meilleurs moments pour sortir
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                Une courte dose d&apos;infos utiles sur les stations, les idees de balades et les
+                temps forts a ne pas manquer sur l&apos;ile de Re.
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2 text-sm text-slate-600">
+                <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">
+                  Nouveautes des stations
+                </span>
+                <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">
+                  Conseils sortie
+                </span>
+                <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">
+                  Infos saison
+                </span>
+              </div>
+            </div>
+
+            <div className="rounded-[1.75rem] border border-slate-200/80 bg-slate-50/90 p-5 sm:p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500">
+                Restez informe
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                Pas de spam, juste l&apos;essentiel pour profiter de K-Re au bon moment.
+              </p>
+              <div className="mt-5">
+                <NewsletterForm />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="relative overflow-hidden py-20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_18%,rgba(30,144,255,0.3),transparent_33%),radial-gradient(circle_at_85%_80%,rgba(255,165,0,0.23),transparent_35%)]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
