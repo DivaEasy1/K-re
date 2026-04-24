@@ -27,7 +27,7 @@
   },
   {
     "id": "3",
-    "name": "Le Plage du Pas des Boeufs",
+    "name": "Plage du Pas des Boeufs",
     "location": "255 rue Antoine de Saint-Exupéry",
     "lat": 46.1789,
     "lng": -1.3856,
@@ -52,7 +52,7 @@
   {
     "id": "5",
     "name": "Les Portes-en-Ré",
-    "location": "Trousse-Chemise",
+    "location": "Banc des Bucherons",
     "lat": 46.2421,
     "lng": -1.5234,
     "status": "coming_soon",
@@ -63,8 +63,8 @@
   },
   {
     "id": "6",
-    "name": "Loix",
-    "location": "Dans les marais",
+    "name": "Ars en Ré",
+    "location": "Au coeur des marais",
     "lat": 46.2134,
     "lng": -1.4123,
     "status": "coming_soon",
@@ -75,7 +75,7 @@
   },
   {
     "id": "7",
-    "name": "Saint-Martin-de-Ré",
+    "name": "La Flotte-en-Ré",
     "location": "Port de Saint-Martin",
     "lat": 46.2012,
     "lng": -1.3634,
