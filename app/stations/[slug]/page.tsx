@@ -141,7 +141,7 @@ export default async function StationDetailPage({
 
           <Link
             href="/stations"
-            className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/10 px-4 py-2 text-sm font-medium text-white/92 backdrop-blur transition-colors hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/10 px-4 py-2 text-sm font-medium text-white/92 backdrop-blur transition-colors hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
             Retour aux stations
@@ -487,18 +487,18 @@ export default async function StationDetailPage({
 
       <section className="py-8 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start">
-            <div>
-              <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                <div>
+          <div className="grid gap-6 justify-items-center xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start xl:justify-items-stretch">
+            <div className="w-full max-w-[20rem] sm:max-w-4xl xl:max-w-none">
+              <div className="mb-6 flex flex-col items-center gap-3 text-center sm:flex-row sm:items-end sm:justify-between sm:text-left">
+                <div className="mx-auto max-w-[18rem] sm:mx-0 sm:max-w-2xl">
                   <p className="mb-2 inline-flex rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
                     Galerie station
                   </p>
-                  <h2 className="font-heading text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
+                  <h2 className="font-heading text-[2rem] leading-tight font-bold tracking-tight text-brand-dark sm:text-4xl">
                     Une lecture photo plus nette et plus premium
                   </h2>
                 </div>
-                <p className="max-w-xl text-sm leading-relaxed text-slate-600 sm:text-right">
+                <p className="mx-auto max-w-[18rem] text-[0.95rem] leading-relaxed text-slate-600 sm:mx-0 sm:max-w-xl sm:text-right sm:text-sm">
                   Parcourez les vues, changez d&apos;angle en un clic, puis ouvrez la galerie en
                   plein ecran pour inspecter le spot plus confortablement.
                 </p>
@@ -507,13 +507,13 @@ export default async function StationDetailPage({
               <StationGallery gallery={station.gallery} stationName={station.name} />
             </div>
 
-            <div className="space-y-4 xl:sticky xl:top-28">
+            <div className="w-full max-w-[20rem] space-y-4 sm:max-w-2xl xl:max-w-none xl:sticky xl:top-28">
               <Card className="border-white/75 bg-white/94">
-                <CardContent className="p-5">
+                <CardContent className="p-5 text-center sm:text-left">
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-blue">
                     Lecture rapide
                   </p>
-                  <p className="mt-3 text-lg font-bold tracking-tight text-brand-dark">
+                  <p className="mt-3 text-[1.45rem] leading-tight font-bold tracking-tight text-brand-dark sm:text-lg">
                     Choisissez la vue la plus utile avant de reserver
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
