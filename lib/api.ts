@@ -76,7 +76,7 @@ function normalizeActivity(activity: RawActivity): Activity {
 export async function fetchActivities() {
   try {
     const response = await fetch(`${API_BASE_URL}/activities`, {
-      next: { revalidate: 3600 }, // Cache for 1 hour
+      next: { revalidate: 0 }, // Always fetch fresh data
     })
 
     if (!response.ok) {
@@ -96,7 +96,7 @@ export async function fetchActivities() {
 export async function fetchActivityBySlug(slug: string) {
   try {
     const response = await fetch(`${API_BASE_URL}/activities/slug/${slug}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 0 },
     })
 
     if (!response.ok) {
@@ -114,7 +114,7 @@ export async function fetchActivityBySlug(slug: string) {
 export async function fetchActivityById(id: string) {
   try {
     const response = await fetch(`${API_BASE_URL}/activities/${id}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 0 },
     })
 
     if (!response.ok) {

@@ -12,6 +12,7 @@ interface CartState {
   removeItem: (activityId: string) => void
   updateQuantity: (activityId: string, quantity: number) => void
   clearCart: () => void
+  validateAndCleanCart: (validActivityIds: string[]) => void
   getTotalPrice: () => number
   getTotalItems: () => number
 }
@@ -67,6 +68,11 @@ export const useCart = create<CartState>()(
       },
       clearCart: () => {
         set({ items: [] })
+      },
+      validateAndCleanCart: (validActivityIds: string[]) => {
+        set((state) => ({
+          items: state.items.filter((item) => validActivityIds.includes(item.id)),
+        }))
       },
       getTotalPrice: () => {
         return get().items.reduce((total, item) => total + item.price * item.quantity, 0)

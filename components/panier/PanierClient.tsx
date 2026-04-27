@@ -3,18 +3,37 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Trash2, Plus, Minus, ArrowLeft } from 'lucide-react'
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import { useCart, useCartHydrated } from '@/lib/cartStore'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { BLUR_DATA_URL } from '@/lib/utils'
 import { resolveActivityImage } from '@/lib/media'
+import { fetchActivities } from '@/lib/api'
 
 export default function PanierClient() {
   const hydrated = useCartHydrated()
   const items = useCart((state) => state.items)
   const removeItem = useCart((state) => state.removeItem)
   const updateQuantity = useCart((state) => state.updateQuantity)
+  const validateAndCleanCart = useCart((state) => state.validateAndCleanCart)
+
+  // Validate cart items on mount
+  useEffect(() => {
+    const validateCart = async () => {
+      try {
+        const activities = await fetchActivities()
+        const validIds = activities.map((a) => a.id)
+        validateAndCleanCart(validIds)
+      } catch (error) {
+        console.error('Error validating cart:', error)
+      }
+    }
+
+    if (hydrated && items.length > 0) {
+      validateCart()
+    }
+  }, [hydrated, validateAndCleanCart])
 
   const totalItems = useMemo(
     () => items.reduce((total, item) => total + item.quantity, 0),
