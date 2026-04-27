@@ -1,20 +1,45 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
-import activitiesData from '@/data/activities.json'
 import settingsData from '@/data/settings.json'
 import type { Activity, Settings } from '@/types'
 import PageTransition from '@/components/layout/PageTransition'
 import ActivitiesClient from '@/components/activities/ActivitiesClient'
+import { fetchActivities } from '@/lib/api'
 
-const activities = activitiesData as Activity[]
-const settings = settingsData as Settings
-const sportCount = activities.filter((activity) => activity.category === 'sport').length
-const natureCount = activities.filter((activity) => activity.category === 'nature').length
-const featuredActivities = activities.slice(0, 3)
-const heroImage =
-  activities[0]?.image ??
-  'https://images.pexels.com/photos/7753828/pexels-photo-7753828.jpeg?auto=compress&cs=tinysrgb&w=1800'
+const defaultSettings: Settings = {
+  siteName: 'Kayak en Re',
+  tagline: 'L\'aventure aquatique en toute liberte',
+  contact: {
+    address: '',
+    city: '',
+    phone: '',
+    email: '',
+  },
+  social: {
+    facebook: '',
+    instagram: '',
+  },
+  bookingUrl: 'https://www.kayakomat.com',
+  kayakomatStats: {
+    countries: 0,
+    stations: 0,
+    stationsFrance: 0,
+    paddlers: 0,
+  },
+}
+
+const settings = (settingsData || defaultSettings) as Settings
+
+async function getActivitiesData() {
+  try {
+    const activities = await fetchActivities()
+    return activities as Activity[]
+  } catch (error) {
+    console.error('Failed to fetch activities:', error)
+    return [] as Activity[]
+  }
+}
 
 export const metadata: Metadata = {
   title: 'Activites',
@@ -25,11 +50,16 @@ export const metadata: Metadata = {
     description:
       "Toutes nos activites kayak et paddle sur l'ile de Re, pour tous les niveaux.",
     url: 'https://www.kayak-en-re.fr/activities',
-    images: [heroImage],
+    images: [
+      'https://images.pexels.com/photos/7753828/pexels-photo-7753828.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    ],
   },
 }
 
-export default function ActivitiesPage() {
+export default async function ActivitiesPage() {
+  const activities = await getActivitiesData()
+  const sportCount = activities.filter((activity) => activity.category === 'sport').length
+  const natureCount = activities.filter((activity) => activity.category === 'nature').length
   return (
     <PageTransition>
       <section
@@ -87,37 +117,6 @@ export default function ActivitiesPage() {
               </div>
             </div>
           </header>
-
-          <section className="gsap-reveal grid gap-4 md:grid-cols-3">
-            {featuredActivities.map((activity) => (
-              <article
-                key={activity.id}
-                data-gsap-hover
-                className="group relative overflow-hidden rounded-[1.6rem] border border-white/75 shadow-[0_20px_50px_-34px_rgba(10,22,40,0.75)]"
-              >
-                <div className="relative h-64">
-                  <Image
-                    src={activity.image}
-                    alt={activity.title}
-                    fill
-                    sizes="(min-width: 768px) 33vw, 100vw"
-                    quality={70}
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-brand-dark/85 via-brand-dark/35 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <p className="inline-flex rounded-full border border-white/35 bg-white/15 px-3 py-1 text-xs font-semibold backdrop-blur">
-                      Photo reelle
-                    </p>
-                    <h2 className="mt-2 font-heading text-xl font-bold tracking-tight">
-                      {activity.title}
-                    </h2>
-                    <p className="mt-1 text-sm text-white/90">{activity.duration} - {activity.price}</p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </section>
 
           <ActivitiesClient activities={activities} bookingUrl={settings.bookingUrl} />
         </div>

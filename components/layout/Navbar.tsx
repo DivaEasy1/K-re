@@ -8,6 +8,7 @@ import { Menu, X } from 'lucide-react'
 import settings from '@/data/settings.json'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import CartButton from '@/components/layout/CartButton'
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
@@ -146,12 +147,11 @@ export default function Navbar() {
             </a>
           </Button>
 
+          <CartButton />
+
           <span
-            className={cn(
-              'rounded-full border border-white/22 px-3 py-1 text-xs font-semibold text-white/80 transition-opacity',
-              isHome ? 'opacity-100' : 'opacity-0'
-            )}
-            aria-hidden={!isHome}
+            className="rounded-full border border-white/22 px-3 py-1 text-xs font-semibold text-white/80"
+            aria-hidden={false}
           >
             Stations ouvertes 7/7
           </span>

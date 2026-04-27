@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CircleCheckBig, MessageSquareText, TimerReset } from 'lucide-react'
 
-import activitiesData from '@/data/activities.json'
 import settings from '@/data/settings.json'
 import stationsData from '@/data/stations.json'
 import type { Activity, Station } from '@/types'
@@ -18,9 +17,19 @@ import ActivitiesPreview from '@/components/home/ActivitiesPreview'
 import TestimonialsSection from '@/components/home/TestimonialsSection'
 import NewsletterForm from '@/components/home/NewsletterForm'
 import { Button } from '@/components/ui/button'
+import { fetchActivities } from '@/lib/api'
 
 const stations = stationsData as Station[]
-const activities = activitiesData as Activity[]
+
+async function getActivitiesData() {
+  try {
+    const activities = await fetchActivities()
+    return activities as Activity[]
+  } catch (error) {
+    console.error('Failed to fetch activities:', error)
+    return [] as Activity[]
+  }
+}
 
 export const metadata: Metadata = {
   title: 'Accueil',
@@ -47,7 +56,8 @@ export const metadata: Metadata = {
     ],
   },
 }
-export default function HomePage() {
+export default async function HomePage() {
+  const activities = await getActivitiesData()
   return (
     <PageTransition>
       <Hero />
