@@ -76,7 +76,7 @@ function normalizeActivity(activity: RawActivity): Activity {
 export async function fetchActivities() {
   try {
     const response = await fetch(`${API_BASE_URL}/activities`, {
-      next: { revalidate: 0 }, // Always fetch fresh data
+      next: { revalidate: 3600 }, // fetch fresh data: 1h
     })
 
     if (!response.ok) {
