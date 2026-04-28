@@ -33,6 +33,7 @@ export default function PanierClient() {
     if (hydrated && items.length > 0) {
       validateCart()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hydrated, validateAndCleanCart])
 
   const totalItems = useMemo(
@@ -74,7 +75,7 @@ export default function PanierClient() {
           <Card key={item.id} className="overflow-hidden border-white/80 bg-white/95">
             <CardContent className="p-4">
               <div className="flex gap-4">
-                <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg">
+                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg">
                   <Image
                     src={resolveActivityImage(item.image, { title: item.title, slug: item.slug })}
                     alt={item.title}

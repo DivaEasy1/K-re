@@ -42,6 +42,6 @@ npm run build     → Production build
 npm run lint      → Run ESLint
 
 ## Phase 2 (later)
-Admin dashboard + Strapi CMS will be added.
+Admin dashboard
 JSON files will be replaced by API calls.
 Keep components clean and data-agnostic.

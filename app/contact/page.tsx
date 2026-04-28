@@ -5,6 +5,7 @@ import settingsData from '@/data/settings.json'
 import stationsData from '@/data/stations.json'
 import type { Settings, Station } from '@/types'
 import PageTransition from '@/components/layout/PageTransition'
+import HeroSection from '@/components/layout/HeroSection'
 import ContactForm from '@/components/contact/ContactForm'
 import ContactMap from '@/components/contact/ContactMap'
 
@@ -30,24 +31,21 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <PageTransition>
+      <HeroSection
+        variant="contact"
+        title={<>Nous <span className="bg-linear-to-r from-brand-gold to-amber-400 bg-clip-text text-transparent">contacter</span></>}
+        subtitle="Une question ? Un partenariat ? Notre équipe K-Ré vous répond rapidement. Disponible 7j/7 pendant la saison."
+        badge="💬 Assistance"
+        backgroundImage="https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800"
+        cta={[
+          { label: 'Formulaire de contact', href: '#contact-form', variant: 'primary' },
+          { label: 'Appeler directement', href: `tel:${settings.contact.phone}`, variant: 'secondary' },
+        ]}
+      />
       <section className="relative overflow-hidden py-16">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_12%,rgba(30,144,255,0.14),transparent_30%),radial-gradient(circle_at_84%_20%,rgba(255,165,0,0.12),transparent_33%)]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="space-y-6">
-              <header className="gsap-reveal rounded-4xl border border-white/60 bg-white/75 p-6 shadow-[0_20px_45px_-30px_rgba(10,22,40,0.45)] backdrop-blur sm:p-8">
-                <p className="mb-3 inline-flex rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
-                  Assistance K-Ré
-                </p>
-                <h1 className="section-heading font-heading text-4xl font-bold tracking-tight text-brand-dark sm:text-5xl">
-                  Contactez-nous
-                </h1>
-                <p className="mt-3 text-base leading-relaxed text-slate-600">
-                  Une question sur une station, une activité ou la réservation ?
-                  Notre équipe vous répond rapidement.
-                </p>
-              </header>
-
               <div className="gsap-reveal space-y-3 rounded-4xl border border-slate-200 bg-white p-6 shadow-sm">
                 <p className="flex items-start gap-3 text-sm text-slate-700">
                   <MapPin className="mt-0.5 h-5 w-5 text-brand-blue" />
@@ -103,7 +101,7 @@ export default function ContactPage() {
               <ContactMap station={mainStation} />
             </div>
 
-            <div>
+            <div id="contact-form">
               <ContactForm />
             </div>
           </div>

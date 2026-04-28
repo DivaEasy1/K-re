@@ -23,7 +23,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
-  const isHome = pathname === '/'
 
   useEffect(() => {
     const SCROLL_ENTER = 18
