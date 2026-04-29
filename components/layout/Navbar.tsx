@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 
-import settings from '@/data/settings.json'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import CartButton from '@/components/layout/CartButton'
@@ -136,14 +135,9 @@ export default function Navbar() {
             size="sm"
             className="h-10 bg-brand-gold px-5 text-brand-dark shadow-[0_14px_30px_-18px_rgba(255,165,0,1)] hover:-translate-y-0.5 hover:bg-amber-300"
           >
-            <a
-              href={settings.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Reserver sur Kayakomat"
-            >
+            <Link href="/stations" aria-label="Voir les stations">
               Reserver
-            </a>
+            </Link>
           </Button>
 
           <CartButton />
@@ -206,15 +200,9 @@ export default function Navbar() {
               asChild
               className="mt-1 w-full bg-brand-gold text-brand-dark hover:bg-amber-300"
             >
-              <a
-                href={settings.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-                aria-label="Reserver maintenant sur Kayakomat"
-              >
+              <Link href="/stations" onClick={() => setOpen(false)} aria-label="Voir les stations">
                 Reserver
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

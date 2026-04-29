@@ -7,8 +7,7 @@ import Link from 'next/link'
 import { MapContainer, Marker, Popup, TileLayer, Tooltip, ZoomControl } from 'react-leaflet'
 
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { getStationHref, resolveStationBookingUrl } from '@/lib/stations'
+import { getStationHref } from '@/lib/stations'
 import type { Station } from '@/types'
 
 const openIcon = L.divIcon({
@@ -31,7 +30,17 @@ interface MapViewProps {
   center?: [number, number]
   zoom?: number
   showLearnMore?: boolean
+  selectedStationId?: string | null
+  onStationSelect?: (station: Station) => void
 }
+
+const getStationIcon = (color: string, selected = false) =>
+  L.divIcon({
+    className: '',
+    html: `<span style="display:block;width:${selected ? 24 : 18}px;height:${selected ? 24 : 18}px;background:${color};border:3px solid #ffffff;border-radius:9999px;box-shadow:0 0 0 ${selected ? 4 : 2}px rgba(30,144,255,0.35)"></span>`,
+    iconSize: [selected ? 24 : 18, selected ? 24 : 18],
+    iconAnchor: [selected ? 12 : 9, selected ? 12 : 9],
+  })
 
 export default function MapView({
   stations,
@@ -39,6 +48,8 @@ export default function MapView({
   center = [46.19, -1.4],
   zoom = 11,
   showLearnMore = true,
+  selectedStationId = null,
+  onStationSelect,
 }: MapViewProps) {
   // Mobile zoom adjustment
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
@@ -64,14 +75,24 @@ export default function MapView({
 
         {stations.map((station) => {
           const detailHref = getStationHref(station)
-          const bookingUrl =
-            station.status === 'open' ? resolveStationBookingUrl(station) : null
+          const isSelected = station.id === selectedStationId
 
           return (
             <Marker
               key={station.id}
               position={[station.lat, station.lng]}
-              icon={station.status === 'open' ? openIcon : comingSoonIcon}
+              icon={
+                isSelected
+                  ? getStationIcon('#1E90FF', true)
+                  : station.status === 'open'
+                  ? openIcon
+                  : comingSoonIcon
+              }
+              eventHandlers={{
+                click: () => {
+                  onStationSelect?.(station)
+                },
+              }}
             >
               <Tooltip direction="top" offset={[0, -10]}>
                 {station.name}
@@ -88,38 +109,33 @@ export default function MapView({
                     {station.status === 'open' ? 'Ouvert' : 'Bientot'}
                   </Badge>
 
-                  {bookingUrl ? (
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="sm"
-                      className="ml-2 h-7 w-fit border-black bg-white/10 text-black hover:bg-white/20"
-                    >
+                  <div className="space-y-2 pt-2">
+                    {station.status === 'open' && station.bookingUrl ? (
                       <a
-                        href={bookingUrl}
+                        href={station.bookingUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`Reserver ${station.name} sur Kayakomat`}
+                        className="block rounded-lg bg-brand-gold px-3 py-2 text-center text-xs font-semibold text-brand-dark transition-colors hover:bg-amber-300"
                       >
                         Reserver
                       </a>
-                    </Button>
-                  ) : station.status === 'open' ? (
-                    <p className="text-xs font-medium text-slate-500">
-                      Reservation bientot disponible
-                    </p>
-                  ) : null}
-
-                  {showLearnMore ? (
-                    <div>
+                    ) : station.status === 'open' ? (
+                      <button
+                        disabled
+                        className="w-full rounded-lg bg-slate-200 px-3 py-2 text-center text-xs font-semibold text-slate-500"
+                      >
+                        Reservation bientot
+                      </button>
+                    ) : null}
+                    {showLearnMore ? (
                       <Link
                         href={detailHref ?? `/stations#station-${station.id}`}
-                        className="inline-flex rounded-full bg-brand-blue px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+                        className="block rounded-lg border border-brand-blue bg-white px-3 py-2 text-center text-xs font-semibold text-brand-blue transition-colors hover:bg-blue-50"
                       >
                         {detailHref ? 'Voir la fiche' : 'En savoir plus'}
                       </Link>
-                    </div>
-                  ) : null}
+                    ) : null}
+                  </div>
                 </div>
               </Popup>
             </Marker>

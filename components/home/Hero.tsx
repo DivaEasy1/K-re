@@ -73,14 +73,9 @@ export default function Hero() {
                 size="lg"
                 className="w-full bg-brand-gold text-brand-dark shadow-[0_16px_40px_-20px_rgba(255,165,0,0.95)] hover:bg-amber-300 sm:w-auto"
               >
-                <a
-                  href={settings.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Reserver maintenant sur Kayakomat"
-                >
+                <Link href="/stations" aria-label="Reserver maintenant">
                   Reserver maintenant
-                </a>
+                </Link>
               </Button>
 
               <Button
@@ -89,8 +84,8 @@ export default function Hero() {
                 size="lg"
                 className="w-full border-white/50 bg-white/10 text-white hover:bg-white/20 sm:w-auto"
               >
-                <Link href="/stations" aria-label="Decouvrir les stations">
-                  Decouvrir nos stations
+                <Link href="/activities" aria-label="Decouvrir les activites">
+                  Decouvrir nos activites
                 </Link>
               </Button>
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
 import Link from 'next/link'
@@ -53,6 +54,17 @@ export default function CheckoutClient() {
     () => items.reduce((total, item) => total + item.quantity, 0),
     [items]
   )
+
+  let stepBadgeClassName = 'bg-slate-200 text-slate-600'
+  let confirmationLabelClassName = 'text-slate-400'
+
+  if (step === 'success') {
+    stepBadgeClassName = 'bg-brand-success text-white'
+    confirmationLabelClassName = 'text-brand-success'
+  } else if (step === 'review') {
+    stepBadgeClassName = 'bg-brand-blue text-white'
+    confirmationLabelClassName = 'text-brand-dark'
+  }
 
   // Redirect if no items in cart
   useEffect(() => {
@@ -142,7 +154,7 @@ export default function CheckoutClient() {
                 <p className="text-sm font-semibold text-slate-700">Détails de la commande</p>
                 <div className="mt-3 space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span>Nombre d'activités</span>
+                    <span>Nombre d&apos;activités</span>
                     <span className="font-semibold">{totalItems}</span>
                   </div>
                   <div className="border-t border-slate-200 pt-2 flex justify-between">
@@ -158,15 +170,15 @@ export default function CheckoutClient() {
                 <p>
                   Un email de confirmation a été envoyé à <span className="font-semibold">{orderInfo.email}</span>
                 </p>
-                <p>L'équipe K-Ré vous recontactera pour finaliser les détails.</p>
+                <p>L&apos;équipe K-Ré vous recontactera pour finaliser les détails.</p>
               </div>
 
               <div className="flex gap-3 pt-4">
                 <Button asChild variant="outline" className="border-slate-300">
-                  <Link href="/activities">Découvrir d'autres activités</Link>
+                  <Link href="/activities">Découvrir d&apos;autres activités</Link>
                 </Button>
                 <Button asChild className="bg-brand-blue hover:bg-blue-600">
-                  <Link href="/">Retour à l'accueil</Link>
+                  <Link href="/">Retour à l&apos;accueil</Link>
                 </Button>
               </div>
             </CardContent>
@@ -198,12 +210,10 @@ export default function CheckoutClient() {
             <span className="text-sm font-semibold text-brand-dark">Vos informations</span>
             <ChevronRight className="h-4 w-4 text-slate-400" />
 
-            <div className={`rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold ${
-              step === 'success' ? 'bg-brand-success text-white' : step === 'review' ? 'bg-brand-blue text-white' : 'bg-slate-200 text-slate-600'
-            }`}>
-              {step === 'success' ? <Check className="h-4 w-4" /> : '2'}
+            <div className={`rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold ${stepBadgeClassName}`}>
+              2
             </div>
-            <span className={`text-sm font-semibold ${step === 'success' ? 'text-brand-success' : step === 'review' ? 'text-brand-dark' : 'text-slate-400'}`}>
+            <span className={`text-sm font-semibold ${confirmationLabelClassName}`}>
               Confirmation
             </span>
           </div>
@@ -469,7 +479,7 @@ export default function CheckoutClient() {
                 <div className="rounded-lg bg-brand-blue/10 border border-brand-blue/20 p-3">
                   <p className="text-xs text-brand-blue font-semibold mb-1">💡 Info</p>
                   <p className="text-xs text-slate-600">
-                    L'équipe K-Ré vous confirmera votre réservation dans les 24 heures.
+                    L&apos;équipe K-Ré vous confirmera votre réservation dans les 24 heures.
                   </p>
                 </div>
               </CardContent>

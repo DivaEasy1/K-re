@@ -78,7 +78,7 @@ export default async function ActivitiesPage() {
         ]}
       />
       <section id="activities-grid" className="relative mx-auto max-w-7xl space-y-8 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <ActivitiesClient activities={activities} bookingUrl={settings.bookingUrl} />
+        <ActivitiesClient activities={activities} />
       </section>
     </PageTransition>
   )

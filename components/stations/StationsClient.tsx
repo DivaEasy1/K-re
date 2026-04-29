@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import LoadingState from '@/components/ui/loading-state'
 import StationCard from '@/components/stations/StationCard'
+import { getStationHref } from '@/lib/stations'
 
 const MapView = dynamic(() => import('@/components/stations/MapView'), {
   ssr: false,
@@ -26,11 +27,11 @@ const labels: Record<Filter, string> = {
 
 interface StationsClientProps {
   stations: Station[]
-  bookingUrl: string
 }
 
-export default function StationsClient({ stations, bookingUrl }: StationsClientProps) {
+export default function StationsClient({ stations }: StationsClientProps) {
   const [filter, setFilter] = useState<Filter>('all')
+  const [selectedStation, setSelectedStation] = useState<Station | null>(null)
   const gridRef = useRef<HTMLDivElement>(null)
   const filterRef = useRef<HTMLDivElement>(null)
   const indicatorRef = useRef<HTMLSpanElement>(null)
@@ -170,7 +171,12 @@ export default function StationsClient({ stations, bookingUrl }: StationsClientP
                 />
               }
             >
-              <MapView stations={stations} height={500} />
+              <MapView
+                stations={stations}
+                height={500}
+                selectedStationId={selectedStation?.id ?? null}
+                onStationSelect={setSelectedStation}
+              />
             </Suspense>
           </div>
 
@@ -203,13 +209,71 @@ export default function StationsClient({ stations, bookingUrl }: StationsClientP
             >
               <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">Reservation express</p>
               <p className="mt-1 text-sm leading-relaxed text-slate-700">
-                Selectionnez votre spot, puis finalisez en quelques clics sur Kayakomat.
+                Cliquez sur une station dans la carte pour afficher ses details et acceder a la fiche.
               </p>
-              <Button asChild className="mt-3 w-full bg-brand-dark hover:bg-slate-900">
-                <Link href={bookingUrl} target="_blank" rel="noreferrer">
-                  Reserver maintenant
-                </Link>
-              </Button>
+              <div className="mt-4 rounded-3xl border border-white/20 bg-white/80 p-4 text-sm text-slate-700">
+                {selectedStation ? (
+                  <>
+                    <p className="font-semibold text-brand-dark">{selectedStation.name}</p>
+                    <p className="mt-1 text-slate-600">{selectedStation.location}</p>
+                    <p className="mt-1 text-xs uppercase tracking-[0.12em] text-slate-500">
+                      {selectedStation.status === 'open'
+                        ? `Ouvert depuis ${selectedStation.openYear}`
+                        : `Ouverture prevue en ${selectedStation.openYear}`}
+                    </p>
+                  </>
+                ) : (
+                  <p>Selectionnez une station dans la carte pour afficher ses informations.</p>
+                )}
+              </div>
+              <div className="mt-4 space-y-2">
+                {selectedStation ? (
+                  selectedStation.status === 'open' ? (
+                    <>
+                      {selectedStation.bookingUrl ? (
+                        <Button asChild className="w-full bg-brand-gold text-brand-dark hover:bg-amber-300">
+                          <a
+                            href={selectedStation.bookingUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Reserver maintenant sur Kayakomat"
+                          >
+                            Reserver
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button
+                          disabled
+                          className="w-full bg-slate-200 text-slate-500 opacity-100 shadow-none hover:translate-y-0"
+                        >
+                          Reservation bientot
+                        </Button>
+                      )}
+                      <Button asChild variant="outline" className="w-full border-slate-300">
+                        <Link href={getStationHref(selectedStation) ?? '/stations'}>
+                          Voir la fiche
+                        </Link>
+                      </Button>
+                    </>
+                  ) : (
+                    <Button
+                      size="lg"
+                      disabled
+                      className="w-full bg-slate-200 text-slate-500 opacity-100 shadow-none hover:translate-y-0"
+                    >
+                      Bientôt disponible
+                    </Button>
+                  )
+                ) : (
+                  <Button
+                    size="lg"
+                    disabled
+                    className="w-full bg-slate-200 text-slate-500 opacity-100 shadow-none hover:translate-y-0"
+                  >
+                    Selectionnez une station
+                  </Button>
+                )}
+              </div>
             </article>
           </aside>
         </div>

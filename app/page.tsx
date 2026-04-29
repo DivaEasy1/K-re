@@ -157,14 +157,9 @@ export default async function HomePage() {
                   size="lg"
                   className="w-full bg-brand-gold text-brand-dark shadow-[0_16px_40px_-20px_rgba(255,165,0,0.95)] hover:bg-amber-300"
                 >
-                  <a
-                    href={settings.bookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Reserver sur Kayakomat"
-                  >
+                  <Link href="/stations" aria-label="Voir les stations">
                     Reserver maintenant
-                  </a>
+                  </Link>
                 </Button>
                 <Button
                   asChild
@@ -172,8 +167,8 @@ export default async function HomePage() {
                   size="lg"
                   className="w-full border-white/40 bg-white/5 text-white hover:bg-white/15"
                 >
-                  <Link href="/stations" aria-label="Voir toutes les stations">
-                    Voir les stations
+                  <Link href="/activities" aria-label="Voir toutes les activites">
+                    Voir les activites
                   </Link>
                 </Button>
               </div>

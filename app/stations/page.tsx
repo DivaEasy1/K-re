@@ -47,7 +47,7 @@ export default function StationsPage() {
         ]}
       />
       <section id="stations-map" className="relative mx-auto max-w-7xl space-y-8 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <StationsClient stations={stations} bookingUrl={settings.bookingUrl} />
+        <StationsClient stations={stations} />
       </section>
     </PageTransition>
   )
