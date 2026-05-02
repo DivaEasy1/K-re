@@ -1,7 +1,7 @@
 import type { Activity } from '@/types'
 import { resolveActivityImage } from '@/lib/media'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 type RawActivity = {
   id: string

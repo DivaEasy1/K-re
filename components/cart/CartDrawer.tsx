@@ -10,7 +10,7 @@ import { useCart, useCartHydrated } from '@/lib/cartStore'
 import { Button } from '@/components/ui/button'
 import { BLUR_DATA_URL } from '@/lib/utils'
 import { resolveActivityImage } from '@/lib/media'
-import settings from '@/data/settings.json'
+// import settings from '@/data/settings.json'
 
 interface CartDrawerProps {
   isOpen: boolean
@@ -89,7 +89,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   return (
     <div
       ref={drawerRef}
-      className="fixed inset-0 z-[140] hidden flex-col items-end overflow-hidden"
+      className="fixed inset-0 z-140 hidden flex-col items-end overflow-hidden"
     >
       {/* Dark Overlay */}
       <div
@@ -123,7 +123,12 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
         </div>
 
         {/* Items List */}
-        <div className="flex-1 overflow-y-auto px-6 py-4">
+        <div
+          data-lenis-prevent
+          onWheel={(event) => event.stopPropagation()}
+          onTouchMove={(event) => event.stopPropagation()}
+          className="flex-1 min-h-0 overflow-y-auto px-6 py-4"
+        >
           {items.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-3 py-12 text-center">
               <div className="rounded-full bg-slate-100 p-3">
@@ -160,7 +165,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                   className="flex gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 transition-colors hover:bg-slate-100"
                 >
                   {/* Image */}
-                  <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg">
+                  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg">
                     <Image
                       src={resolveActivityImage(item.image, {
                         title: item.title,
@@ -213,7 +218,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                         className="ml-auto rounded p-0.5 text-red-500 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1"
                         aria-label="Supprimer l'article"
                       >
-                        <Trash2 className="h-3 w-3" />
+                        <Trash2 className="h-5 w-5" />
                       </button>
                     </div>
                   </div>
@@ -229,7 +234,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
             {/* Summary */}
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-slate-600">Nombre d'articles</span>
+                <span className="text-slate-600">Nombre d&apos;articles</span>
                 <span className="font-semibold text-brand-dark">{totalItems}</span>
               </div>
               <div className="border-t border-slate-200 pt-2 flex justify-between">
