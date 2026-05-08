@@ -1,15 +1,27 @@
+export interface StationImage {
+  id: string
+  url: string
+  alt: string
+  position: number
+}
+
+export type StationStatus = 'open' | 'coming_soon' | 'closed' | 'maintenance'
+
 export interface Station {
   id: string
   name: string
+  slug?: string
   location: string
   lat: number
   lng: number
-  status: 'open' | 'coming_soon'
-  openYear: number
+  status: StationStatus
+  openYear?: number
   description: string
+  richContent?: string
   image: string
   bookingUrl?: string
   equipment: string[]
+  gallery?: string[]
 }
 
 export interface StationDetailContent {

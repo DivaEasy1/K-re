@@ -49,7 +49,7 @@ export default function StationsClient({ stations }: StationsClientProps) {
   const nextStation = useMemo(() => {
     return stations
       .filter((station) => station.status === 'coming_soon')
-      .sort((a, b) => a.openYear - b.openYear)[0]
+      .sort((a, b) => (a.openYear ?? Number.POSITIVE_INFINITY) - (b.openYear ?? Number.POSITIVE_INFINITY))[0]
   }, [stations])
 
   const getMotionProfile = () => {

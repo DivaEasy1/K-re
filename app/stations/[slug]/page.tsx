@@ -17,6 +17,7 @@ import {
 import PageTransition from '@/components/layout/PageTransition'
 import StationGallery from '@/components/stations/StationGallery'
 import StationCard from '@/components/stations/StationCard'
+import { StationRichContent } from '@/components/stations/StationRichContent'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -24,7 +25,8 @@ import Breadcrumb from '@/components/ui/breadcrumb'
 import { getOpenStationPages, getStationPageBySlug } from '@/lib/stations'
 import { BLUR_DATA_URL } from '@/lib/utils'
 
-export const dynamicParams = false
+// Allow station pages to keep working even if station data changes after a previous build.
+export const dynamicParams = true
 
 function equipmentLabel(equipment: string) {
   if (equipment === 'kayak_tandem') {
@@ -569,6 +571,12 @@ export default async function StationDetailPage({
           </div>
         </div>
       </section>
+
+      {station.richContent && (
+        <section className="border-y border-white/8 bg-white/3 backdrop-blur">
+          <StationRichContent content={station.richContent} />
+        </section>
+      )}
 
       {relatedStations.length > 0 ? (
         <section className="pb-18 pt-8 sm:pb-20">
