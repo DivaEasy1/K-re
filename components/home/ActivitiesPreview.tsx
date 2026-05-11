@@ -4,8 +4,6 @@ import type { Activity } from '@/types'
 import ActivityCard from '@/components/activities/ActivityCard'
 
 export default function ActivitiesPreview({ activities }: { activities: Activity[] }) {
-  const topActivities = activities.slice(0, 3)
-
   return (
     <section className="bg-brand-light/70 py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -25,12 +23,13 @@ export default function ActivitiesPreview({ activities }: { activities: Activity
             Voir toutes les activites →
           </Link>
         </div>
-        <div className="gsap-stagger mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {topActivities.map((activity) => (
-            <div key={activity.id}>
-              <ActivityCard activity={activity} />
-            </div>
-          ))}
+        <div className="mt-8 rounded-3xl border border-brand-blue/20 bg-white/60 backdrop-blur p-12 text-center">
+          <p className="text-lg font-medium text-slate-700 mb-3">
+            Les activités seront bientôt disponibles
+          </p>
+          <p className="text-slate-600 max-w-2xl mx-auto">
+            Nous préparons une sélection curatée d'expériences premium pour enrichir votre séjour. Revenez nous voir très prochainement pour découvrir des aventures inoubliables sur l'île de Ré.
+          </p>
         </div>
       </div>
     </section>
