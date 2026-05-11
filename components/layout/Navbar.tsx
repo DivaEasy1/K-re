@@ -7,7 +7,6 @@ import { Menu, X } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import CartButton from '@/components/layout/CartButton'
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
@@ -139,8 +138,6 @@ export default function Navbar() {
               Reserver
             </Link>
           </Button>
-
-          <CartButton />
 
           <span
             className="rounded-full border border-white/22 px-3 py-1 text-xs font-semibold text-white/80"

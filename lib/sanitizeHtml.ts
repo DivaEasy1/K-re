@@ -7,7 +7,7 @@ export function sanitizeHtml(html: string | null | undefined): string | null {
   if (!html) return null
 
   // Allowed tags and their allowed attributes
-  const allowedTags = ['p', 'br', 'strong', 'b', 'em', 'i', 'u', 'h2', 'h3', 'ul', 'ol', 'li', 'a', 'blockquote']
+  const allowedTags = ['p', 'br', 'strong', 'b', 'em', 'i', 'u', 'h1', 'h2', 'h3', 'ul', 'ol', 'li', 'a', 'blockquote']
   const allowedAttributes: Record<string, string[]> = {
     a: ['href', 'title', 'target', 'rel']
   }

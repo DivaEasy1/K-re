@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next'
 
 import { getOpenStationPages } from '@/lib/stations'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = 'https://www.kayak-en-re.fr'
-  const stationPages = getOpenStationPages().map((station) => ({
+  const stationPages = (await getOpenStationPages()).map((station) => ({
     url: `${base}/stations/${station.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,

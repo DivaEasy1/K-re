@@ -1,16 +1,13 @@
 ﻿import type { Metadata } from 'next'
 
-import stationsData from '@/data/stations.json'
 import settingsData from '@/data/settings.json'
-import type { Settings, Station } from '@/types'
+import type { Settings } from '@/types'
 import PageTransition from '@/components/layout/PageTransition'
 import HeroSection from '@/components/layout/HeroSection'
 import StationsClient from '@/components/stations/StationsClient'
+import { getMergedStations } from '@/lib/stations'
 
-const stations = stationsData as Station[]
 const settings = settingsData as Settings
-const openCount = stations.filter((station) => station.status === 'open').length
-const comingSoonCount = stations.length - openCount
 
 export const metadata: Metadata = {
   title: 'Stations',
@@ -27,7 +24,10 @@ export const metadata: Metadata = {
   },
 }
 
-export default function StationsPage() {
+export default async function StationsPage() {
+  const stations = await getMergedStations()
+  const openCount = stations.filter((station) => station.status === 'open').length
+  const comingSoonCount = stations.filter((station) => station.status === 'coming_soon').length
 
   return (
     <PageTransition>

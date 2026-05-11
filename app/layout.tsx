@@ -8,8 +8,6 @@ import Footer from '@/components/layout/Footer'
 import BackToTop from '@/components/layout/BackToTop'
 import MotionProvider from '@/components/layout/MotionProvider'
 import ClientEffects from '@/components/layout/ClientEffects'
-import { CartDrawerProvider } from '@/lib/cart-drawer-context'
-import CartDrawerContainer from '@/components/cart/CartDrawerContainer'
 
 const bodyFont = Manrope({
   subsets: ['latin'],
@@ -113,18 +111,15 @@ export default function RootLayout({
         className="min-h-screen bg-white font-body text-brand-dark antialiased"
         suppressHydrationWarning
       >
-        <CartDrawerProvider>
-          <MotionProvider>
-            <Navbar />
-            <div id="main-content" className="relative flex min-h-screen flex-col pt-[4.85rem]">
-              {children}
-              <Footer />
-            </div>
-            <ClientEffects />
-            <BackToTop />
-            <CartDrawerContainer />
-          </MotionProvider>
-        </CartDrawerProvider>
+        <MotionProvider>
+          <Navbar />
+          <div id="main-content" className="relative flex min-h-screen flex-col pt-[4.85rem]">
+            {children}
+            <Footer />
+          </div>
+          <ClientEffects />
+          <BackToTop />
+        </MotionProvider>
       </body>
     </html>
   )

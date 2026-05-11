@@ -2,15 +2,12 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShoppingCart } from 'lucide-react'
 
 import type { Activity } from '@/types'
 import { BLUR_DATA_URL } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { useCart } from '@/lib/cartStore'
-import { useState } from 'react'
 
 const difficultyStyles = {
   easy: {
@@ -39,14 +36,6 @@ export default function ActivityCard({ activity }: { activity: Activity }) {
     difficultyStyles[activity.difficulty as keyof typeof difficultyStyles] ?? difficultyStyles.easy
   const category =
     categoryLabels[activity.category as keyof typeof categoryLabels] ?? 'Experience'
-  const [isAdding, setIsAdding] = useState(false)
-  const addItem = useCart((state) => state.addItem)
-
-  const handleAddToCart = () => {
-    setIsAdding(true)
-    addItem(activity, 1)
-    setTimeout(() => setIsAdding(false), 1000)
-  }
 
   return (
     <div className="gsap-card h-full transform-gpu transition-transform duration-200 hover:-translate-y-1">
@@ -99,20 +88,11 @@ export default function ActivityCard({ activity }: { activity: Activity }) {
               asChild
               variant="outline"
               size="sm"
-              className="flex-1"
+              className="w-full"
             >
               <Link href={`/activities/${activity.slug || activity.id}`}>
                 Détails
               </Link>
-            </Button>
-            <Button
-              onClick={handleAddToCart}
-              disabled={isAdding}
-              size="sm"
-              className="flex-1 gap-2 bg-brand-gold hover:bg-amber-300 text-brand-dark"
-            >
-              <ShoppingCart className="h-4 w-4" />
-              {isAdding ? 'Ajouté!' : 'Panier'}
             </Button>
           </div>
         </CardFooter>

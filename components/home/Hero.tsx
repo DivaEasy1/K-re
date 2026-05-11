@@ -6,12 +6,10 @@ import { ChevronDown, Waves } from 'lucide-react'
 import WeatherWidget from '@/components/layout/WeatherWidget'
 import { Button } from '@/components/ui/button'
 import settings from '@/data/settings.json'
-import stationsData from '@/data/stations.json'
 import { BLUR_DATA_URL } from '@/lib/utils'
 import type { Station } from '@/types'
 
-export default function Hero() {
-  const stations = stationsData as Station[]
+export default function Hero({ stations }: { stations: Station[] }) {
   const openStations = stations.filter((station) => station.status === 'open').length
 
   return (

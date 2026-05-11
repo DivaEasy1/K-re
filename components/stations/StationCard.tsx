@@ -29,23 +29,35 @@ export default function StationCard({ station }: { station: Station }) {
   const open = station.status === 'open'
   const detailHref = getStationHref(station)
   const bookingUrl = open ? resolveStationBookingUrl(station) : null
+  
+  // Use image, fallback to first gallery image, or empty string will be handled by next/image
+  const imageUrl = station.image && station.image.trim() 
+    ? station.image 
+    : station.gallery?.[0] || null
 
   return (
     <div className="gsap-card h-full transform-gpu transition-transform duration-200 hover:-translate-y-1">
       <Card className="group relative h-full overflow-hidden border-white/80 bg-white/95 shadow-[0_18px_40px_-28px_rgba(10,22,40,0.6)] transition-shadow hover:shadow-[0_22px_50px_-24px_rgba(10,22,40,0.75)]">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,rgba(30,144,255,0.1)_46%,transparent_72%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        <div className="relative h-52 overflow-hidden">
-          <Image
-            src={station.image}
-            alt={`Station ${station.name}`}
-            fill
-            sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-            loading="lazy"
-            quality={70}
-            placeholder="blur"
-            blurDataURL={BLUR_DATA_URL}
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
-          />
+        <div className="relative h-52 overflow-hidden bg-slate-200">
+          {imageUrl ? (
+            <Image
+              src={imageUrl}
+              alt={`Station ${station.name}`}
+              fill
+              unoptimized
+              sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+              loading="lazy"
+              quality={70}
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center bg-gradient-to-br from-slate-200 to-slate-300 text-slate-500">
+              <span className="text-sm font-medium">Image à venir</span>
+            </div>
+          )}
           <div className="absolute inset-0 bg-linear-to-t from-brand-dark/80 via-brand-dark/25 to-transparent opacity-90" />
           <Badge
             variant={open ? 'success' : 'muted'}

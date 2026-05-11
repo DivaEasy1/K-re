@@ -64,6 +64,7 @@ export default function StationGallery({
               src={gallery[activeIndex]}
               alt={`Vue ${activeIndex + 1} de ${stationName}`}
               fill
+              unoptimized
               sizes="(min-width: 1280px) 72vw, (min-width: 768px) 100vw, 100vw"
               quality={84}
               placeholder="blur"
@@ -152,6 +153,7 @@ export default function StationGallery({
                   src={image}
                   alt={`Miniature ${index + 1} de ${stationName}`}
                   fill
+                  unoptimized
                   sizes="160px"
                   quality={70}
                   placeholder="blur"
@@ -202,6 +204,7 @@ export default function StationGallery({
                   src={gallery[activeIndex]}
                   alt={`Vue ${activeIndex + 1} de ${stationName}`}
                   fill
+                  unoptimized
                   sizes="100vw"
                   quality={88}
                   placeholder="blur"

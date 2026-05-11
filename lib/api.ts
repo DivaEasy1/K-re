@@ -1,7 +1,7 @@
 import type { Activity, Station, StationStatus } from '@/types'
-import { resolveActivityImage } from '@/lib/media'
+import { resolveActivityImage, resolveAssetUrl } from '@/lib/media'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
 type RawActivity = {
   id: string
@@ -119,7 +119,7 @@ function normalizeStation(station: RawStation): Station {
     lng: station.lng,
     description: station.description,
     richContent: station.richContent,
-    image: station.image || '',
+    image: resolveAssetUrl(station.image) ?? '',
     bookingUrl: station.bookingUrl,
     equipment: station.equipment || [],
     status: normalizeStationStatus(station.status),
@@ -127,7 +127,7 @@ function normalizeStation(station: RawStation): Station {
     gallery: station.gallery
       ?.slice()
       .sort((a, b) => a.position - b.position)
-      .map((image) => image.url) || [],
+      .map((image) => resolveAssetUrl(image.url) ?? image.url) || [],
   }
 }
 

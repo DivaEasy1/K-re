@@ -17,7 +17,6 @@ import {
 import PageTransition from '@/components/layout/PageTransition'
 import StationGallery from '@/components/stations/StationGallery'
 import StationCard from '@/components/stations/StationCard'
-import { StationRichContent } from '@/components/stations/StationRichContent'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -49,7 +48,9 @@ function getMapsUrl(lat: number, lng: number) {
 }
 
 export async function generateStaticParams() {
-  return getOpenStationPages().map((station) => ({
+  const stations = await getOpenStationPages()
+
+  return stations.map((station) => ({
     slug: station.slug,
   }))
 }
@@ -60,7 +61,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const station = getStationPageBySlug(slug)
+  const station = await getStationPageBySlug(slug)
 
   if (!station) {
     return {
@@ -100,13 +101,13 @@ export default async function StationDetailPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const station = getStationPageBySlug(slug)
+  const station = await getStationPageBySlug(slug)
 
   if (!station) {
     notFound()
   }
 
-  const relatedStations = getOpenStationPages()
+  const relatedStations = (await getOpenStationPages())
     .filter((candidate) => candidate.id !== station.id)
     .slice(0, 2)
   const hasBooking = Boolean(station.bookingUrlResolved)
@@ -120,6 +121,7 @@ export default async function StationDetailPage({
             alt={`Vue principale de ${station.name}`}
             fill
             priority
+            unoptimized
             sizes="100vw"
             quality={84}
             placeholder="blur"
@@ -160,9 +162,11 @@ export default async function StationDetailPage({
               <h1 className="section-heading font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
                 {station.name}
               </h1>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-100 sm:text-lg">
-                {station.description}
-              </p>
+              {station.description && (
+                <p className="mt-3 max-w-2xl text-sm font-medium text-slate-200 sm:text-base">
+                  {station.description}
+                </p>
+              )}
 
               <div className="mt-6 flex flex-wrap gap-2 text-sm text-white/92">
                 <span className="rounded-full border border-white/18 bg-white/10 px-3 py-1.5">
@@ -332,9 +336,16 @@ export default async function StationDetailPage({
                       <h2 className="font-heading text-2xl font-bold tracking-tight text-brand-dark sm:text-3xl">
                         Une fiche plus claire pour choisir votre depart
                       </h2>
-                      <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                        {station.intro}
-                      </p>
+                      {station.richContent ? (
+                        <div
+                          className="mt-4 prose prose-sm max-w-none text-slate-600 [&>p]:text-sm [&>p]:leading-relaxed [&>ul]:mt-3 [&>ul]:space-y-2 [&>li]:text-sm [&>li]:leading-relaxed [&>strong]:font-semibold [&>strong]:text-slate-800"
+                          dangerouslySetInnerHTML={{ __html: station.richContent }}
+                        />
+                      ) : (
+                        <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+                          {station.intro}
+                        </p>
+                      )}
                     </div>
 
                     <div className="space-y-3">
@@ -571,12 +582,6 @@ export default async function StationDetailPage({
           </div>
         </div>
       </section>
-
-      {station.richContent && (
-        <section className="border-y border-white/8 bg-white/3 backdrop-blur">
-          <StationRichContent content={station.richContent} />
-        </section>
-      )}
 
       {relatedStations.length > 0 ? (
         <section className="pb-18 pt-8 sm:pb-20">
