@@ -192,7 +192,7 @@ export async function fetchActivityById(id: string) {
 export async function fetchStations() {
   try {
     const response = await fetch(`${API_BASE_URL}/stations`, {
-      next: { revalidate: 0 }, // Cache for 1 hour
+      next: { revalidate: 0 },
     })
 
     if (!response.ok) {
@@ -212,7 +212,7 @@ export async function fetchStations() {
 export async function fetchStationBySlug(slug: string) {
   try {
     const response = await fetch(`${API_BASE_URL}/stations/${slug}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 0 },
     })
 
     if (!response.ok) {
