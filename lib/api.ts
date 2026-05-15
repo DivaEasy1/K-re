@@ -26,6 +26,10 @@ type RawStation = {
   lng: number
   description: string
   richContent?: string
+  highlight?: string | null
+  ambience?: string | null
+  practicalInfo?: unknown
+  nearbyHighlights?: unknown
   image?: string
   bookingUrl?: string
   equipment?: string[]
@@ -51,6 +55,18 @@ function normalizeStationStatus(value: RawStation['status']): StationStatus {
     default:
       return 'open'
   }
+}
+
+function normalizeStringArray(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) {
+    return undefined
+  }
+
+  const items = value
+    .map((item) => (typeof item === 'string' ? item.trim() : ''))
+    .filter(Boolean)
+
+  return items.length > 0 ? items : undefined
 }
 
 function normalizeActivityDifficulty(value?: string): Activity['difficulty'] {
@@ -119,6 +135,10 @@ function normalizeStation(station: RawStation): Station {
     lng: station.lng,
     description: station.description,
     richContent: station.richContent,
+    highlight: station.highlight?.trim() || undefined,
+    ambience: station.ambience?.trim() || undefined,
+    practicalInfo: normalizeStringArray(station.practicalInfo),
+    nearbyHighlights: normalizeStringArray(station.nearbyHighlights),
     image: resolveAssetUrl(station.image) ?? '',
     bookingUrl: station.bookingUrl,
     equipment: station.equipment || [],

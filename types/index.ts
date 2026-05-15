@@ -18,6 +18,10 @@ export interface Station {
   openYear?: number
   description: string
   richContent?: string
+  highlight?: string
+  ambience?: string
+  practicalInfo?: string[]
+  nearbyHighlights?: string[]
   image: string
   bookingUrl?: string
   equipment: string[]

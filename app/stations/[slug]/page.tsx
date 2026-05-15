@@ -21,7 +21,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import Breadcrumb from '@/components/ui/breadcrumb'
-import { getOpenStationPages, getStationPageBySlug } from '@/lib/stations'
+import { getOpenStationPages, getStationPageBySlug, getAllStationPages } from '@/lib/stations'
 import { BLUR_DATA_URL } from '@/lib/utils'
 
 // Allow station pages to keep working even if station data changes after a previous build.
@@ -43,12 +43,27 @@ function equipmentLabel(equipment: string) {
   return { icon: <Waves className="h-4 w-4" aria-hidden />, label: 'Paddle' }
 }
 
+function getStatusBadgeInfo(status: string) {
+  switch (status) {
+    case 'open':
+      return { label: 'Station ouverte', variant: 'success' as const, className: 'bg-emerald-500/95 text-white' }
+    case 'coming_soon':
+      return { label: 'Bientôt disponible', variant: 'default' as const, className: 'bg-blue-500/95 text-white' }
+    case 'closed':
+      return { label: 'Fermée', variant: 'secondary' as const, className: 'bg-slate-500/95 text-white' }
+    case 'maintenance':
+      return { label: 'En maintenance', variant: 'secondary' as const, className: 'bg-amber-500/95 text-white' }
+    default:
+      return { label: 'Station', variant: 'default' as const, className: 'bg-slate-500/95 text-white' }
+  }
+}
+
 function getMapsUrl(lat: number, lng: number) {
   return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`
 }
 
 export async function generateStaticParams() {
-  const stations = await getOpenStationPages()
+  const stations = await getAllStationPages()
 
   return stations.map((station) => ({
     slug: station.slug,
@@ -153,9 +168,14 @@ export default async function StationDetailPage({
 
           <div className="grid gap-8 xl:grid-cols-[minmax(0,1.1fr)_360px] xl:items-end">
             <div className="max-w-3xl">
-              <Badge variant="success" className="mb-4 bg-emerald-500/95 text-white">
-                Station ouverte
-              </Badge>
+              {(() => {
+                const badgeInfo = getStatusBadgeInfo(station.status)
+                return (
+                  <Badge variant={badgeInfo.variant} className={`mb-4 ${badgeInfo.className}`}>
+                    {badgeInfo.label}
+                  </Badge>
+                )
+              })()}
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-brand-gold">
                 {station.highlight}
               </p>

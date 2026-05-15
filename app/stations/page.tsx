@@ -1,13 +1,10 @@
 ﻿import type { Metadata } from 'next'
 
-import settingsData from '@/data/settings.json'
-import type { Settings } from '@/types'
 import PageTransition from '@/components/layout/PageTransition'
 import HeroSection from '@/components/layout/HeroSection'
 import StationsClient from '@/components/stations/StationsClient'
 import { getMergedStations } from '@/lib/stations'
 
-const settings = settingsData as Settings
 
 export const metadata: Metadata = {
   title: 'Stations',
@@ -43,7 +40,7 @@ export default async function StationsPage() {
         ]}
         cta={[
           { label: 'Voir la carte', href: '#stations-map', variant: 'primary' },
-          { label: 'Réserver', href: settings.bookingUrl, variant: 'secondary' },
+          { label: 'Réserver', href: '#stations-list', variant: 'secondary' },
         ]}
       />
       <section id="stations-map" className="relative mx-auto max-w-7xl space-y-8 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">

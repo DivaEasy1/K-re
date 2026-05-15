@@ -21,6 +21,14 @@ export interface StationPageData extends Station {
   nearbyHighlights: string[]
 }
 
+function compactSlug(value: string) {
+  return value.replace(/-/g, '')
+}
+
+function normalizeSlugValue(value: string) {
+  return value.trim().toLowerCase()
+}
+
 function mergeStations(jsonStations: Station[], apiStations: Station[]) {
   const apiMap = new Map(apiStations.map((station) => [station.id, station] as const))
   const merged: Station[] = []
@@ -51,13 +59,30 @@ export function slugifyStationName(name: string) {
     .replace(/^-+|-+$/g, '')
 }
 
+export function resolveStationSlug(station: Pick<Station, 'name' | 'slug'>) {
+  const prettySlug = slugifyStationName(station.name)
+  return prettySlug || station.slug?.trim() || ''
+}
+
+function getStationSlugCandidates(station: Pick<Station, 'name' | 'slug'>) {
+  const resolvedSlug = normalizeSlugValue(resolveStationSlug(station))
+  const storedSlug = normalizeSlugValue(station.slug?.trim() || '')
+  const candidates = new Set([
+    resolvedSlug,
+    storedSlug,
+    compactSlug(resolvedSlug),
+    compactSlug(storedSlug),
+  ])
+
+  return Array.from(candidates).filter(Boolean)
+}
+
 export function resolveStationBookingUrl(station: Pick<Station, 'bookingUrl'>) {
   return station.bookingUrl ?? null
 }
 
-export function getStationHref(station: Pick<Station, 'name' | 'status'>) {
-  if (station.status !== 'open') return null
-  return `/stations/${slugifyStationName(station.name)}`
+export function getStationHref(station: Pick<Station, 'name' | 'slug' | 'status'>) {
+  return `/stations/${resolveStationSlug(station)}`
 }
 
 function toStationPageData(station: Station): StationPageData {
@@ -66,19 +91,26 @@ function toStationPageData(station: Station): StationPageData {
 
   return {
     ...station,
-    slug: station.slug?.trim() || slugifyStationName(station.name),
+    slug: resolveStationSlug(station),
     gallery,
     bookingUrlResolved: resolveStationBookingUrl(station),
-    highlight: detail?.highlight ?? `Depart ideal depuis ${station.location}`,
+    highlight: station.highlight?.trim() || detail?.highlight || `Depart ideal depuis ${station.location}`,
     intro: detail?.intro ?? station.description,
     ambience:
-      detail?.ambience ??
+      station.ambience?.trim() ||
+      detail?.ambience ||
       "Une station claire, simple d'acces et adaptee a une sortie nautique sans friction.",
-    practicalInfo: detail?.practicalInfo ?? [
-      "Reservation conseillee avant votre depart.",
-      "Consultez les conditions sur place avant la mise a l'eau.",
-    ],
-    nearbyHighlights: detail?.nearbyHighlights ?? [station.location, 'Reservation express'],
+    practicalInfo:
+      station.practicalInfo && station.practicalInfo.length > 0
+        ? station.practicalInfo
+        : detail?.practicalInfo ?? [
+            'Reservation conseillee avant votre depart.',
+            "Consultez les conditions sur place avant la mise a l'eau.",
+          ],
+    nearbyHighlights:
+      station.nearbyHighlights && station.nearbyHighlights.length > 0
+        ? station.nearbyHighlights
+        : detail?.nearbyHighlights ?? [station.location, 'Reservation express'],
   }
 }
 
@@ -100,7 +132,26 @@ export async function getOpenStationPages() {
     .map(toStationPageData)
 }
 
+export async function getAllStationPages() {
+  const mergedStations = await getMergedStations()
+
+  return mergedStations.map(toStationPageData)
+}
+
 export async function getStationPageBySlug(slug: string) {
+  const allStationPages = await getAllStationPages()
+  const normalizedSlug = normalizeSlugValue(slug)
+
+  return allStationPages.find((station) =>
+    getStationSlugCandidates(station).includes(normalizedSlug)
+  )
+}
+
+export async function getOpenStationBySlug(slug: string) {
   const openStationPages = await getOpenStationPages()
-  return openStationPages.find((station) => station.slug === slug)
+  const normalizedSlug = normalizeSlugValue(slug)
+
+  return openStationPages.find((station) =>
+    getStationSlugCandidates(station).includes(normalizedSlug)
+  )
 }
