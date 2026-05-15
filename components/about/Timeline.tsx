@@ -22,13 +22,15 @@ export default function Timeline({ items }: { items: TimelineEntry[] }) {
             return (
               <article
                 key={`${entry.year}-${entry.title}`}
-                data-gsap-hover
                 className="gsap-card relative md:grid md:grid-cols-2"
               >
                 <div
                   className={`md:px-8 ${right ? 'md:col-start-2' : 'md:col-start-1 md:text-right'}`}
                 >
-                  <div className="ml-12 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:ml-0">
+                  <div
+                    data-gsap-hover
+                    className="ml-12 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:ml-0"
+                  >
                     <span className="inline-flex rounded-full bg-brand-blue px-3 py-1 text-xs font-bold text-white">
                       {entry.year}
                     </span>

@@ -50,9 +50,9 @@ function getStatusBadgeInfo(status: string) {
     case 'coming_soon':
       return { label: 'Bientôt disponible', variant: 'default' as const, className: 'bg-blue-500/95 text-white' }
     case 'closed':
-      return { label: 'Fermée', variant: 'secondary' as const, className: 'bg-slate-500/95 text-white' }
+      return { label: 'Fermée', variant: 'muted' as const, className: 'bg-slate-500/95 text-white' }
     case 'maintenance':
-      return { label: 'En maintenance', variant: 'secondary' as const, className: 'bg-amber-500/95 text-white' }
+      return { label: 'En maintenance', variant: 'warning' as const, className: 'bg-amber-500/95 text-white' }
     default:
       return { label: 'Station', variant: 'default' as const, className: 'bg-slate-500/95 text-white' }
   }
