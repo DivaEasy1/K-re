@@ -2,7 +2,7 @@
 
 import PageTransition from '@/components/layout/PageTransition'
 import HeroSection from '@/components/layout/HeroSection'
-import StationsClient from '@/components/stations/StationsClient'
+import StationsClientWrapper from '@/components/stations/StationsClientWrapper'
 import { getMergedStations } from '@/lib/stations'
 
 
@@ -44,7 +44,7 @@ export default async function StationsPage() {
         ]}
       />
       <section id="stations-map" className="relative mx-auto max-w-7xl space-y-8 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <StationsClient stations={stations} />
+        <StationsClientWrapper stations={stations} />
       </section>
     </PageTransition>
   )
