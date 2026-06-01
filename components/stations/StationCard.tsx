@@ -26,9 +26,8 @@ function equipmentLabel(equipment: string) {
 }
 
 export default function StationCard({ station }: { station: Station }) {
-  const open = station.status === 'open'
   const detailHref = getStationHref(station)
-  const bookingUrl = open ? resolveStationBookingUrl(station) : null
+  const bookingUrl = resolveStationBookingUrl(station)
   
   // Use image, fallback to first gallery image, or empty string will be handled by next/image
   const imageUrl = station.image && station.image.trim() 
@@ -54,17 +53,17 @@ export default function StationCard({ station }: { station: Station }) {
               className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
             />
           ) : (
-            <div className="flex h-full items-center justify-center bg-gradient-to-br from-slate-200 to-slate-300 text-slate-500">
+            <div className="flex h-full items-center justify-center bg-linear-to-br from-slate-200 to-slate-300 text-slate-500">
               <span className="text-sm font-medium">Image à venir</span>
             </div>
           )}
           <div className="absolute inset-0 bg-linear-to-t from-brand-dark/80 via-brand-dark/25 to-transparent opacity-90" />
           <Badge
-            variant={open ? 'success' : 'muted'}
+            variant={station.status === 'open' ? 'success' : 'muted'}
             className="absolute left-4 top-4 shadow-sm"
-            aria-label={open ? 'Station ouverte' : 'Station bientot disponible'}
+            aria-label={station.status === 'open' ? 'Station ouverte' : 'Station bientot disponible'}
           >
-            {open ? 'Ouvert' : 'Bientot'}
+            {station.status === 'open' ? 'Ouvert' : 'Bientot'}
           </Badge>
           <div className="absolute bottom-4 left-4 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
             {station.openYear}
@@ -135,7 +134,7 @@ export default function StationCard({ station }: { station: Station }) {
                 </a>
               </Button>
             </div>
-          ) : open ? (
+          ) : (
             <div className={cn('grid gap-2 pt-1', detailHref ? 'sm:grid-cols-2' : 'grid-cols-1')}>
               {detailHref ? (
                 <Button asChild variant="outline" size="lg" className="w-full">
@@ -153,8 +152,6 @@ export default function StationCard({ station }: { station: Station }) {
                 Reservation bientot
               </Button>
             </div>
-          ) : (
-            <p className="mt-2 text-sm font-medium text-slate-500">Lien Kayakomat a venir</p>
           )}
         </CardContent>
       </Card>
