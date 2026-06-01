@@ -18,7 +18,10 @@ import { BLUR_DATA_URL } from '@/lib/utils'
 import type { Activity } from '@/types'
 import ActivityDetailsClient from '@/components/activities/ActivityDetailsClient'
 
-export const dynamicParams = true
+export const generateStaticParams = () => {
+  // Activities come from API - return empty for static export
+  return []
+}
 
 const difficultyInfo = {
   easy: { label: 'Facile', icon: '🎯', color: 'success' },
