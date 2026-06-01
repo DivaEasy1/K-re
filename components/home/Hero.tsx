@@ -15,7 +15,7 @@ export default function Hero({ stations }: { stations: Station[] }) {
   return (
     <section className="relative isolate flex min-h-[calc(100svh-4.85rem)] items-start overflow-hidden lg:items-center">
       <Image
-        src="https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800"
+        src="/images/hero-img.jpeg"
         alt="Kayaks sur la cote de l'ile de Re"
         data-hero-media
         fill

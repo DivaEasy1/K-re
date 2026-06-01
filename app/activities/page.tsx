@@ -29,6 +29,7 @@ const defaultSettings: Settings = {
   },
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const settings = (settingsData || defaultSettings) as Settings
 
 export const metadata: Metadata = {
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
       "Toutes nos activites kayak et paddle sur l'ile de Re, pour tous les niveaux.",
     url: 'https://www.kayak-en-re.fr/activities',
     images: [
-      'https://images.pexels.com/photos/7753828/pexels-photo-7753828.jpeg?auto=compress&cs=tinysrgb&w=1800',
+      '/images/activities-hero.jpeg',
     ],
   },
 }
@@ -54,7 +55,7 @@ export default async function ActivitiesPage() {
         title={<>Activités <span className="bg-linear-to-r from-brand-gold to-amber-400 bg-clip-text text-transparent">premium</span></>}
         subtitle="Découvrez bientôt nos expériences uniques : détente, nature, gastronomie et aventure."
         badge="✨ À venir"
-        backgroundImage="https://images.pexels.com/photos/7753828/pexels-photo-7753828.jpeg?auto=compress&cs=tinysrgb&w=1800"
+        backgroundImage="/images/activities-hero.jpeg"
         stats={[
           { label: 'nouvelles', value: 'bientôt' },
           { label: 'niveaux', value: 'tous' },

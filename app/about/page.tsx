@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description: "Notre histoire, nos valeurs et la vision Kayakomat sur l'Ile de Re.",
     url: 'https://www.kayak-en-re.fr/about',
     images: [
-      'https://images.pexels.com/photos/8151592/pexels-photo-8151592.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      '/images/stations/Rivedoux.png',
     ],
   },
 }
@@ -90,7 +90,7 @@ export default function AboutPage() {
 
           <article className="gsap-reveal group relative h-80 overflow-hidden rounded-4xl border border-white/70 shadow-[0_24px_56px_-34px_rgba(10,22,40,0.75)] sm:h-107.5">
             <Image
-              src="https://images.pexels.com/photos/34054794/pexels-photo-34054794.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              src="/images/stations-hero.jpeg"
               alt="Station K-Re en bord de mer"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

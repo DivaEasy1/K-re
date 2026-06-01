@@ -18,7 +18,7 @@ export default function Concept() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div className="relative h-80 overflow-hidden rounded-4xl border border-white/60 shadow-ocean sm:h-115">
           <Image
-            src="https://images.pexels.com/photos/4705199/pexels-photo-4705199.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src="/images/concept-img.jpeg"
             alt="Pagaie sur les marais de l'ile de Re"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"

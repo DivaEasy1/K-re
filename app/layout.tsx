@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     siteName: 'Kayak en Re',
     images: [
       {
-        url: 'https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800',
+        url: '/images/hero-img.jpeg',
         width: 1200,
         height: 630,
         alt: 'Kayak en Re - Ile de Re',
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     title: 'Kayak en Re',
     description: "L'aventure aquatique en toute liberte.",
     images: [
-      'https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800',
+      '/images/hero-img.jpeg',
     ],
   },
 }

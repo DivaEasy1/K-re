@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "Besoin d'aide ? Écrivez à l'équipe Kayak en Ré.",
     url: 'https://www.kayak-en-re.fr/contact',
     images: [
-      'https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800',
+      '/images/hero-img.jpeg',
     ],
   },
 }
@@ -36,7 +36,7 @@ export default function ContactPage() {
         title={<>Nous <span className="bg-linear-to-r from-brand-gold to-amber-400 bg-clip-text text-transparent">contacter</span></>}
         subtitle="Une question ? Un partenariat ? Notre équipe K-Ré vous répond rapidement. Disponible 7j/7 pendant la saison."
         badge="💬 Assistance"
-        backgroundImage="https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800"
+        backgroundImage="/images/hero-img.jpeg"
         cta={[
           { label: 'Formulaire de contact', href: '#contact-form', variant: 'primary' },
           { label: 'Appeler directement', href: `tel:${settings.contact.phone}`, variant: 'secondary' },

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
       "Carte interactive et liste des stations K-Re ouvertes ou a venir sur l'ile de Re.",
     url: 'https://www.kayak-en-re.fr/stations',
     images: [
-      'https://images.pexels.com/photos/34054794/pexels-photo-34054794.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      '/images/stations-hero.jpeg',
     ],
   },
 }
@@ -33,7 +33,7 @@ export default async function StationsPage() {
         title={<>Nos <span className="bg-linear-to-r from-brand-blue to-sky-400 bg-clip-text text-transparent">stations</span> sur l&apos;île</>}
         subtitle="Retrouvez nos points d'accès en libre-service répartis stratégiquement sur l'île de Ré. Carte, horaires et réservations en direct."
         badge="🗺️ Réseau K-Ré"
-        backgroundImage="https://images.pexels.com/photos/34054794/pexels-photo-34054794.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        backgroundImage="/images/stations-hero.jpeg"
         stats={[
           { label: 'ouvertes', value: openCount.toString() },
           { label: 'à venir', value: comingSoonCount.toString() },

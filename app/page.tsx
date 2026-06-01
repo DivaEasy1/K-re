@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "Decouvrez le concept K-Re: stations en libre-service et activites nautiques sur l'ile de Re.",
     url: 'https://www.kayak-en-re.fr',
     images: [
-      'https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800',
+      '/images/hero-img.jpeg',
     ],
   },
   twitter: {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: 'Kayak en Re | Accueil',
     description: "Location autonome de kayak et paddle sur l'ile de Re.",
     images: [
-      'https://images.pexels.com/photos/7615952/pexels-photo-7615952.jpeg?auto=compress&cs=tinysrgb&w=1800',
+      '/images/hero-img.jpeg',
     ],
   },
 }
