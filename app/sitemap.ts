@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next'
 
 import { getOpenStationPages } from '@/lib/stations'
 
+export const dynamic = 'force-static'
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = 'https://www.kayak-en-re.fr'
   const stationPages = (await getOpenStationPages()).map((station) => ({
