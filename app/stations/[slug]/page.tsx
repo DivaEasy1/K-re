@@ -24,8 +24,8 @@ import Breadcrumb from '@/components/ui/breadcrumb'
 import { getOpenStationPages, getStationPageBySlug, getAllStationPages } from '@/lib/stations'
 import { BLUR_DATA_URL } from '@/lib/utils'
 
-// Allow station pages to keep working even if station data changes after a previous build.
-export const dynamicParams = true
+// For static export, dynamicParams must be false
+export const dynamicParams = false
 
 function equipmentLabel(equipment: string) {
   if (equipment === 'kayak_tandem') {
@@ -93,7 +93,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${station.name} | Kayak en Re`,
       description: `${station.highlight}. Consultez la fiche station et reservez en ligne.`,
-      url: `https://www.kayak-en-re.fr/stations/${station.slug}`,
+      url: `https://www.k-re.fr/stations/${station.slug}`,
       images: [
         {
           url: station.gallery[0],

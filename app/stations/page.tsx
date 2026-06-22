@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Stations K-Re',
     description:
       "Carte interactive et liste des stations K-Re ouvertes ou a venir sur l'ile de Re.",
-    url: 'https://www.kayak-en-re.fr/stations',
+    url: 'https://www.k-re.fr/stations',
     images: [
       '/images/stations-hero.jpeg',
     ],

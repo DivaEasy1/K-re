@@ -37,17 +37,17 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Kayak en Re | Accueil',
+    title: 'K-re | Accueil',
     description:
       "Decouvrez le concept K-Re: stations en libre-service et activites nautiques sur l'ile de Re.",
-    url: 'https://www.kayak-en-re.fr',
+    url: 'https://www.k-re.fr',
     images: [
       '/images/hero-img.jpeg',
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kayak en Re | Accueil',
+    title: 'K-re | Accueil',
     description: "Location autonome de kayak et paddle sur l'ile de Re.",
     images: [
       '/images/hero-img.jpeg',

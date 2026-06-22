@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://www.kayak-en-re.fr/sitemap.xml',
+    sitemap: 'https://www.k-re.fr/sitemap.xml',
   }
 }

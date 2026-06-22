@@ -24,20 +24,22 @@ const headingFont = Sora({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.kayak-en-re.fr'),
-  applicationName: 'Kayak en Re',
+  metadataBase: new URL('https://www.k-re.fr'),
+  applicationName: 'Kayak',
   referrer: 'strict-origin-when-cross-origin',
   alternates: {
     canonical: '/',
   },
   title: {
-    default: 'Kayak en Re | K-Re',
-    template: '%s | Kayak en Re',
+    default: 'Kayak | K-Re',
+    template: '%s | K-re',
   },
   description: "K-Re, location autonome de kayaks et paddles sur l'ile de Re.",
   keywords: [
     'kayak ile de re',
     'paddle ile de re',
+    'La Rochelle',
+    'Kayak La Rochelle',
     'location kayak autonome',
     'kayakomat',
     'activites nautiques ile de re',
@@ -56,23 +58,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://www.kayak-en-re.fr',
-    title: "Kayak en Re | L'aventure aquatique en toute liberte",
+    url: 'https://www.k-re.fr',
+    title: "Kayak en La Rochelle | L'aventure aquatique en toute liberte",
     description:
       "Stations en libre-service sur l'ile de Re. Reservez en ligne et pagayez en toute liberte.",
-    siteName: 'Kayak en Re',
+    siteName: 'K-re',
     images: [
       {
         url: '/images/hero-img.jpeg',
         width: 1200,
         height: 630,
-        alt: 'Kayak en Re - Ile de Re',
+        alt: 'K-re - Ile de Re',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kayak en Re',
+    title: 'Kayak | K-re',
     description: "L'aventure aquatique en toute liberte.",
     images: [
       '/images/hero-img.jpeg',

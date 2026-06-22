@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'A propos de K-Re',
     description: "Notre histoire, nos valeurs et la vision Kayakomat sur l'Ile de Re.",
-    url: 'https://www.kayak-en-re.fr/about',
+    url: 'https://www.k-re.fr/about',
     images: [
       '/images/stations/Rivedoux.png',
     ],

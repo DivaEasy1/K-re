@@ -8,7 +8,7 @@ import HeroSection from '@/components/layout/HeroSection'
 import { Button } from '@/components/ui/button'
 
 const defaultSettings: Settings = {
-  siteName: 'Kayak en Re',
+  siteName: 'K-re',
   tagline: 'L\'aventure aquatique en toute liberte',
   contact: {
     address: '',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: 'Activites K-Re',
     description:
       "Toutes nos activites kayak et paddle sur l'ile de Re, pour tous les niveaux.",
-    url: 'https://www.kayak-en-re.fr/activities',
+    url: 'https://www.k-re.fr/activities',
     images: [
       '/images/activities-hero.jpeg',
     ],

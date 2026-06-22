@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   title: 'FAQ',
   description: 'Questions fréquemment posées sur K-Ré et nos services de location de kayak.',
   openGraph: {
-    title: 'FAQ | Kayak en Ré',
+    title: 'FAQ | K-re',
     description: 'Trouvez les réponses à vos questions sur K-Ré.',
-    url: 'https://www.kayak-en-re.fr/faq',
+    url: 'https://www.k-re.fr/faq',
   },
 }
 
