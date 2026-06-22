@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Retrouvez toutes les stations K-Re sur l'ile de Re et leurs disponibilites.",
   openGraph: {
-    title: 'K-re | Stations',
+    title: 'Stations K-Re',
     description:
       "Carte interactive et liste des stations K-Re ouvertes ou a venir sur l'ile de Re.",
     url: 'https://www.k-re.fr/stations',

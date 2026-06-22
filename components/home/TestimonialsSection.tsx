@@ -92,7 +92,7 @@ export default function TestimonialsSection() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="gsap-reveal group relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/88 p-6 shadow-[0_20px_50px_-34px_rgba(10,22,40,0.45)] backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_60px_-34px_rgba(10,22,40,0.52)]"
+              className="gsap-reveal group relative overflow-hidden rounded-4xl border border-white/70 bg-white/88 p-6 shadow-[0_20px_50px_-34px_rgba(10,22,40,0.45)] backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_60px_-34px_rgba(10,22,40,0.52)]"
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-linear-to-r from-brand-blue/10 via-transparent to-brand-gold/10 opacity-80" />
 

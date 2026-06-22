@@ -39,11 +39,13 @@ export default function Concept() {
             Notre difference
           </p>
           <h2 className="section-heading font-heading text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
-            Un concept simple et innovant
+            Location de kayak et paddle sur l&apos;Île de Ré
           </h2>
           <p className="mt-4 text-base leading-relaxed text-slate-700">
-            Avec K-Re, profitez d&apos;une location autonome de kayaks et paddles en
-            quelques minutes. Vous partez quand vous voulez, a votre rythme.
+            K-Re propose un service de location autonome de kayaks et paddles
+            sur l&apos;Île de Ré. Grâce à nos stations en libre-service,
+            réservez votre embarcation en ligne et profitez des plus beaux
+            paysages entre Rivedoux-Plage, La Rochelle.
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
