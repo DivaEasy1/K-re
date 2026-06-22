@@ -193,7 +193,7 @@ export default async function StationDetailPage({
                   {station.location}
                 </span>
                 <span className="rounded-full border border-white/18 bg-white/10 px-3 py-1.5">
-                  Ouverte depuis {station.openYear}
+                  Ouverture saison {station.openYear}
                 </span>
                 <span className="rounded-full border border-white/18 bg-white/10 px-3 py-1.5">
                   {station.gallery.length} vue{station.gallery.length > 1 ? 's' : ''} disponibles
