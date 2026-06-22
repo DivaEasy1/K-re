@@ -7,11 +7,11 @@ import { getMergedStations } from '@/lib/stations'
 
 
 export const metadata: Metadata = {
-  title: 'Stations',
+  title: 'K-re | Stations',
   description:
     "Retrouvez toutes les stations K-Re sur l'ile de Re et leurs disponibilites.",
   openGraph: {
-    title: 'Stations K-Re',
+    title: 'K-re | Stations',
     description:
       "Carte interactive et liste des stations K-Re ouvertes ou a venir sur l'ile de Re.",
     url: 'https://www.k-re.fr/stations',

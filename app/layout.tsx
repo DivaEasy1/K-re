@@ -31,18 +31,26 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   title: {
-    default: 'Kayak | K-Re',
+    default: 'Location Kayak & Paddle Île de Ré | K-Re',
     template: '%s | K-re',
   },
-  description: "K-Re, location autonome de kayaks et paddles sur l'ile de Re.",
+  description: "Location autonome de kayaks et paddles sur l'Île de Ré. Réservez en ligne et profitez d'une aventure nautique en toute liberté.",
   keywords: [
+    'location kayak autonome',
+    'location kayak la Rochelle',
+    'location kayak',
+    'activites nautiques ile de re',
+    'location kayak ile de re',
+    'location paddle ile de re',
     'kayak ile de re',
     'paddle ile de re',
-    'La Rochelle',
-    'Kayak La Rochelle',
-    'location kayak autonome',
-    'kayakomat',
+    'kayak la rochelle',
+    'paddle la rochelle',
     'activites nautiques ile de re',
+    'location kayak autonome',
+    'sortie kayak ile de re',
+    'kayak en libre service',
+    'k-re'
   ],
   robots: {
     index: true,
@@ -59,7 +67,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://www.k-re.fr',
-    title: "Kayak en La Rochelle | L'aventure aquatique en toute liberte",
+    title: "Location Kayak & Paddle Île de Ré | K-Re",
     description:
       "Stations en libre-service sur l'ile de Re. Reservez en ligne et pagayez en toute liberte.",
     siteName: 'K-re',
@@ -74,7 +82,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kayak | K-re',
+    title: 'Kayak en re | K-re',
     description: "L'aventure aquatique en toute liberte.",
     images: [
       '/images/hero-img.jpeg',

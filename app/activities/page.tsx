@@ -33,7 +33,7 @@ const defaultSettings: Settings = {
 const settings = (settingsData || defaultSettings) as Settings
 
 export const metadata: Metadata = {
-  title: 'Activites',
+  title: 'K-re | Activites',
   description:
     'Decouvrez les activites K-Re: coucher de soleil, marais salants, regates et experiences gourmandes.',
   openGraph: {

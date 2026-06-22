@@ -30,16 +30,16 @@ async function getActivitiesData() {
 }
 
 export const metadata: Metadata = {
-  title: 'Accueil',
+  title: 'Location Kayak & Paddle Île de Ré | K-Re',
   description:
-    "K-Re, location autonome de kayak et paddle sur l'ile de Re. Reservez, deverrouillez, pagayez.",
+    "Location autonome de kayaks et paddles sur l'Île de Ré. Réservez en ligne, déverrouillez votre embarcation et profitez d'une sortie en toute liberté.",
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'K-re | Accueil',
+    title: 'Location Kayak & Paddle Île de Ré | K-Re',
     description:
-      "Decouvrez le concept K-Re: stations en libre-service et activites nautiques sur l'ile de Re.",
+      "Stations de kayak et paddle en libre-service sur l'Île de Ré. Réservation rapide et départ immédiat.",
     url: 'https://www.k-re.fr',
     images: [
       '/images/hero-img.jpeg',
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'K-re | Accueil',
-    description: "Location autonome de kayak et paddle sur l'ile de Re.",
+    title: 'Location Kayak & Paddle Île de Ré | K-Re',
+    description: "Location autonome de kayaks et paddles sur l'Île de Ré.",
     images: [
       '/images/hero-img.jpeg',
     ],

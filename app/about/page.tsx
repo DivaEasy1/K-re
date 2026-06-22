@@ -40,7 +40,7 @@ const timelineItems = [
 ]
 
 export const metadata: Metadata = {
-  title: 'A propos',
+  title: 'K-re | A propos',
   description: "L'histoire de K-Re et son integration dans le reseau franchise Kayakomat.",
   openGraph: {
     title: 'A propos de K-Re',

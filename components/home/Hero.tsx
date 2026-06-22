@@ -43,9 +43,9 @@ export default function Hero({ stations }: { stations: Station[] }) {
             </span>
 
             <h1 className="section-heading mt-5 text-4xl font-bold leading-[1.04] tracking-tight sm:text-5xl lg:text-7xl">
-              L&apos;aventure kayak
+              Location Kayak
               <span className="mt-1 block bg-linear-to-r from-brand-blue via-brand-gold to-brand-orange bg-clip-text text-transparent">
-                en toute liberte
+                sur l&apos;Île de Ré
               </span>
             </h1>
 
