@@ -1,5 +1,6 @@
 ﻿'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -89,20 +90,33 @@ export default function Navbar() {
       >
         <Link
           href="/"
-          className="rounded-xl px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+          className="flex items-center rounded-xl px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
           aria-label="Retour a l'accueil Kayak en Re"
-        >
-          <p className="text-xl font-bold tracking-tight text-white">
-            <span className="bg-linear-to-r from-blue-300 to-blue-100 bg-clip-text text-transparent">
-              Kayak
-            </span>{' '}
-            <span className="bg-linear-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent">
-              en Re
-            </span>
-          </p>
-          <p className="hidden text-[11px] font-medium uppercase tracking-[0.14em] text-white/65 lg:block">
-            Ile de Re
-          </p>
+              >
+          <Image
+            src="/images/logo_kre.png"
+            alt="Kayak en Re - Logo"
+            width={96}
+            height={96}
+            className="h-20 w-auto lg:h-20"
+            priority
+          />
+
+          <div>
+            <p className="text-lg font-bold tracking-tight text-white">
+              <span className="bg-linear-to-r from-blue-300 to-blue-100 bg-clip-text text-transparent">
+                Kayak
+              </span>{' '}
+              <span className="bg-linear-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent">
+                en Re
+              </span>
+            </p>
+
+            <p className="hidden text-[11px] font-medium uppercase tracking-[0.14em] text-white/65 lg:block">
+              Ile de Re
+            </p>
+          </div>
+
         </Link>
 
         <div className="hidden items-center gap-3 md:flex">
