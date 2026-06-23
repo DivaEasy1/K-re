@@ -24,6 +24,11 @@ export interface Station {
   nearbyHighlights?: string[]
   image: string
   bookingUrl?: string
+  /**
+   * Short share link like: https://maps.app.goo.gl/...
+   * If present, StationCard will use it instead of lat/lng.
+   */
+  googleMapsUrl?: string
   equipment: string[]
   gallery?: string[]
 }

@@ -10,6 +10,7 @@
     "description": "Notre première station, idéalement située sur la magnifique plage de l'Anse de Pampin.",
     "image": "/images/stations/lhoumeau2.png",
     "bookingUrl": "https://www.kayakomat.com/fr/location/645384afabb7e61d278d260f",
+    "googleMapsUrl": "https://maps.app.goo.gl/5t6FMTsYZbYvfFXy6",
     "equipment": ["kayak_solo", "kayak_tandem", "paddle"]
   },
   {
@@ -23,6 +24,7 @@
     "description": "Station ouverte en 2025 à l'entrée de l'île, parfaite pour commencer l'aventure.",
     "image": "/images/stations/Rivedoux.png",
     "bookingUrl": "https://www.kayakomat.com/fr/location/66605c1ada2cf9ffb968aa4f",
+    "googleMapsUrl": "https://maps.app.goo.gl/qg83rqXp6LW1txyK8",
     "equipment": ["kayak_solo", "kayak_tandem", "paddle"]
   },
   {
@@ -35,6 +37,7 @@
     "openYear": 2026,
     "description": "Nouvelle station 2026 au coeur de l'île, entourée de plages magnifiques.",
     "image": "/images/stations/Bois-Plage2.png",
+    "googleMapsUrl": "https://maps.app.goo.gl/ur1MMxX3BkzBiX9D7",
     "equipment": ["kayak_solo", "kayak_tandem", "paddle"]
   },
   {

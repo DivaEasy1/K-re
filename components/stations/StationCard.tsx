@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Ship, Users, Waves } from 'lucide-react'
+import { ArrowRight, MapPin, Ship, Users, Waves } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -119,6 +119,32 @@ export default function StationCard({ station }: { station: Station }) {
                 </Button>
               ) : null}
 
+              {(station.googleMapsUrl && station.googleMapsUrl.trim()) ? (
+                <Button asChild variant="outline" size="lg" className="w-full">
+                  <a
+                    href={station.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Voir la station ${station.name} sur Google Maps`}
+                  >
+                    Carte
+                    <MapPin className="ml-1 h-4 w-4" aria-hidden />
+                  </a>
+                </Button>
+              ) : Number.isFinite(station.lat) && Number.isFinite(station.lng) ? (
+                <Button asChild variant="outline" size="lg" className="w-full">
+                  <a
+                    href={`https://www.google.com/maps?ll=${station.lat},${station.lng}&z=16`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Voir la station ${station.name} sur Google Maps`}
+                  >
+                    Carte
+                    <MapPin className="ml-1 h-4 w-4" aria-hidden />
+                  </a>
+                </Button>
+              ) : null}
+
               <Button
                 asChild
                 size="lg"
@@ -144,6 +170,33 @@ export default function StationCard({ station }: { station: Station }) {
                   </Link>
                 </Button>
               ) : null}
+
+              {(station.googleMapsUrl && station.googleMapsUrl.trim()) ? (
+                <Button asChild variant="outline" size="lg" className="w-full">
+                  <a
+                    href={station.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Voir la station ${station.name} sur Google Maps`}
+                  >
+                    Carte
+                    <MapPin className="ml-1 h-4 w-4" aria-hidden />
+                  </a>
+                </Button>
+              ) : Number.isFinite(station.lat) && Number.isFinite(station.lng) ? (
+                <Button asChild variant="outline" size="lg" className="w-full">
+                  <a
+                    href={`https://www.google.com/maps?ll=${station.lat},${station.lng}&z=16`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Voir la station ${station.name} sur Google Maps`}
+                  >
+                    Carte
+                    <MapPin className="ml-1 h-4 w-4" aria-hidden />
+                  </a>
+                </Button>
+              ) : null}
+
               <Button
                 size="lg"
                 disabled
