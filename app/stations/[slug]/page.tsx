@@ -193,7 +193,10 @@ export default async function StationDetailPage({
                   {station.location}
                 </span>
                 <span className="rounded-full border border-white/18 bg-white/10 px-3 py-1.5">
-                  Ouverture saison {station.openYear}
+                  {hasBooking
+                    ? `Ouverte Depuis ${station.openYear}`
+                    : `Ouverture saison ${station.openYear}`
+                  }
                 </span>
                 <span className="rounded-full border border-white/18 bg-white/10 px-3 py-1.5">
                   {station.gallery.length} vue{station.gallery.length > 1 ? 's' : ''} disponibles
@@ -280,14 +283,24 @@ export default async function StationDetailPage({
                   <MapPin className="mt-0.5 h-4 w-4 text-brand-gold" aria-hidden />
                   <div>
                     <p className="text-sm font-semibold text-white">Point de depart</p>
-                    <p className="mt-1 text-sm text-slate-200">{station.location}</p>
+                    <p className="mt-1 text-sm text-slate-200">
+                      {hasBooking
+                        ? station.location
+                        : 'A définir ultérieurement'}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CalendarClock className="mt-0.5 h-4 w-4 text-brand-gold" aria-hidden />
                   <div>
                     <p className="text-sm font-semibold text-white">Mise en service</p>
-                    <p className="mt-1 text-sm text-slate-200">Station ouverte depuis {station.openYear}</p>
+                    <p className="mt-1 text-sm text-slate-200">
+                      {hasBooking
+                        ? `Station ouverte depuis ${station.openYear}`
+                        : `Ouverture saison ${station.openYear}`
+                      }
+
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -418,7 +431,10 @@ export default async function StationDetailPage({
                       Ouverture
                     </p>
                     <p className="mt-3 text-lg font-bold tracking-tight text-brand-dark">
-                      Depuis {station.openYear}
+                      {hasBooking
+                        ? `Depuis ${station.openYear}`
+                        : `Ouverture saison ${station.openYear}`
+                      }
                     </p>
                     <p className="mt-2 text-sm text-slate-600">
                       Station active, prete pour une reservation fluide via Kayakomat.
