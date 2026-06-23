@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   title: {
     default: 'Location Kayak & Paddle Île de Ré | K-Re',
-    template: '%s | K-re',
+    template: '%s',
   },
   description: "Location autonome de kayaks et paddles sur l'Île de Ré. Réservez en ligne et profitez d'une aventure nautique en toute liberté.",
   keywords: [
