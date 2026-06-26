@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: 'Location Kayak & Paddle Île de Ré | K-Re',
     description:
       "Stations de kayak et paddle en libre-service sur l'Île de Ré. Réservation rapide et départ immédiat.",
-    url: 'https://www.k-re.fr',
+    url: 'https://k-re.fr',
     images: [
       '/images/hero-img.jpeg',
     ],

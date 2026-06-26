@@ -24,7 +24,12 @@ const headingFont = Sora({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.k-re.fr'),
+  metadataBase: new URL('https://k-re.fr'),
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   applicationName: 'Kayak',
   referrer: 'strict-origin-when-cross-origin',
   alternates: {
@@ -66,7 +71,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://www.k-re.fr',
+    url: 'https://k-re.fr',
     title: "Location Kayak & Paddle Île de Ré | K-Re",
     description:
       "Stations en libre-service sur l'ile de Re. Reservez en ligne et pagayez en toute liberte.",
