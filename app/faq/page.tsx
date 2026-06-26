@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'FAQ | K-re',
     description: 'Trouvez les réponses à vos questions sur K-Ré.',
-    url: 'https://www.k-re.fr/faq',
+    url: 'https://k-re.fr/faq',
   },
 }
 
@@ -91,7 +91,7 @@ export default function FAQPage() {
           <div className="mt-16 rounded-2xl border border-brand-blue/20 bg-brand-blue/5 p-6 text-center">
             <p className="font-semibold text-brand-dark mb-2">Vous ne trouvez pas votre réponse?</p>
             <p className="text-slate-600 mb-4">
-              Notre équipe est là pour vous aider. N\'hésitez pas à nous contacter.
+              Notre équipe est là pour vous aider. N\&apos;hésitez pas à nous contacter.
             </p>
             <a
               href="/contact"

@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: 'Activites K-Re',
     description:
       "Toutes nos activites kayak et paddle sur l'ile de Re, pour tous les niveaux.",
-    url: 'https://www.k-re.fr/activities',
+    url: 'https://k-re.fr/activities',
     images: [
       '/images/activities-hero.jpeg',
     ],

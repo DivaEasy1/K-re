@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact K-Ré',
     description: "Besoin d'aide ? Écrivez à l'équipe Kayak en Ré.",
-    url: 'https://www.k-re.fr/contact',
+    url: 'https://k-re.fr/contact',
     images: [
       '/images/hero-img.jpeg',
     ],

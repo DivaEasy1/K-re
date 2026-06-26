@@ -5,7 +5,7 @@ import { getOpenStationPages } from '@/lib/stations'
 export const dynamic = 'force-static'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = 'https://www.k-re.fr'
+  const base = 'https://k-re.fr'
   const stationPages = (await getOpenStationPages()).map((station) => ({
     url: `${base}/stations/${station.slug}`,
     lastModified: new Date(),

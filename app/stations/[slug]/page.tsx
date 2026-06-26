@@ -93,7 +93,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${station.name} | Kayak en Re`,
       description: `${station.highlight}. Consultez la fiche station et reservez en ligne.`,
-      url: `https://www.k-re.fr/stations/${station.slug}`,
+      url: `https://k-re.fr/stations/${station.slug}`,
       images: [
         {
           url: station.gallery[0],
