@@ -105,7 +105,7 @@ export async function getMergedStations() {
   }
 }
 
-export async function getOpenStationPages() {
+export async function getOpenStationPages(): Promise<StationPageData[]> {
   const mergedStations = await getMergedStations()
 
   return mergedStations
@@ -113,13 +113,13 @@ export async function getOpenStationPages() {
     .map(toStationPageData)
 }
 
-export async function getAllStationPages() {
+export async function getAllStationPages(): Promise<StationPageData[]> {
   const mergedStations = await getMergedStations()
 
   return mergedStations.map(toStationPageData)
 }
 
-export async function getStationPageBySlug(slug: string) {
+export async function getStationPageBySlug(slug: string): Promise<StationPageData | undefined> {
   const allStationPages = await getAllStationPages()
   const normalizedSlug = normalizeSlugValue(slug)
 
@@ -128,7 +128,7 @@ export async function getStationPageBySlug(slug: string) {
   )
 }
 
-export async function getOpenStationBySlug(slug: string) {
+export async function getOpenStationBySlug(slug: string): Promise<StationPageData | undefined> {
   const openStationPages = await getOpenStationPages()
   const normalizedSlug = normalizeSlugValue(slug)
 

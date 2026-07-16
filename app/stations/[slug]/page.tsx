@@ -21,8 +21,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import Breadcrumb from '@/components/ui/breadcrumb'
-import { getOpenStationPages, getStationPageBySlug, getAllStationPages } from '@/lib/stations'
-import type { Station } from '@/types'
+import { getOpenStationPages, getStationPageBySlug, getAllStationPages, type StationPageData } from '@/lib/stations'
 import { BLUR_DATA_URL } from '@/lib/utils'
 
 // For static export, dynamicParams must be false
@@ -69,7 +68,7 @@ export async function generateStaticParams() {
     return stations.map((station) => ({
       slug: station.slug,
     }))
-  } catch (e) {
+  } catch {
     return []
   }
 }
@@ -111,7 +110,7 @@ export async function generateMetadata({
         images: [station.gallery[0]],
       },
     }
-  } catch (e) {
+  } catch {
     return { title: 'Station introuvable' }
   }
 }
@@ -122,12 +121,12 @@ export default async function StationDetailPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  let station: Station | null = null
+  let station: StationPageData | null = null
   let fetchError = false
 
   try {
-    station = await getStationPageBySlug(slug)
-  } catch (e) {
+    station = (await getStationPageBySlug(slug)) ?? null
+  } catch {
     fetchError = true
   }
 

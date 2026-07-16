@@ -14,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 0.85,
     }))
-  } catch (e) {
+  } catch {
     stationPages = []
   }
 
