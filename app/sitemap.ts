@@ -6,7 +6,7 @@ export const dynamic = 'force-static'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = 'https://k-re.fr'
-  let stationPages = []
+  let stationPages: MetadataRoute.Sitemap = []
   try {
     stationPages = (await getOpenStationPages()).map((station) => ({
       url: `${base}/stations/${station.slug}`,
