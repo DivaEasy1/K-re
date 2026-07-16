@@ -1,9 +1,7 @@
 import stationDetailsData from '@/data/station-details.json'
-import stationsData from '@/data/stations.json'
 import { fetchStations } from '@/lib/api'
 import type { Station, StationDetailContent } from '@/types'
 
-const stations = stationsData as Station[]
 const stationDetails = stationDetailsData as StationDetailContent[]
 
 const stationDetailMap = new Map(
@@ -29,26 +27,9 @@ function normalizeSlugValue(value: string) {
   return value.trim().toLowerCase()
 }
 
-function mergeStations(jsonStations: Station[], apiStations: Station[]) {
-  const apiMap = new Map(apiStations.map((station) => [station.id, station] as const))
-  const merged: Station[] = []
-  const processedIds = new Set<string>()
-
-  for (const jsonStation of jsonStations) {
-    const apiStation = apiMap.get(jsonStation.id)
-
-    merged.push(apiStation ?? jsonStation)
-    processedIds.add(jsonStation.id)
-  }
-
-  for (const apiStation of apiStations) {
-    if (!processedIds.has(apiStation.id)) {
-      merged.push(apiStation)
-    }
-  }
-
-  return merged
-}
+// Note: stations are fetched from the backend API only.
+// The previous behavior merged local JSON with API results; we now rely
+// exclusively on the API and surface an error when fetching fails.
 
 export function slugifyStationName(name: string) {
   return name
@@ -117,10 +98,10 @@ function toStationPageData(station: Station): StationPageData {
 export async function getMergedStations() {
   try {
     const apiStations = await fetchStations()
-    return mergeStations(stations, apiStations)
+    return apiStations
   } catch (error) {
-    console.error('Failed to merge stations with API data:', error)
-    return stations
+    console.error('Failed to fetch stations from API:', error)
+    throw new Error('Stations Non trouvé')
   }
 }
 

@@ -6,12 +6,17 @@ export const dynamic = 'force-static'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = 'https://k-re.fr'
-  const stationPages = (await getOpenStationPages()).map((station) => ({
-    url: `${base}/stations/${station.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.85,
-  }))
+  let stationPages = []
+  try {
+    stationPages = (await getOpenStationPages()).map((station) => ({
+      url: `${base}/stations/${station.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    }))
+  } catch (e) {
+    stationPages = []
+  }
 
   return [
     {

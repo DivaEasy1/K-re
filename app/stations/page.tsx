@@ -4,6 +4,7 @@ import PageTransition from '@/components/layout/PageTransition'
 import HeroSection from '@/components/layout/HeroSection'
 import StationsClientWrapper from '@/components/stations/StationsClientWrapper'
 import { getMergedStations } from '@/lib/stations'
+import type { Station } from '@/types'
 
 
 export const metadata: Metadata = {
@@ -22,7 +23,15 @@ export const metadata: Metadata = {
 }
 
 export default async function StationsPage() {
-  const stations = await getMergedStations()
+  let stations: Station[] = []
+  let fetchError = false
+
+  try {
+    stations = await getMergedStations()
+  } catch (e) {
+    fetchError = true
+  }
+
   const openCount = stations.filter((station) => station.status === 'open').length
   const comingSoonCount = stations.filter((station) => station.status === 'coming_soon').length
 
@@ -44,7 +53,13 @@ export default async function StationsPage() {
         ]}
       />
       <section id="stations-map" className="relative mx-auto max-w-7xl space-y-8 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <StationsClientWrapper stations={stations} />
+        {fetchError ? (
+          <div className="rounded-2xl border border-rose-300/50 bg-rose-50/60 p-8 text-center text-rose-700">
+            Stations Non trouvé
+          </div>
+        ) : (
+          <StationsClientWrapper stations={stations} />
+        )}
       </section>
     </PageTransition>
   )

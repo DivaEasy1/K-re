@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { CircleCheckBig, MessageSquareText, TimerReset } from 'lucide-react'
 
 import settings from '@/data/settings.json'
-import type { Activity } from '@/types'
+import type { Activity, Station } from '@/types'
 import PageTransition from '@/components/layout/PageTransition'
 import Hero from '@/components/home/Hero'
 import TideWidget from '@/components/home/TideWidget'
@@ -55,10 +55,19 @@ export const metadata: Metadata = {
   },
 }
 export default async function HomePage() {
-  const stations = await getMergedStations()
+  let stations: Station[] = []
+  let stationsError = false
+  try {
+    stations = await getMergedStations()
+  } catch (e) {
+    stationsError = true
+  }
   const activities = await getActivitiesData()
   return (
     <PageTransition>
+      {stationsError && (
+        <div className="mx-auto max-w-7xl px-4 py-4 text-center text-rose-700">Stations Non trouvé</div>
+      )}
       <Hero stations={stations} />
       <HomeMapSection stations={stations} />
       <TideWidget />

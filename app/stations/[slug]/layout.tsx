@@ -1,10 +1,14 @@
 import { getAllStationPages } from '@/lib/stations'
 
 export async function generateStaticParams() {
-  const allStations = await getAllStationPages()
-  return allStations.map((station) => ({
-    slug: station.slug,
-  }))
+  try {
+    const allStations = await getAllStationPages()
+    return allStations.map((station) => ({
+      slug: station.slug,
+    }))
+  } catch (e) {
+    return []
+  }
 }
 
 export default function Layout({

@@ -22,6 +22,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import Breadcrumb from '@/components/ui/breadcrumb'
 import { getOpenStationPages, getStationPageBySlug, getAllStationPages } from '@/lib/stations'
+import type { Station } from '@/types'
 import { BLUR_DATA_URL } from '@/lib/utils'
 
 // For static export, dynamicParams must be false
@@ -63,11 +64,14 @@ function getMapsUrl(lat: number, lng: number) {
 }
 
 export async function generateStaticParams() {
-  const stations = await getAllStationPages()
-
-  return stations.map((station) => ({
-    slug: station.slug,
-  }))
+  try {
+    const stations = await getAllStationPages()
+    return stations.map((station) => ({
+      slug: station.slug,
+    }))
+  } catch (e) {
+    return []
+  }
 }
 
 export async function generateMetadata({
@@ -76,37 +80,39 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const station = await getStationPageBySlug(slug)
+  try {
+    const station = await getStationPageBySlug(slug)
 
-  if (!station) {
-    return {
-      title: 'Station introuvable',
+    if (!station) {
+      return { title: 'Station introuvable' }
     }
-  }
 
-  return {
-    title: station.name,
-    description: `${station.name} sur l'ile de Re: infos pratiques, galerie photo et reservation rapide.`,
-    alternates: {
-      canonical: `/stations/${station.slug}`,
-    },
-    openGraph: {
-      title: `${station.name} | Kayak en Re`,
-      description: `${station.highlight}. Consultez la fiche station et reservez en ligne.`,
-      url: `https://k-re.fr/stations/${station.slug}`,
-      images: [
-        {
-          url: station.gallery[0],
-          alt: station.name,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${station.name} | Kayak en Re`,
-      description: `${station.highlight}. Consultez la fiche station et reservez en ligne.`,
-      images: [station.gallery[0]],
-    },
+    return {
+      title: station.name,
+      description: `${station.name} sur l'ile de Re: infos pratiques, galerie photo et reservation rapide.`,
+      alternates: {
+        canonical: `/stations/${station.slug}`,
+      },
+      openGraph: {
+        title: `${station.name} | Kayak en Re`,
+        description: `${station.highlight}. Consultez la fiche station et reservez en ligne.`,
+        url: `https://k-re.fr/stations/${station.slug}`,
+        images: [
+          {
+            url: station.gallery[0],
+            alt: station.name,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `${station.name} | Kayak en Re`,
+        description: `${station.highlight}. Consultez la fiche station et reservez en ligne.`,
+        images: [station.gallery[0]],
+      },
+    }
+  } catch (e) {
+    return { title: 'Station introuvable' }
   }
 }
 
@@ -116,7 +122,24 @@ export default async function StationDetailPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const station = await getStationPageBySlug(slug)
+  let station: Station | null = null
+  let fetchError = false
+
+  try {
+    station = await getStationPageBySlug(slug)
+  } catch (e) {
+    fetchError = true
+  }
+
+  if (fetchError) {
+    return (
+      <PageTransition>
+        <section className="relative mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-rose-300/50 bg-rose-50/60 p-8 text-rose-700">Stations Non trouvé</div>
+        </section>
+      </PageTransition>
+    )
+  }
 
   if (!station) {
     notFound()
